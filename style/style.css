@@ -1,0 +1,310 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+    /* Ajout de l'espace entre les sections */
+}
+
+nav ul li:first-child {
+    margin-right: 300px;
+    /* Marge spéciale pour le premier élément */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.text-column {
+    width: 50%;
+    padding-right: 10px;
+}
+
+.image-column {
+    width: 50%;
+    text-align: center;
+}
+
+.image-column img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+h2.présentation {
+    font-size: 2.2em;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background-color: #555;
+}
+
+h2.tag {
+    color: black;
+    font-size: 350%;
+    text-align: center;
+    margin: 10px 0 20px 0;
+}
+
+header,
+.timeline-item {
+    position: relative;
+}
+
+/* Conteneur global de la timeline */
+.timeline-container {
+    position: relative;
+    margin: 50px auto;
+    padding: 0;
+    max-width: 800px;
+}
+
+/* Ligne verticale de la timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 65px;
+    /* Déplace la ligne 25px vers la droite */
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #333;
+    z-index: -1;
+}
+
+/* Style des points sur la ligne verticale */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    /* Aligne les points 7px à gauche de la ligne */
+    width: 14px;
+    height: 14px;
+    background-color: #333;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Contenu de chaque item de la timeline */
+.timeline-item {
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px 0;
+    position: relative;
+}
+
+/* Date alignée à gauche */
+.timeline-date {
+    font-size: 1.5em;
+    color: #333;
+    width: 120px;
+    text-align: left;
+    margin-right: 25px;
+    /* Ajoute un écart de 25px entre la date et la ligne */
+}
+
+/* Contenu aligné à droite avec texte et images */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 120px);
+    margin-left: 25px;
+    /* Espace pour ajuster le contenu à droite de la ligne */
+    text-align: left;
+}
+
+/* L'image dans chaque item de la timeline */
+.timeline-content img {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* Style pour les compétences et les barres de progression */
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill-title {
+    font-size: 1.4em;
+    cursor: pointer;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.skill-details {
+    display: none;
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Transition pour un effet fluide lors du déroulement */
+.skill-details p {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+/* Image droite */
+.image-column img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.projets-personnels-section {
+    background-color: #f0f0f0;
+    /* Fond gris-clair */
+    padding: 50px;
+    text-align: center;
+}
+
+.cartes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.carte {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    /* Crée l'effet 3D */
+    position: relative;
+    /* Important pour que les faces se positionnent correctement */
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    /* Cache la face arrière */
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Aligner les éléments au centre */
+}
+
+.face-devant {
+    background-color: #eaeaea;
+    width: 100%;
+    height: 100%;
+}
+
+.face-arriere {
+    background-color: #eaeaea;
+    transform: rotateY(180deg);
+    /* La face arrière est invisible au départ */
+}
+
+.carte:hover .face-devant {
+    transform: rotateY(180deg);
+    /* Rotation de la face avant lorsqu’on survole */
+}
+
+.carte:hover .face-arriere {
+    transform: rotateY(360deg);
+    /* Rotation de la face arrière lorsqu’on survole */
+}
+
+.carte-image-lien {
+    width: 100%;
+    /* Ajuste l'image de la face arrière à 100% de la largeur */
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    /* S'assure que l'image dans le lien est centrée */
+}
+
+h3 {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 1em;
+    padding: 10px;
+}
+
+/* Styles pour la barre de progression section langage informatique*/
+#progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    height: 10px;
+    margin: 20px 0; /* Ajout d'une marge pour espacer */
+    border-radius: 5px;
+}
+
+#progress {
+    width: 0;
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}

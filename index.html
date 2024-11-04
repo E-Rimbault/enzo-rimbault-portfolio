@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio RIMBAULT ENZO</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/png" href="image/home-portfolio.jpg">
+    <script src="script/sroll.js"></script>
+    <script src="script/portfolio.js"></script>
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>Portfolio RIMBAULT ENZO</h1>
+        <nav>
+            <ul>
+                <li><a href="#"><img style="height: 50% ;width: 50px;" src="image/bts-sio.png"
+                            alt="image logo bts sio"></a></li>
+                <li><a href="#A_propos">A propos</a></li>
+                <li><a href="#timeline">Scolaire</a></li>
+                <li><a href="#experience-professionnelle">Expériences Professionnelles</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#langages">Langage informatiques</a></li>
+                <li><a href="#logiciels">Logiciels</a></li>
+                <li><a href="#projets-personnels">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br>
+
+    <!-- Barre de progression -->
+    <div id="progress-bar"></div>
+
+    <main>
+        <!-- Section Présentation -->
+        <section id="presentation">
+            <div class="text-column">
+                <h2 class="présentation">
+                    Bonjour,<br>
+                    Je m'appelle ENZO,<br>
+                    Étudiant en BTS SIO, option SLAM 2ème année
+                </h2>
+            </div>
+            <div class="image-column">
+                <img src="image/enzo.jpg" alt="Photo de Enzo">
+            </div>
+            <div class="options-column" style="margin-left: 20px;">
+                <h2>Contact</h2>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="image/téléphone.jpg" alt="Icone téléphone" style="width: 20px; margin-right: 10px;">
+                    <p>Téléphone : 07 69 32 20 35</p>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="image/logo_mail.jpg" alt="Icone mail" style="width: 20px; margin-right: 10px;">
+                    <p>Mail : rimbaultenzo86@gmail.com</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nouvelle section Accueil -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="A_propos" class="tag">
+            <u>Présentation</u>
+        </h2><br>
+        <section>
+            <br>
+            <div class="text-column">
+                <p style="font-size: 130%;">
+                    BONJOUR, JE M'APPELLE ENZO RIMBAULT
+                </p>
+                <p style="font-size: 115%;">
+                    Actuellement en deuxième année de BTS Services Informatiques aux Organisations (SIO),<br>
+                    option Solutions Logicielles et Applications Métier (SLAM), au lycée Saint-Sauveur de Redon,
+                    <br>
+                    je me forme aux différents aspects du développement logiciel et de la gestion de projets
+                    informatiques.<br>
+                    Passionné par les nouvelles technologies et l'informatique, j'ai choisi cette spécialité pour
+                    approfondir mes compétences en<br>
+                    programmation, conception d'applications, et analyse des besoins des utilisateurs.
+                </p>
+            </div>
+            <div class="image-column">
+                <img src="image/Enzo-RIMBAULT-1.png" alt="Image d'accueil">
+                <!-- Bouton de téléchargement -->
+                <a href="fichier_pdf/cv-enzo-rimbault.pdf" target="_blank" download class="download-btn">Télécharger mon
+                    CV
+                </a>
+            </div>
+        </section>
+
+        <!-- Section Origine Scolaire -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="timeline" class="tag">
+            <u>Établissement Scolaire</u>
+        </h2>
+        <section style="display: flex; justify-content: space-between; align-items: flex-start;"
+            class="timeline-section">
+            <div class="timeline-container">
+                <div class="timeline">
+                    <!-- Zone 1 : 2023 - 2025 -->
+                    <div class="timeline-item">
+                        <h3>2025 <br>-<br> 2023</h3>
+                        <p style="margin-left: 25px;">BTS SIO - Lycée Saint-Sauveur - Redon.</p>
+                        <a href="https://www.lycee-saint-sauveur-redon.eu/" target="_blank">
+                            <img style="height: 50%; width: 50%;" src="image/saint_sau.jpg" alt="Lycée Saint-Sauveur"
+                                class="school-image">
+                        </a>
+                    </div>
+                    <!-- Zone 2 : 2021 - 2023 -->
+                    <div class="timeline-item">
+                        <h3>2023 - 2021</h3>
+                        <p style="margin-left: 25px;">Licence Informatique - Université de Rennes</p>
+                        <a href="http://www.univ-rennes1.fr" target="_blank">
+                            <img style="height: 50%; width: 50%;" src="image/rennes_1.jpg" alt="Université de Rennes"
+                                class="school-image">
+                        </a>
+                    </div>
+                    <!-- Zone 3 : 2018 - 2021 -->
+                    <div class="timeline-item">
+                        <h3>2021 <br>-<br> 2018</h3>
+                        <p style="margin-left: 25px;">
+                            Lycée Général et Technologique<br>
+                            Anita Conti - Bruz
+                        </p>
+                        <a href="https://www.lycee-anita-conti-bruz.ac-rennes.fr/" target="_blank">
+                            <img style="height: 50%; width: 50%;" src="image/anita.jpg" alt="Lycée Anita Conti"
+                                class="school-image">
+                        </a>
+                    </div>
+                    <!-- Ligne du temps sous les éléments -->
+                    <div class="timeline-line"></div>
+                    <div class="timeline-end"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Expérience Professionnelles -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;"
+            id="experience-professionnelle" class="tag"><u>Expérience Professionnelle</u></h2>
+        <section style="display: flex; justify-content: space-between; align-items: flex-start;"
+            class="timeline-section">
+            <div class="timeline-container">
+                <div class="timeline">
+                    <!-- Zone 1 : 2023 - 2025 -->
+                    <div class="timeline-item">
+                        <h3 style="margin-left: 80px;">2024 (Juillet et Aout)</h3>
+                        <p style="margin-left: 25px;">
+                            Auxiliaire bancaire BNP PARIBAS :<br>
+                            -Gestion de remboursement de prêt immobilier suite virement
+                            notaire<br>
+                            -Mission RGPD
+                        </p>
+                    </div>
+                    <!-- Zone 2 : 2021 - 2023 -->
+                    <div class="timeline-item">
+                        <h3 style="margin-left: 80px;">2024 (Mai et Juin)</h3>
+                        <p style="margin-left: 25px;">
+                            Stage BTS SIO 1ere année : REDON AGGLOMÉRATION :<br>
+                            -Préparation d'une maqquette de site internet<br>
+                            pour la mairie de Fégréeac.
+                        </p>
+                        <a href="fichier_pdf/RIMBAULT-ENZO-Rapport-de-stage-BTS-SIO.pdf" target="_blank" download
+                            class="download-btn">Rapport de stage</a>
+                        <br>
+                        <a href="https://fegreac.fr/" style="margin-left: 35px;" target="_blank"
+                            download class="download-btn">Site Web mairie de fégréac</a>
+                    </div>
+                    <!-- Zone 3 : 2018 - 2021 -->
+                    <div class="timeline-item">
+                        <h3 style="margin-left: 80px;">2023(Juillet et Aout)</h3>
+                        <p style="margin-left: 25px;">
+                            Auxiliaire bancaire BNP PARIBAS :<br>
+                            -gestion de remboursement anticipé de crédit immobilier
+                        </p>
+                    </div>
+                    <!-- Ligne du temps sous les éléments -->
+                    <div class="timeline-line"></div>
+                    <div class="timeline-end"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section Compétences -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="competences" class="tag">
+            <u>Compétences Professionnelles</u>
+        </h2>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 100px;">
+
+            <!-- Colonne gauche : Liste de compétences avec barre de progression -->
+            <div class="text-column" style="width: 50%;">
+                <div class="skill">
+                    <h3 class="skill-title" onclick="toggleDetails('skill1-details')">Développement Web (HTML, CSS,
+                        JavaScript)</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                    <div class="skill-details" id="skill1-details">
+                        <p>J'ai acquis cette compétence lors de plusieurs projets académiques et personnels où j'ai
+                            conçu des sites web HTML, CSS, et JavaScript.</p>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <h3 class="skill-title" onclick="toggleDetails('skill2-details')">Programmation Python</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;"></div>
+                    </div>
+                    <div class="skill-details" id="skill2-details">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <h3 class="skill-title" onclick="toggleDetails('skill3-details')">Gestion de Base de Données (SQL,
+                        MySQL)</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;"></div>
+                    </div>
+                    <div class="skill-details" id="skill3-details">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <h3 class="skill-title" onclick="toggleDetails('skill4-details')">CMS Wordpress - thème AVADA
+                    </h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%;"></div>
+                    </div>
+                    <div class="skill-details" id="skill4-details">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne droite : Image -->
+            <div class="image-column" style="width: 40%; text-align: center;">
+                <img src="image/compétence.jpg" alt="Image des compétences" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+
+
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="langages" class="tag">
+            <u>Langages Informatiques Pratiqués</u>
+        </h2>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px;">
+            <!-- Colonne 1 : HTML -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/html.png" alt="HTML Logo" style="width: 100px; height: auto;">
+                <h3>HTML</h3>
+                <p>Langage utilisé pour la création de sites Web statiques et dynamiques, maîtrisé dans divers projets
+                    académiques.</p>
+            </div>
+
+            <!-- Colonne 2 : CSS -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/css_logo.png" alt="CSS Logo" style="width: 100px; height: auto;">
+                <h3>CSS</h3>
+                <p>Langage utilisé pour la mise en forme et le design des sites web.</p>
+            </div>
+
+            <!-- Colonne 3 : JavaScript -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo_java-script.png" alt="JavaScript Logo" style="width: 100px; height: auto;">
+                <h3>JavaScript</h3>
+                <p>Langage de programmation utilisé pour la création d'interfaces utilisateur interactives et
+                    dynamiques.</p>
+            </div>
+
+            <!-- Colonne 4 : Python -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logopython.png" alt="Python Logo" style="width: 100px; height: auto;">
+                <h3>Python</h3>
+                <p>Langage polyvalent utilisé dans des projets d'automatisation, de scripts et de traitement des
+                    données.</p>
+            </div>
+
+            <!-- Colonne 5 : PHP -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo_php.png" alt="PHP Logo" style="width: 100px; height: auto;">
+                <h3>PHP</h3>
+                <p>Langage de script côté serveur utilisé pour le développement web et la création de contenu dynamique.
+                </p>
+            </div>
+
+            <!-- Colonne 6 : SQL -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo_sql.png" alt="SQL Logo" style="width: 100px; height: auto;">
+                <h3>SQL</h3>
+                <p>Langage de requête utilisé pour gérer et manipuler des bases de données relationnelles.</p>
+            </div>
+
+            <!-- Colonne 7 : Java -->
+            <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo_java.png" alt="Java Logo" style="width: 100px; height: auto;">
+                <h3>Java</h3>
+                <p>Langage de programmation orienté objet utilisé pour le développement d'applications multiplateformes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section Logiciels -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="logiciels" class="tag">
+            <u>Logiciels / système d'exploitation Utilisés</u>
+        </h2>
+
+        <div style="text-align: center; padding: 50px;">
+            <p style="font-size: 115%;">
+                Pendant ma formation en BTS SIO, j'ai utilisé plusieurs logiciels essentiels pour le développement, la
+                gestion des bases de données, ainsi que des outils de collaboration et de design. Voici quelques-uns des
+                logiciels que j'ai pratiqués :
+            </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px;">
+            <!-- Eclipse -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/eclipse-logo.png" alt="Eclipse Logo" style="width: 100px; height: auto;">
+                <h3>Eclipse</h3>
+                <p>Un IDE utilisé pour le développement d'applications Java et d'autres langages. Il m'a été utile pour
+                    des projets académiques.</p>
+            </div>
+
+            <!-- EduPython -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/python-logo.png" alt="EduPython Logo" style="width: 100px; height: auto;">
+                <h3>EduPython</h3>
+                <p>Un environnement de programmation utilisé pour l'apprentissage de la programmation en Python. Il
+                    facilite les débuts avec ce langage.</p>
+            </div>
+
+            <!-- VSCode -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo-vscode.png" alt="VSCode Logo" style="width: 100px; height: auto;">
+                <h3>Visual Studio Code (VSCode)</h3>
+                <p>Un éditeur de code léger et puissant, utilisé pour écrire du code dans différents langages tels que
+                    Python, JavaScript, et PHP.</p>
+            </div>
+
+            <!-- GitHub -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/git-hub-logo.png" alt="GitHub Logo" style="width: 100px; height: auto;">
+                <h3>GitHub</h3>
+                <p>Plateforme de gestion de versions et de collaboration. J'ai utilisé GitHub pour gérer mes projets et
+                    travailler en équipe.</p>
+            </div>
+
+            <!-- Canva -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/canva-logo.png" alt="Canva Logo" style="width: 100px; height: auto;">
+                <h3>Canva</h3>
+                <p>Outil de design graphique en ligne utilisé pour créer des visuels attrayants, notamment pour des
+                    présentations et des sites web.</p>
+            </div>
+
+            <!-- WAMP -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/wamp64-logo.png" alt="WAMP Logo" style="width: 100px; height: auto;">
+                <h3>WAMP</h3>
+                <p>Ensemble de logiciels permettant de créer un serveur web local pour tester des projets PHP et MySQL
+                    en local.</p>
+            </div>
+
+            <!-- Linux -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/linux-logo.png" alt="Linux Logo" style="width: 100px; height: auto;">
+                <h3>Linux</h3>
+                <p>Système d'exploitation open-source, utilisé pour la gestion de serveurs et l'administration système.
+                </p>
+            </div>
+
+            <!-- Windows -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/windows-logo.png" alt="Windows Logo" style="width: 100px; height: auto;">
+                <h3>Windows</h3>
+                <p>Système d'exploitation utilisé pour la majorité de mes travaux de développement et de gestion
+                    informatique.</p>
+            </div>
+
+            <!-- phpMyAdmin -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/logo-phpmyadmin.png" alt="phpMyAdmin Logo" style="width: 100px; height: auto;">
+                <h3>phpMyAdmin</h3>
+                <p>Interface web permettant la gestion des bases de données MySQL de manière visuelle et simplifiée.</p>
+            </div>
+
+            <!-- WordPress -->
+            <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+                <img src="image/wordpress-logo.png" alt="WordPress Logo" style="width: 100px; height: auto;">
+                <h3>WordPress</h3>
+                <p>CMS (Content Management System) utilisé pour la création de sites web dynamiques, notamment avec le
+                    thème AVADA.</p>
+            </div>
+        </div>
+
+
+        <!-- NOUVELLE SECTION : PROJET PERSONNEL -->
+        <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="projets-personnels"
+            class="tag"><u>Projets Personnels / Professionnels</u></h2>
+
+        <div class="projet-container"
+            style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <!-- Colonne gauche : texte explicatif -->
+            <div class="projet-description" style="flex: 1; padding-right: 20px;">
+                <h3 style="text-align: center;"><u>Site Web mairie de Fégréac</u></h3>
+                <p>
+                    Projet de site Web réalisé lors de mon stage de première année à Redon Agglomération.<br>
+                    Il présente le site web de la ville de Fégréac dans le département 44.<br>
+                    Pour la création du site, j'ai utilisé le thème AVADA de WordPress, qui m'a permis de concevoir
+                    chaque page du site.
+                </p>
+            </div>
+            <!-- Colonne droite : image cliquable -->
+            <div class="projet-image" style="flex: 1; text-align: center;">
+                <a target="_blank" href="https://fegreac.fr/">
+                    <img src="image/Fegreac-logo.jpg" alt="Projet Image" style="max-width: 100%; height: auto;">
+                </a>
+            </div>
+
+
+        </div>
+        <!-- Ajouter plus de projets en suivant la même structure -->
+
+
+        <script src="script/defile.js"></script>*
+        <script src="script/portfolio.js"></script>
+</body>
+
+</html>
