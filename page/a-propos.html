@@ -8,23 +8,107 @@
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="../script/sroll.js"></script>
   <script src="../script/portfolio.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .content {
+      display: flex;
+      margin-left: 20%;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .text-column {
+      width: 40%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .image-column {
+      width: 40%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .image-column img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .download-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="sidebar">
-      <ul>
-          <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="scolaire.html">Scolaire</a></li>
-          <li><a href="experiences.html">Expériences</a></li>
-          <li><a href="competences.html">Compétences</a></li>
-          <li><a href="langages.html">Langages</a></li>
-          <li><a href="logiciels.html">Logiciels</a></li>
-          <li><a href="projets.html">Projets</a></li>
-      </ul>
-  </nav>  
-  </header>
-  <section>
+
+  <!-- Navigation -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="scolaire.html">Scolaire</a></li>
+      <li><a href="experiences.html">Expériences</a></li>
+      <li><a href="compétences.html">Compétences</a></li>
+      <li><a href="langages.html">Langages</a></li>
+      <li><a href="logiciels.html">Logiciels</a></li>
+      <li><a href="projets.html">Projets</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="content">
     <div class="text-column">
       <p style="font-size: 130%;">
         BONJOUR, JE M'APPELLE ENZO RIMBAULT
@@ -32,15 +116,16 @@
       <p style="font-size: 115%;">
         Actuellement en deuxième année de BTS Services Informatiques aux Organisations (SIO),<br>
         option Solutions Logicielles et Applications Métier (SLAM), au lycée Saint-Sauveur de Redon,<br>
-        je me forme aux différents aspects du développement logiciel et de la gestion de projets informatiques.<br>
-        Passionné par les nouvelles technologies et l'informatique, j'ai choisi cette spécialité pour approfondir mes compétences en<br>
+        je me forme aux différents aspects du développement logiciel et de la gestion de projets informatiques.<br><br>
+        Passionné par les nouvelles technologies et l'informatique, j'ai choisi cette spécialité pour approfondir mes compétences en
         programmation, conception d'applications, et analyse des besoins des utilisateurs.
       </p>
     </div>
+
     <div class="image-column">
       <img src="../image/Enzo-RIMBAULT-1.png" alt="Image d'accueil">
       <a href="../fichier_pdf/cv-enzo-rimbault.pdf" target="_blank" download class="download-btn">Télécharger mon CV</a>
     </div>
-  </section>
+  </div>
 </body>
 </html>
