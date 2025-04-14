@@ -8,79 +8,181 @@
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="../script/sroll.js"></script>
   <script src="../script/portfolio.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .sidebar li {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+    .main-content {
+      margin-left: 20%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    h2 {
+      background-color: #f0f0f0;
+      font-family: 'Roboto';
+      text-align: center;
+      padding: 10px;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #333;
+      margin: 20px 0 40px 0;
+    }
+    .langage-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 50px;
+    }
+    .langage {
+      text-align: center;
+      flex-basis: calc(33.33% - 20px);
+      margin: 10px;
+      box-sizing: border-box;
+      padding: 20px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .langage img {
+      width: 100px;
+      height: auto;
+    }
+    .langage h3 {
+      margin: 15px 0 10px;
+    }
+    .langage p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="sidebar">
-          <ul>
-              <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
-              <li><a href="a-propos.html">À propos</a></li>
-              <li><a href="scolaire.html">Scolaire</a></li>
-              <li><a href="experiences.html">Expériences</a></li>
-              <li><a href="compétences.html">Compétences</a></li>
-              <li><a href="langages.html">Langages</a></li>
-              <li><a href="logiciels.html">Logiciels</a></li>
-              <li><a href="projets.html">Projets</a></li>
-          </ul>
-      </nav>  
-      </header>
-    <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="langages" class="tag">
-        <u>Langages Informatiques Pratiqués</u>
-    </h2>
+  <header>
+    <nav class="sidebar">
+      <ul>
+        <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="experiences.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="langages.html">Langages</a></li>
+        <li><a href="logiciels.html">Logiciels</a></li>
+        <li><a href="projets.html">Projets</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="main-content">
+    <h2 id="langages" class="tag"><u>Langages Informatiques Pratiqués</u></h2>
+    <p class="intro">
+      Durant mon BTS - SIO, j'ai travaillé sur divers langages informatiques essentiels. Découvrez ci-dessous le détail des langages utilisés, ainsi que leur contexte d'application dans mes projets.
+    </p>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px;">
-        <!-- Colonne 1 : HTML -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/html.png" alt="HTML Logo" style="width: 100px; height: auto;">
-            <h3>HTML</h3>
-            <p>Langage utilisé pour la création de sites Web statiques et dynamiques, maîtrisé dans divers projets
-                académiques.</p>
-        </div>
+    <div class="langage-container">
+      <!-- Colonne 1 : HTML -->
+      <div class="langage">
+        <img src="../image/html.png" alt="HTML Logo">
+        <h3>HTML</h3>
+        <p>
+          Langage de balisage essentiel pour la structure des pages web.<br>
+          Utilisé pour créer des sites statiques et dynamiques, assurant la sémantique du contenu.
+        </p>
+      </div>
 
-        <!-- Colonne 2 : CSS -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/css_logo.png" alt="CSS Logo" style="width: 100px; height: auto;">
-            <h3>CSS</h3>
-            <p>Langage utilisé pour la mise en forme et le design des sites web.</p>
-        </div>
+      <!-- Colonne 2 : CSS -->
+      <div class="langage">
+        <img src="../image/css_logo.png" alt="CSS Logo">
+        <h3>CSS</h3>
+        <p>
+          Langage de style permettant de définir l’apparence des pages web.<br>
+          J'ai travaillé sur la mise en page, l'animation et la responsivité pour des interfaces modernes.
+        </p>
+      </div>
 
-        <!-- Colonne 3 : JavaScript -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo_java-script.png" alt="JavaScript Logo" style="width: 100px; height: auto;">
-            <h3>JavaScript</h3>
-            <p>Langage de programmation utilisé pour la création d'interfaces utilisateur interactives et
-                dynamiques.</p>
-        </div>
+      <!-- Colonne 3 : JavaScript -->
+      <div class="langage">
+        <img src="../image/logo_java-script.png" alt="JavaScript Logo">
+        <h3>JavaScript</h3>
+        <p>
+          Langage de programmation indispensable pour l'interactivité des sites web.<br>
+          Employé pour la manipulation du DOM, la création d'animations et l'intégration de fonctionnalités avancées.
+        </p>
+      </div>
 
-        <!-- Colonne 4 : Python -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logopython.png" alt="Python Logo" style="width: 100px; height: auto;">
-            <h3>Python</h3>
-            <p>Langage polyvalent utilisé dans des projets d'automatisation, de scripts et de traitement des
-                données.</p>
-        </div>
+      <!-- Colonne 4 : Python -->
+      <div class="langage">
+        <img src="../image/logopython.png" alt="Python Logo">
+        <h3>Python</h3>
+        <p>
+          Langage polyvalent, utilisé pour l'automatisation, le traitement des données et le scripting.<br>
+          Mes projets incluent l'analyse de données et l'automatisation de tâches répétitives.
+        </p>
+      </div>
 
-        <!-- Colonne 5 : PHP -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo_php.png" alt="PHP Logo" style="width: 100px; height: auto;">
-            <h3>PHP</h3>
-            <p>Langage de script côté serveur utilisé pour le développement web et la création de contenu dynamique.
-            </p>
-        </div>
+      <!-- Colonne 5 : PHP -->
+      <div class="langage">
+        <img src="../image/logo_php.png" alt="PHP Logo">
+        <h3>PHP</h3>
+        <p>
+          Langage de script côté serveur pour le développement web.<br>
+          Utilisé dans la création de contenus dynamiques et la gestion de bases de données.
+        </p>
+      </div>
 
-        <!-- Colonne 6 : SQL -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo_sql.png" alt="SQL Logo" style="width: 100px; height: auto;">
-            <h3>SQL</h3>
-            <p>Langage de requête utilisé pour gérer et manipuler des bases de données relationnelles.</p>
-        </div>
+      <!-- Colonne 6 : SQL -->
+      <div class="langage">
+        <img src="../image/logo_sql.png" alt="SQL Logo">
+        <h3>SQL</h3>
+        <p>
+          Langage de requête pour manipuler et interroger des bases de données relationnelles.<br>
+          Employé pour concevoir et gérer des bases de données dans mes projets web.
+        </p>
+      </div>
 
-        <!-- Colonne 7 : Java -->
-        <div class="langage" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo_java.png" alt="Java Logo" style="width: 100px; height: auto;">
-            <h3>Java</h3>
-            <p>Langage de programmation orienté objet utilisé pour le développement d'applications multiplateformes.
-            </p>
-        </div>
+      <!-- Colonne 7 : Java -->
+      <div class="langage">
+        <img src="../image/logo_java.png" alt="Java Logo">
+        <h3>Java</h3>
+        <p>
+          Langage de programmation orienté objet pour des applications multiplateformes.<br>
+          Utilisé dans le développement d'applications robustes et évolutives lors de ma formation.
+        </p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet SWGOH Api - Info Joueur</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" type="image/png" href="../image/star-wars-projet-swgoh.png">
+    <style>
+        h2{
+            font-size: 200%;
+        }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .tech-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .tech-list img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        p {
+            text-align: justify;
+        }
+        /* Style général du tableau */
+table.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table.stats-table th, table.stats-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+table.stats-table th {
+    background-color: #2c3e50;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table.stats-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.stats-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table.stats-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style des cellules */
+table.stats-table td {
+    color: #333;
+}
+
+table.stats-table th {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* Style pour les en-têtes */
+table.stats-table th {
+    padding: 16px;
+    font-size: 16px;
+    background-color: #34495e;
+    border: none;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Style pour les cellules de données */
+table.stats-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    background-color: #fafafa;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Effet au survol des lignes */
+table.stats-table tr:hover td {
+    background-color: #ecf0f1;
+}
+
+/* Style pour les lignes du tableau */
+table.stats-table tbody tr:hover {
+    background-color: #ecf0f1;
+}
+
+/* Style du tableau lorsque l'image est au-dessus */
+.image-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style des légendes de tableau */
+table.stats-table caption {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><u>Projet SWGOH API - Info Joueur</u></h1>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <a target="_blank" href="https://swgoh-projet-api.infinityfreeapp.com/" style="text-align: center;">
+                <img src="image-projet-api/logo-swgoh.png" alt="projet API">
+                <div style="margin-top: 10px; font-size: 20px;">Voir le Site</div>
+            </a>
+        </div>
+
+        <div class="section">
+            <h2>Description</h2>
+            <p>
+                <strong>SWGOH Galaxy</strong> est une plateforme web dédiée au jeu mobile <em>Star Wars: Galaxy of Heroes</em>. Elle permet aux joueurs de consulter facilement les statistiques détaillées de leur compte en saisissant leur <strong>code allié</strong>.
+            </p>
+            <p>
+                Grâce à l'intégration d'API communautaires comme <strong>api.swgoh.gg</strong>, le site affiche des informations telles que la puissance galactique, les personnages et vaisseaux possédés, les classements en arène, et bien plus encore.
+            </p>
+            <p>
+                Il est également possible de rechercher des unités, comparer plusieurs personnages ou vaisseaux, et mieux planifier votre progression dans le jeu.
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <h2><u>Langages utilisés</u></h2>
+        <ul class="tech-list">
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                <strong>HTML</strong> : utilisé pour structurer le contenu du site, définir les titres, paragraphes, images, et liens.
+            </li>
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                <strong>CSS (via Bootstrap 5)</strong> : permet de styliser l’interface avec des composants réactifs et modernes pour une expérience fluide sur tous les écrans.
+            </li>
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                <strong>JavaScript</strong> : utilisé pour ajouter des fonctionnalités interactives, comme les filtres dynamiques, les événements au clic, ou la navigation dynamique entre les unités.
+            </li>
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                <strong>PHP</strong> : utilisé côté serveur pour interroger l'API SWGOH et récupérer les données liées au code allié du joueur.
+            </li>
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                <strong>Java</strong> : utilisé pour des traitements ou intégrations backend.
+            </li>
+            <li>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" alt="JSON">
+                <strong>JSON</strong> : format utilisé pour échanger les données entre le serveur et le navigateur, en particulier pour structurer les infos des joueurs.
+            </li>
+        </ul>
+    </div>   
+    <div class="section">
+        <h2><u>Fonctionnalités principales</u></h2>
+        <ul class="tech-list">
+            <li>
+                <strong>Affichage du profil joueur</strong> : nom, niveau, puissance galactique, guilde, rangs en arène et flotte.
+            </li>
+            <li>
+                <strong>Liste des personnages</strong> : niveau, étoiles, équipement, vitesse, santé, protection et gear.
+            </li>
+            <li>
+                <strong>Liste des vaisseaux</strong> : mêmes informations que les personnages, adaptées aux unités de flotte.
+            </li>
+            <li>
+                <strong>Comparaison d’unités</strong> : compare plusieurs unités sélectionnées sur des statistiques clés (vitesse, puissance, santé...).
+            </li>
+            <li>
+                <strong>Recherche dynamique</strong> : permet de filtrer rapidement les unités via un champ de recherche intégré.
+            </li>
+            <li>
+                <strong>Navigation claire</strong> : possibilité de basculer rapidement entre les sections "Personnages" et "Vaisseaux".
+            </li>
+        </ul>
+    </div>
+    <div class="section">
+        <h2><u>Affichage des données du joueur</u></h2>
+        <p><strong>Affichage du profil complet</strong> : les joueurs peuvent saisir leur <strong>code allié</strong> pour afficher :</p>
+        <ul class="tech-list">
+            <li>
+                <ul>
+                    <li>- Puissance galactique totale</li>
+                    <li>- Classements en arène et flotte</li>
+                    <li>- Puissances totales des personnages et vaisseaux</li>
+                    <li>- Niveau , nom et ode allié du joueur</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="image-section">
+            <img src="image-projet-api/exmple-classement-jouer-329615792.png" alt="Affichage des données du joueur">
+        </div>
+        <p>
+            Cette vue d’ensemble vous aide à suivre votre progression dans le jeu et à vous situer face aux autres joueurs. Un outil essentiel pour analyser vos performances globales.
+        </p>
+    </div>
+    <div class="section">
+        <h2><u>Affichage des statistiques d’un personnage</u></h2>
+        <p><strong>Consultation des statistiques</strong> : chaque personnage du joueur peut être consulté en détail :</p>
+        <ul class="tech-list">
+            <li>
+                <ul>
+                    <li>- Niveau, puissance, gear</li>
+                    <li>- Vitesse, santé, protection</li>
+                    <li>- Rareté (étoiles) et équipements</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="image-section">
+            <img src="image-projet-api/exemple-ahsoka.png" alt="Statistiques d'un personnage">
+        </div>
+        <p>
+            Ces données permettent une analyse approfondie des unités pour optimiser leur efficacité en combat. Vous pouvez facilement identifier les personnages à améliorer en priorité.
+        </p>
+    </div>
+    <div class="section">
+        <h2><u>Comparaison entre unités</u></h2>
+        <p><strong>Comparaison côte à côte</strong> : comparez deux unités (personnages ou vaisseaux) selon :</p>
+        <ul class="tech-list">
+            <li>
+                <ul>
+                    <li>Puissance, vitesse, santé</li>
+                    <li>Protection, gear</li>
+                    <li>Visuels dynamiques avec mise en couleur des stats (vert = meilleur, rouge = plus faible)</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="image-section">
+            <img src="image-projet-api/exemple-comparasion-gas-et-ahsoka.png" alt="Comparaison entre unités">
+        </div>
+        <p>
+            Cette fonctionnalité est idéale pour choisir les meilleures unités à intégrer dans vos équipes. Le système de couleurs facilite une lecture rapide et intuitive.
+        </p>
+    </div>
+    <div class="section">
+        <h2><u>Récupération des données avec l'API</u></h2>
+        <p>
+            Afin de fournir des données actualisées à la plateforme <strong>SWGOH Galaxy</strong>, une API personnalisée en <strong>PHP</strong> a été créée. Cette API interroge directement l’API communautaire <a href="https://swgoh.gg/api/player/329615792/" target="_blank"><strong>SWGOH.gg</strong></a>, qui contient des informations détaillées sur les profils des joueurs du jeu <em>Star Wars: Galaxy of Heroes</em>.
+        </p>
+        <p>
+            En entrant leur <strong>code allié</strong>, les utilisateurs peuvent consulter des statistiques sur leurs personnages, vaisseaux, ainsi que des informations globales telles que la puissance galactique, les rangs en arène, et plus encore.
+        </p>
+    </div>
+    <div class="section">
+        <h2><u>Fonctionnement du fichier <code>api.php</code></u></h2>
+        <p>
+            Le fichier PHP <code>api.php</code> est responsable de l'interaction avec l'API SWGOH.gg. Il récupère le <strong>code allié</strong> envoyé par le client, puis interroge l'API SWGOH pour obtenir les données du joueur. Voici le processus détaillé, étape par étape :
+        </p>
+        
+        <div class="process-step">
+            <h3><strong>1. Requête entrante (POST)</strong></h3>
+            <p>
+                Le code allié est envoyé depuis le client, généralement via une requête AJAX ou <code>fetch()</code> en format JSON. Cette requête contient l'identifiant unique du joueur, ce qui permet à l'API de cibler les données spécifiques du joueur.
+            </p>
+        </div>
+    
+        <div class="process-step">
+            <h3><strong>2. Appel à l'API SWGOH.gg</strong></h3>
+            <p>
+                Une fois le code allié reçu, une requête est envoyée à l'URL suivante :
+            </p>
+            <code>https://swgoh.gg/api/player/{ally_code}/</code>
+            <p>
+                Cela permet de récupérer les données du joueur à partir de l'API SWGOH.gg en format JSON.
+            </p>
+        </div>
+    
+        <div class="process-step">
+            <h3><strong>3. Traitement des données</strong></h3>
+            <p>
+                Une fois la réponse de l'API obtenue, les données sont extraites et triées en fonction du type d’unité, comme les personnages et les vaisseaux. Les informations sont ensuite formatées et préparées sous forme de données JSON pour une utilisation facile.
+            </p>
+        </div>
+    
+        <div class="process-step">
+            <h3><strong>4. Réponse JSON</strong></h3>
+            <p>
+                Le fichier PHP renvoie une réponse JSON structurée contenant les informations du joueur et de ses unités. La réponse contient les éléments suivants :
+            </p>
+            <ul class="response-list">
+                <li><code>player_info</code> : informations générales sur le joueur (niveau, puissance galactique, classements en arène, etc.).</li>
+                <li><code>characters</code> : liste des personnages du joueur avec leurs statistiques détaillées (niveau, étoiles, équipement, etc.).</li>
+                <li><code>ships</code> : liste des vaisseaux avec leurs statistiques détaillées.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <h2><u>L’API SWGOH.gg</u></h2>
+        <p>
+            L’API <strong>SWGOH.gg</strong> est une API communautaire gratuite qui fournit des données détaillées sur les joueurs du jeu <em>Star Wars: Galaxy of Heroes</em>. Elle offre des informations sur les unités (personnages et vaisseaux), les statistiques, les classements en arène, et bien plus.
+        </p>
+        <p>
+            L’API ne nécessite pas d'authentification et est accessible librement. Elle permet aux développeurs de récupérer les données publiques des joueurs en utilisant leur <strong>code allié</strong>.
+        </p>
+        <ul class="tech-list">
+            <li><strong>Accès aux profils des joueurs</strong> : permet de consulter les informations détaillées d’un joueur, comme la puissance galactique, les personnages, et les vaisseaux.</li>
+            <li><strong>Récupération des statistiques</strong> : stats détaillées sur les unités (niveau, étoiles, équipement, etc.).</li>
+            <li><strong>Facilité d’intégration</strong> : l’API est simple à utiliser, avec des réponses en JSON pour une intégration rapide dans des projets web.</li>
+        </ul>
+        <p>
+            Pour plus d'informations sur l'API, consulte la documentation officielle : <a href="https://swgoh.gg/api/player/329615792/" target="_blank">https://swgoh.gg/api/</a>
+        </p>
+    </div>
+    <div class="section">
+        <h2><u>Données JSON fournies par l'API SWGOH.gg</u></h2>
+        <p>
+            Lorsque le joueur saisit son <strong>code allié</strong>, une requête est envoyée à l'API <strong>SWGOH.gg</strong> qui retourne une structure JSON complète avec toutes les données de son compte.
+        </p>
+        <p>Ce JSON comprend deux parties principales :</p>
+        <p> <strong>player_info</strong> : Contient les informations globales du joueur telles que :</p>
+        <ul class="tech-list">
+            <li>
+                <ul>
+                    <li>Nom du joueur</li>
+                    <li>Niveau, code allié, nom de guilde</li>
+                    <li>Puissance galactique (totale, personnages, vaisseaux)</li>
+                    <li>Classements en arène et flotte</li>
+                    <li>Portraits, titres, division, ligue</li>
+                </ul>
+            </li>
+            <p><strong>units</strong> : Liste complète des personnages et vaisseaux avec :</p>
+            <li>
+                <ul>
+                    <li>Nom, niveau, rareté (étoiles), puissance</li>
+                    <li>Gear level, reliques, stats complètes</li>
+                    <li>Capacités (basique, spéciale, unique, zeta, omicron)</li>
+                    <li>Mods équipés (si présents)</li>
+                </ul>
+            </li>
+        </ul>
+    
+        <div class="image-section">
+            <img src="image-projet-api/stat-joueur.png" alt="Capture info joueur JSON">
+        </div>
+        <p>
+            L'image ci-dessus montre un extrait de la section <code>player_info</code> : informations générales sur le joueur.
+        </p>
+    
+        <div class="image-section">
+            <img src="image-projet-api/stat-ashoka.png" alt="Capture JSON unités">
+        </div>
+        <p>
+            Ci-dessus, un aperçu de la structure des unités (personnages ou vaisseaux), avec des données comme la vitesse, la santé, les capacités, et le niveau d’équipement.<br>
+            Avec comme exemple les stats du personnage Ahsoka Tano (Snips).
+        </p>
+    
+        <h3>Explication des Statistiques dans la Section <code>units</code></h3>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Statistique</th>
+                    <th>Code</th>
+                    <th>Explication</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Santé</td>
+                    <td>1</td>
+                    <td>La santé totale de l'unité. Cela représente les points de vie de l'unité avant qu'elle ne soit éliminée.</td>
+                </tr>
+                <tr>
+                    <td>Vitesse</td>
+                    <td>2</td>
+                    <td>La vitesse de l'unité, affectant le nombre de tours qu'elle peut effectuer dans le combat.</td>
+                </tr>
+                <tr>
+                    <td>Dégâts de base</td>
+                    <td>3</td>
+                    <td>Les dégâts de base que l'unité inflige avec ses attaques normales, avant toute modification par des effets externes.</td>
+                </tr>
+                <tr>
+                    <td>Puissance</td>
+                    <td>4</td>
+                    <td>La puissance totale de l'unité, utilisée pour calculer son efficacité en combat.</td>
+                </tr>
+                <tr>
+                    <td>Vitesse modifiée</td>
+                    <td>5</td>
+                    <td>La vitesse modifiée de l'unité après l'application de divers buffs ou debuffs.</td>
+                </tr>
+                <tr>
+                    <td>Protection</td>
+                    <td>6</td>
+                    <td>La protection est une ressource supplémentaire avant que les dégâts n'affectent la santé de l'unité.</td>
+                </tr>
+                <tr>
+                    <td>Armure</td>
+                    <td>7</td>
+                    <td>L'armure de l'unité, qui réduit les dégâts physiques qu'elle subit.</td>
+                </tr>
+                <tr>
+                    <td>Précision</td>
+                    <td>8</td>
+                    <td>La probabilité que l'unité touche l'adversaire avec ses attaques. Plus la précision est élevée, moins l'unité est susceptible de rater ses attaques.</td>
+                </tr>
+                <tr>
+                    <td>Résistance</td>
+                    <td>9</td>
+                    <td>La capacité de l'unité à résister aux effets de debuff, comme la réduction de vitesse ou l'incapacité de se déplacer.</td>
+                </tr>
+                <tr>
+                    <td>Chance de coup critique</td>
+                    <td>10</td>
+                    <td>La probabilité que l'unité effectue un coup critique, qui inflige des dégâts supplémentaires par rapport aux attaques normales.</td>
+                </tr>
+                <tr>
+                    <td>Dégâts critiques</td>
+                    <td>11</td>
+                    <td>Les dégâts supplémentaires infligés lorsqu'un coup critique se produit.</td>
+                </tr>
+                <tr>
+                    <td>Évasion</td>
+                    <td>12</td>
+                    <td>La capacité de l'unité à éviter les attaques ennemies.</td>
+                </tr>
+                <tr>
+                    <td>Régénération de santé</td>
+                    <td>14</td>
+                    <td>La quantité de santé que l'unité régénère par tour.</td>
+                </tr>
+                <tr>
+                    <td>Attaque</td>
+                    <td>15</td>
+                    <td>L'attaque globale de l'unité, influençant ses dégâts dans le jeu.</td>
+                </tr>
+                <tr>
+                    <td>Ténacité</td>
+                    <td>16</td>
+                    <td>La capacité de l'unité à résister aux debuffs et altérations de statut.</td>
+                </tr>
+                <tr>
+                    <td>Évitement des coups critiques</td>
+                    <td>17</td>
+                    <td>La capacité de l'unité à éviter les coups critiques ennemis.</td>
+                </tr>
+                <tr>
+                    <td>Dégâts spéciaux</td>
+                    <td>27</td>
+                    <td>Les dégâts infligés par des attaques spéciales ou des capacités spéciales.</td>
+                </tr>
+                <tr>
+                    <td>Protection bonus</td>
+                    <td>28</td>
+                    <td>Valeur supplémentaire de protection qui peut être appliquée en fonction des buffs et autres effets.</td>
+                </tr>
+                <tr>
+                    <td>Bonus chance de coup critique</td>
+                    <td>37</td>
+                    <td>Bonus supplémentaire à la chance de réaliser un coup critique, souvent attribué par des buffs.</td>
+                </tr>
+                <tr>
+                    <td>Bonus de précision</td>
+                    <td>38</td>
+                    <td>Bonus supplémentaire à la précision, souvent attribué par des buffs.</td>
+                </tr>
+                <tr>
+                    <td>Bonus de vitesse</td>
+                    <td>39</td>
+                    <td>Bonus de vitesse que l'unité peut recevoir, influençant sa rapidité dans le combat.</td>
+                </tr>
+                <tr>
+                    <td>Bonus d'armure</td>
+                    <td>40</td>
+                    <td>Bonus d'armure que l'unité peut recevoir, améliorant sa capacité à encaisser les dégâts physiques.</td>
+                </tr>
+                <tr>
+                    <td>Bonus de santé</td>
+                    <td>61</td>
+                    <td>Bonus de santé supplémentaire, généralement attribué par des buffs ou des capacités spéciales.</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <p>
+            Ces données sont exploitées côté client pour l’affichage dynamique dans les différentes sections du site (profil, unités, comparaisons, etc.).
+        </p>
+    </div>
+    
+    
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="../page/projets.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                ⬅ Retour au menu des projets
+            </button>
+        </a>
+    </div>    
+</body>
+
+</html>

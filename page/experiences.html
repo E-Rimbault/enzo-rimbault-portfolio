@@ -8,119 +8,268 @@
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="../script/sroll.js"></script>
   <script src="../script/portfolio.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    /* Navigation latérale */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .sidebar li {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+    /* Contenu principal */
+    .main-content {
+      margin-left: 20%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    h2 {
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    /* Frise chronologique verticale */
+    .timeline-section {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #ccc;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+    .timeline-item {
+      padding: 20px 30px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    /* Point sur la ligne */
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid #333;
+      top: 20px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    /* Positionnement des éléments */
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item.left::after {
+      right: -10px;
+    }
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item.right::after {
+      left: -10px;
+    }
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .timeline-content h3 {
+      margin-top: 0;
+    }
+    .timeline-content p {
+      margin: 10px 0;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .download-btn:hover {
+      background-color: #666;
+    }
+    @media screen and (max-width: 768px) {
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .timeline-item.left::after,
+      .timeline-item.right::after {
+        left: 30px;
+      }
+      .timeline::after {
+        left: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="sidebar">
-      <ul>
-          <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="scolaire.html">Scolaire</a></li>
-          <li><a href="experiences.html">Expériences</a></li>
-          <li><a href="compétences.html">Compétences</a></li>
-          <li><a href="langages.html">Langages</a></li>
-          <li><a href="logiciels.html">Logiciels</a></li>
-          <li><a href="projets.html">Projets</a></li>
-      </ul>
-  </nav>  
-  </header>
-  
-  <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;"><u>Expériences Professionnelles</u></h2>
-  
-  <!-- Introduction Section -->
-  <section style="text-align: center; margin-top: 20px;">
-    <p style="font-family: 'Roboto'; font-size: 1.2em; color: #333;">
-      Fort de plusieurs expériences variées dans le domaine bancaire, le développement web, et le suivi de projets informatiques, je me suis toujours efforcé de combiner mes compétences techniques et mon sens du service pour contribuer au succès des missions qui m'ont été confiées. Voici un aperçu des principales étapes de mon parcours professionnel.
+
+  <!-- NAVIGATION -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="scolaire.html">Scolaire</a></li>
+      <li><a href="experiences.html">Expériences</a></li>
+      <li><a href="compétences.html">Compétences</a></li>
+      <li><a href="langages.html">Langages</a></li>
+      <li><a href="logiciels.html">Logiciels</a></li>
+      <li><a href="projets.html">Projets</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="main-content">
+    <h2><u>Expériences Professionnelles</u></h2>
+    <p class="intro">
+      Voici une frise chronologique retraçant mes principales expériences professionnelles. Chaque étape représente une étape clé de mon parcours, alternant pour un affichage dynamique.
     </p>
-  </section>
 
-  <!-- Timeline Section -->
-  <section class="timeline-section" style="display: flex; justify-content: space-between; align-items: flex-start;">
-    <div class="timeline-container">
+    <section class="timeline-section">
       <div class="timeline">
-        <!-- Experience 5 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2024 (Janvier - Février) - Stage 2ème année BTS SIO</h3>
-          <p style="margin-left: 25px;">
-            Socorel - Redon :<br>
-            - Création et gestion d’un outil web pour gérer le stock des produits.<br>
-            - Environnement : PHP, HTML, CSS, JavaScript.
-          </p>
-          <a href="../fichier_pdf/RIMBAULT-ENZO-Rapport-de-stage-BTS-SIO-2.pdf" target="_blank" download class="download-btn">Rapport de stage</a>
+      
+        <!-- Élément 1 -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>2024 (Janvier - Février)</h3>
+            <p><strong>Stage 2ème année BTS SIO</strong><br>
+            Socorel - Redon<br>
+            Création et gestion d’un outil web pour gérer le stock des produits.<br>
+            Technologies : PHP, HTML, CSS, JavaScript.</p>
+            <a href="../fichier_pdf/rapport_de_stage_2025_enzo_rimbault.pdf" target="_blank" download class="download-btn">Rapport de stage</a>
+          </div>
         </div>
-        <!-- Experience 1 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2024 - 2025 (Surveillant Internat)</h3>
-          <p style="margin-left: 25px;">
-            Lycée Saint Sauveur - REDON :<br>
-            - Surveillant Internat
-          </p>
+      
+        <!-- Élément 2 -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>2024 - 2025</h3>
+            <p><strong>Surveillant Internat</strong><br>
+            Lycée Saint Sauveur - REDON</p>
+          </div>
         </div>
-
-        <!-- Experience 2 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2024 - 2025 (Application de notes)</h3>
-          <p style="margin-left: 25px;">
-            Lycée Saint Sauveur :<br>
-            - Conception et développement d’une application de gestion des notes pour étudiants.<br>
-            - Environnement technique : Java, OpenJFX, Spring Boot (Restful), test Driven et développement Junit/Mockito.
-          </p>
+      
+        <!-- Élément 3 -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>2024 - 2025</h3>
+            <p><strong>Application de notes</strong><br>
+            Lycée Saint Sauveur<br>
+            Conception et développement d’une application de gestion des notes pour étudiants.<br>
+            Technologies : Java, OpenJFX, Spring Boot, TDD, Junit/Mockito.</p>
+          </div>
         </div>
-
-        <!-- Experience 3 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2024 (Juillet et Août) - Auxiliaire bancaire</h3>
-          <p style="margin-left: 25px;">
-            BNP PARIBAS :<br>
-            - Gestion de remboursement de prêt immobilier suite à virement notaire.<br>
-            - Gestion des demandes RGPD.
-          </p>
+      
+        <!-- Élément 4 -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>2024 (Juillet - Août)</h3>
+            <p><strong>Auxiliaire bancaire</strong><br>
+            BNP PARIBAS<br>
+            Gestion de remboursement de prêt immobilier et demandes RGPD.</p>
+          </div>
         </div>
-
-        <!-- Experience 4 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2024 (Mai et Juin) - Stage 1ère année BTS SIO</h3>
-          <p style="margin-left: 25px;">
-            Redon Agglomération :<br>
-            - Préparation d'une maquette de site internet pour la mairie de Fégréac.
-          </p>
-          <a href="../fichier_pdf/RIMBAULT-ENZO-Rapport-de-stage-BTS-SIO.pdf" target="_blank" download class="download-btn">Rapport de stage</a><br>
-          <a href="https://fegreac.fr/" style="margin-left: 35px;" target="_blank" class="download-btn">Site Web mairie de Fégréac</a>
+      
+        <!-- Élément 5 -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>2024 (Mai - Juin)</h3>
+            <p><strong>Stage 1ère année BTS SIO</strong><br>
+            Redon Agglomération<br>
+            Préparation d'une maquette de site internet pour la mairie de Fégréac.</p>
+            <a href="../fichier_pdf/RIMBAULT-ENZO-Rapport-de-stage-BTS-SIO.pdf" target="_blank" download class="download-btn">Rapport de stage</a><br>
+            <a href="https://fegreac.fr/" target="_blank" class="download-btn">Site Web mairie de Fégréac</a>
+          </div>
         </div>
-
-        <!-- Experience 5 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2023 (Juillet et Août) - Auxiliaire bancaire</h3>
-          <p style="margin-left: 25px;">
-            BNP PARIBAS :<br>
-            - Gestion de remboursement anticipé de crédit immobilier.
-          </p>
+      
+        <!-- Élément 6 -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>2023 (Juillet - Août)</h3>
+            <p><strong>Auxiliaire bancaire</strong><br>
+            BNP PARIBAS<br>
+            Gestion de remboursement anticipé de crédit immobilier.</p>
+          </div>
         </div>
-
-        <!-- Experience 6 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2022 (Juillet et Août) - Employé commercial</h3>
-          <p style="margin-left: 25px;">
-            Leclerc :<br>
-            - Étiquetage et mise en rayon de produits.<br>
-            - Vérification du stockage de produits et gestion des commandes.<br>
-            - Gestion de la cabine d'essayage.
-          </p>
+      
+        <!-- Élément 7 -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>2022 (Juillet - Août)</h3>
+            <p><strong>Employé commercial</strong><br>
+            Leclerc<br>
+            Étiquetage, mise en rayon, gestion des commandes et de la cabine d'essayage.</p>
+          </div>
         </div>
-
-        <!-- Experience 7 -->
-        <div class="timeline-item">
-          <h3 style="margin-left: 80px;">2018 - Stage en entreprise de développement logiciel</h3>
-          <p style="margin-left: 25px;">
-            - Mise en place d'une structure logicielle pour un environnement scolaire.<br>
-            - Gestion des services informatiques.
-          </p>
+      
+        <!-- Élément 8 -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>2018</h3>
+            <p><strong>Stage en développement logiciel</strong><br>
+            Mise en place d'une structure logicielle et gestion des services informatiques pour un environnement scolaire.</p>
+          </div>
         </div>
-
-        <div class="timeline-line"></div>
-        <div class="timeline-end"></div>
+      
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
 </body>
 </html>

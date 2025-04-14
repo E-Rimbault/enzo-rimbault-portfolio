@@ -2,122 +2,173 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logiciels - Enzo Rimbault</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
-    <script src="../script/sroll.js"></script>
-    <script src="../script/portfolio.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logiciels - Enzo Rimbault</title>
+  <link rel="stylesheet" href="../style/style.css">
+  <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
+  <script src="../script/sroll.js"></script>
+  <script src="../script/portfolio.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Zone de navigation qui prend 20% de la largeur de la page depuis le bord gauche */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    /* Contenu principal avec une marge à gauche correspondant à la largeur de la barre de navigation (20%) */
+    .main-content {
+      margin-left: 20%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <nav class="sidebar">
-            <ul>
-                <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
-                <li><a href="a-propos.html">À propos</a></li>
-                <li><a href="scolaire.html">Scolaire</a></li>
-                <li><a href="experiences.html">Expériences</a></li>
-                <li><a href="compétences.html">Compétences</a></li>
-                <li><a href="langages.html">Langages</a></li>
-                <li><a href="logiciels.html">Logiciels</a></li>
-                <li><a href="projets.html">Projets</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav class="sidebar">
+      <ul>
+        <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="experiences.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="langages.html">Langages</a></li>
+        <li><a href="logiciels.html">Logiciels</a></li>
+        <li><a href="projets.html">Projets</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Conteneur principal -->
+  <div class="main-content">
     <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;" id="logiciels" class="tag">
-        <u>Logiciels / système d'exploitation Utilisés</u>
+      <u>Logiciels / système d'exploitation Utilisés</u>
     </h2>
 
     <div style="text-align: center; padding: 50px;">
-        <p style="font-size: 115%;">
-            Pendant ma formation en BTS SIO, j'ai utilisé plusieurs logiciels essentiels pour le développement, la
-            gestion des bases de données, ainsi que des outils de collaboration et de design. Voici quelques-uns des
-            logiciels que j'ai pratiqués :
-        </p>
+      <p style="font-size: 115%;">
+        Pendant ma formation en BTS SIO, j'ai utilisé plusieurs logiciels essentiels pour le développement, la
+        gestion des bases de données, ainsi que des outils de collaboration et de design. Voici quelques-uns des
+        logiciels que j'ai pratiqués :
+      </p>
     </div>
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px;">
-        <!-- Eclipse -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/eclipse-logo.png" alt="Eclipse Logo" style="width: 100px; height: auto;">
-            <h3>Eclipse</h3>
-            <p>Un IDE utilisé pour le développement d'applications Java et d'autres langages. Il m'a été utile pour
-                des projets académiques.</p>
-        </div>
+      <!-- Eclipse -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/eclipse-logo.png" alt="Eclipse Logo" style="width: 100px; height: auto;">
+        <h3>Eclipse</h3>
+        <p>Un IDE utilisé pour le développement d'applications Java et d'autres langages. Il m'a été utile pour
+          des projets académiques.</p>
+      </div>
 
-        <!-- EduPython -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/python-logo.png" alt="EduPython Logo" style="width: 100px; height: auto;">
-            <h3>EduPython</h3>
-            <p>Un environnement de programmation utilisé pour l'apprentissage de la programmation en Python. Il
-                facilite les débuts avec ce langage.</p>
-        </div>
+      <!-- EduPython -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/python-logo.png" alt="EduPython Logo" style="width: 100px; height: auto;">
+        <h3>EduPython</h3>
+        <p>Un environnement de programmation utilisé pour l'apprentissage de la programmation en Python. Il
+          facilite les débuts avec ce langage.</p>
+      </div>
 
-        <!-- VSCode -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo-vscode.png" alt="VSCode Logo" style="width: 100px; height: auto;">
-            <h3>Visual Studio Code (VSCode)</h3>
-            <p>Un éditeur de code léger et puissant, utilisé pour écrire du code dans différents langages tels que
-                Python, JavaScript, et PHP.</p>
-        </div>
+      <!-- VSCode -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/logo-vscode.png" alt="VSCode Logo" style="width: 100px; height: auto;">
+        <h3>Visual Studio Code (VSCode)</h3>
+        <p>Un éditeur de code léger et puissant, utilisé pour écrire du code dans différents langages tels que
+          Python, JavaScript, et PHP.</p>
+      </div>
 
-        <!-- GitHub -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/git-hub-logo.png" alt="GitHub Logo" style="width: 100px; height: auto;">
-            <h3>GitHub</h3>
-            <p>Plateforme de gestion de versions et de collaboration. J'ai utilisé GitHub pour gérer mes projets et
-                travailler en équipe.</p>
-        </div>
+      <!-- GitHub -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/git-hub-logo.png" alt="GitHub Logo" style="width: 100px; height: auto;">
+        <h3>GitHub</h3>
+        <p>Plateforme de gestion de versions et de collaboration. J'ai utilisé GitHub pour gérer mes projets et
+          travailler en équipe.</p>
+      </div>
 
-        <!-- Canva -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/canva-logo.png" alt="Canva Logo" style="width: 100px; height: auto;">
-            <h3>Canva</h3>
-            <p>Outil de design graphique en ligne utilisé pour créer des visuels attrayants, notamment pour des
-                présentations et des sites web.</p>
-        </div>
+      <!-- Canva -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/canva-logo.png" alt="Canva Logo" style="width: 100px; height: auto;">
+        <h3>Canva</h3>
+        <p>Outil de design graphique en ligne utilisé pour créer des visuels attrayants, notamment pour des
+          présentations et des sites web.</p>
+      </div>
 
-        <!-- WAMP -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/wamp64-logo.png" alt="WAMP Logo" style="width: 100px; height: auto;">
-            <h3>WAMP</h3>
-            <p>Ensemble de logiciels permettant de créer un serveur web local pour tester des projets PHP et MySQL
-                en local.</p>
-        </div>
+      <!-- WAMP -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/wamp64-logo.png" alt="WAMP Logo" style="width: 100px; height: auto;">
+        <h3>WAMP</h3>
+        <p>Ensemble de logiciels permettant de créer un serveur web local pour tester des projets PHP et MySQL
+          en local.</p>
+      </div>
 
-        <!-- Linux -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/linux-logo.png" alt="Linux Logo" style="width: 100px; height: auto;">
-            <h3>Linux</h3>
-            <p>Système d'exploitation open-source, utilisé pour la gestion de serveurs et l'administration système.
-            </p>
-        </div>
+      <!-- Linux -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/linux-logo.png" alt="Linux Logo" style="width: 100px; height: auto;">
+        <h3>Linux</h3>
+        <p>Système d'exploitation open-source, utilisé pour la gestion de serveurs et l'administration système.</p>
+      </div>
 
-        <!-- Windows -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/windows-logo.png" alt="Windows Logo" style="width: 100px; height: auto;">
-            <h3>Windows</h3>
-            <p>Système d'exploitation utilisé pour la majorité de mes travaux de développement et de gestion
-                informatique.</p>
-        </div>
+      <!-- Windows -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/windows-logo.png" alt="Windows Logo" style="width: 100px; height: auto;">
+        <h3>Windows</h3>
+        <p>Système d'exploitation utilisé pour la majorité de mes travaux de développement et de gestion
+          informatique.</p>
+      </div>
 
-        <!-- phpMyAdmin -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/logo-phpmyadmin.png" alt="phpMyAdmin Logo" style="width: 100px; height: auto;">
-            <h3>phpMyAdmin</h3>
-            <p>Interface web permettant la gestion des bases de données MySQL de manière visuelle et simplifiée.</p>
-        </div>
+      <!-- phpMyAdmin -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/logo-phpmyadmin.png" alt="phpMyAdmin Logo" style="width: 100px; height: auto;">
+        <h3>phpMyAdmin</h3>
+        <p>Interface web permettant la gestion des bases de données MySQL de manière visuelle et simplifiée.</p>
+      </div>
 
-        <!-- WordPress -->
-        <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
-            <img src="../image/wordpress-logo.png" alt="WordPress Logo" style="width: 100px; height: auto;">
-            <h3>WordPress</h3>
-            <p>CMS (Content Management System) utilisé pour la création de sites web dynamiques, notamment avec le
-                thème AVADA.</p>
-        </div>
+      <!-- WordPress -->
+      <div class="logiciel" style="text-align: center; flex-basis: calc(33.33% - 20px); margin: 10px;">
+        <img src="../image/wordpress-logo.png" alt="WordPress Logo" style="width: 100px; height: auto;">
+        <h3>WordPress</h3>
+        <p>CMS (Content Management System) utilisé pour la création de sites web dynamiques, notamment avec le
+          thème AVADA.</p>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>

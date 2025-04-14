@@ -8,37 +8,146 @@
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="script/sroll.js"></script>
   <script src="script/portfolio.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .sidebar {
+      width: 15%;
+      background-color: #f9f9f9;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .main-content {
+      margin-left: 15%;
+      padding: 20px;
+      width: 85%;
+    }
+
+    .projet-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .projet-description {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .projet-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .section-titre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="sidebar">
-      <ul>
-          <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="scolaire.html">Scolaire</a></li>
-          <li><a href="experiences.html">Expériences</a></li>
-          <li><a href="compétences.html">Compétences</a></li>
-          <li><a href="langages.html">Langages</a></li>
-          <li><a href="logiciels.html">Logiciels</a></li>
-          <li><a href="projets.html">Projets</a></li>
-      </ul>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="scolaire.html">Scolaire</a></li>
+      <li><a href="experiences.html">Expériences</a></li>
+      <li><a href="compétences.html">Compétences</a></li>
+      <li><a href="langages.html">Langages</a></li>
+      <li><a href="logiciels.html">Logiciels</a></li>
+      <li><a href="projets.html">Projets</a></li>
+    </ul>
   </nav>  
-  </header>
-  <h2 style="background-color: #f0f0f0; font-family: 'Roboto'; text-align: center;"><u>Projets Personnels / Professionnels</u></h2>
-  <div class="projet-container" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-    <div class="projet-description" style="flex: 1; padding-right: 20px;">
-      <h3 style="text-align: center;"><u>Site Web mairie de Fégréac</u></h3>
-      <p>
-        Projet de site Web réalisé lors de mon stage de première année à Redon Agglomération.<br>
-        Il présente le site web de la ville de Fégréac dans le département 44.<br>
-        Pour la création du site, j'ai utilisé le thème AVADA de WordPress, qui m'a permis de concevoir chaque page du site.
-      </p>
+
+  <div class="main-content">
+    <h2 class="section-titre"><u>Projets Personnels / Professionnels</u></h2>
+
+    <p style="text-align: justify;">
+      Lors de ma formation en BTS SIO (Services Informatiques aux Organisations), j'ai eu l'occasion de travailler sur de nombreux projets,
+      que ce soit dans le cadre des cours, des stages en entreprise ou à titre personnel. Ces projets m'ont permis de développer des compétences
+      techniques variées allant de la conception de sites web à la programmation d'applications spécifiques.
+    </p>
+
+    <!-- Projet en formation -->
+    <h3 class="section-titre">Projets en cours de formation</h3>
+    
+
+    <!-- Projet stage -->
+    <h3 class="section-titre">Projets réalisés lors de mes stages</h3>
+    
+
+    <!-- Projet personnel -->
+    <h3 class="section-titre">Projets personnels</h3>
+    <div class="projet-container">
+      <div class="projet-description">
+        <h3 style="text-align: center;"><u>Portfolio personnel</u></h3>
+        <p>
+          Création de ce site personnel afin de présenter mon parcours, mes compétences et mes réalisations.
+          Développé en HTML, CSS et JavaScript, ce portfolio est régulièrement mis à jour pour refléter mes progrès.
+        </p>
+      </div>
+      <div class="projet-image">
+        <a href="../index.html"><img style="height: 25%; width: 25%;" src="../image/home-portfolio.jpg" alt="Portfolio Enzo" style="max-width: 100%; height: auto;"></a>
+      </div>
     </div>
-    <div class="projet-image" style="flex: 1; text-align: center;">
-      <a target="_blank" href="https://fegreac.fr/">
-        <img src="../image/Fegreac-logo.jpg" alt="Projet Image" style="max-width: 100%; height: auto;">
-      </a>
+
+    <div class="projet-container">
+      <div class="projet-description">
+        <h3 style="text-align: center;"><u>Wiki - Star Wars les Héros de la galaxie</u></h3>
+        <p>
+          Site web interactif regroupant les personnages et vaisseaux du jeu Star Wars: Galaxy of Heroes via une interface claire et dynamique.
+          Ce projet personnel présente de façon organisée les kits de personnages (capacités, rôles, factions, etc.) et des informations sur les vaisseaux. L’interface permet une navigation fluide grâce à des filtres, une recherche rapide et des affichages en cartes. L’objectif est d’offrir un outil pratique pour les joueurs souhaitant consulter facilement les statistiques et caractéristiques du jeu.
+        </p><a href="../projet/projet-swgoh-wiki.html">Voir le détail</a>
+      </div>
+      <div class="projet-image">
+        <a href="https://e-rimbault.github.io/swgoh-kit/" target="_blank">
+          <img src="../image/star-wars-projet-swgoh.png" alt="Nom du projet" style="height: 25%; width: 25%;">
+        </a>
+      </div>
     </div>
+    
+    <div class="projet-container">
+      <div class="projet-description">
+        <h3 style="text-align: center;"><u>Swgoh-Profile</u></h3>
+        <p>
+          Site web interactif qui permet d'obtenir les informations de chaque unité du jeu Star Wars, les héros de la galaxie en fonction de son code allié.
+        </p><a href="../projet/projet-swgoh-api-info.html">Voir le détail</a>
+      </div>
+      <div class="projet-image">
+        <a href="https://swgoh-projet-api.infinityfreeapp.com" target="_blank">
+          <img src="../image/star-wars-projet-swgoh.png" alt="Nom du projet" style="height: 25%; width: 25%;">
+        </a>
+      </div>
+    </div>
+
+
   </div>
 </body>
 </html>
