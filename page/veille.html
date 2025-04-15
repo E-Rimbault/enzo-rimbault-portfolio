@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veille Technologique</title>
+  <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
+  <script src="../script/sroll.js"></script>
+  <script src="../script/portfolio.js"></script>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: #333;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Contenu principal */
+#veille-tech {
+  max-width: 1000px;
+  margin-left: 17%; /* marge pour ne pas être caché derrière la sidebar */
+  padding: 2rem;
+}
+
+#veille-tech h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+#veille-tech .intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.flux {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.flux h3 {
+  margin-bottom: 1rem;
+  color: #1a73e8;
+}
+
+.flux ul {
+  list-style: none;
+  padding: 0;
+}
+
+.flux li {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.flux a {
+  text-decoration: none;
+  color: #1a0dab;
+  font-weight: bold;
+}
+
+.flux a:hover {
+  color: #0b57d0;
+}
+
+.date {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+
+.source {
+  font-size: 0.85em;
+  color: #777;
+  font-style: italic;
+}
+
+.recent {
+  background-color: #e3f2fd;
+  padding: 0.75rem;
+  border-radius: 10px;
+}
+
+.share-btn {
+  margin-top: 0.4rem;
+  font-size: 0.8em;
+  color: #1a73e8;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.share-btn:hover {
+  color: #0b57d0;
+}
+
+/* Footer */
+#footer-info {
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  margin-top: 3rem;
+  line-height: 1.5;
+}
+#footer-info {
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  margin-top: 3rem;
+  line-height: 1.5;
+  margin-left: 20%; /* Ajouté pour éviter le chevauchement avec la sidebar */
+}
+
+
+  </style>
+  
+</head>
+<body>
+      <!-- Navigation -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" style="width: 40px;"></a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="scolaire.html">Scolaire</a></li>
+      <li><a href="experiences.html">Expériences</a></li>
+      <li><a href="compétences.html">Compétences</a></li>
+      <li><a href="langages.html">Langages</a></li>
+      <li><a href="logiciels.html">Logiciels</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="#">Veille-Technologique</a></li>
+    </ul>
+  </nav>
+  <section id="veille-tech">
+    <h2>Veille Technologique</h2>
+    <div class="intro">
+      Cette section regroupe automatiquement les dernières actualités autour de la cybersécurité. Elle se concentre sur quatre grands thèmes : les cyberattaques, les fuites de données, l'actualité de la CNIL, et les évolutions en cybersécurité. Les articles proviennent de sources fiables et sont mis à jour automatiquement.
+    </div>
+
+    <!-- Cyberattaques -->
+    <div class="flux" id="cyberattaques">
+      <h3>Cyberattaques</h3>
+      <ul></ul>
+    </div>
+
+    <!-- Fuites de données -->
+    <div class="flux" id="fuites-donnees">
+      <h3>Fuites de Données</h3>
+      <ul></ul>
+    </div>
+
+    <!-- CNIL -->
+    <div class="flux" id="cnil">
+      <h3>Actualités de la CNIL</h3>
+      <ul></ul>
+    </div>
+
+    <!-- Évolution Cybersécurité -->
+    <div class="flux" id="cybersecurite">
+      <h3>Évolutions en Cybersécurité</h3>
+      <ul></ul>
+    </div>
+  </section>
+
+  <footer id="footer-info">
+    <p>
+      Les articles présentés sur cette page sont automatiquement extraits à partir de flux RSS de sources spécialisées. À chaque rechargement de la page, les dernières publications sont récupérées, triées par date et affichées par thème.
+    </p>
+    <p>
+      La récupération se fait via l'API publique <strong>rss2json</strong> qui transforme les flux RSS en données exploitables en JavaScript.
+    </p>
+    <p><strong>Sources utilisées :</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; text-align: left; max-width: 800px; margin: 1rem auto;">
+      <li><a href="https://www.zdnet.fr/feeds/rss/securite/" target="_blank">ZDNet - Sécurité</a></li>
+      <li><a href="https://www.lemagit.fr/rss/Actualites/Cybersecurite" target="_blank">LeMagIT - Cybersécurité</a></li>
+      <li><a href="https://cyberguerre.numerama.com/feed" target="_blank">Numerama - Cyberguerre</a></li>
+      <li><a href="https://thehackernews.com/feeds/posts/default" target="_blank">The Hacker News</a></li>
+      <li><a href="https://www.undernews.fr/category/securite-informatique/feed" target="_blank">UnderNews</a></li>
+      <li><a href="https://www.lemondeinformatique.fr/actualites/securite/rss.xml" target="_blank">LeMondeInformatique</a></li>
+      <li><a href="https://www.01net.com/rss/actualites/securite/" target="_blank">01Net - Sécurité</a></li>
+      <li><a href="https://www.zataz.com/feed/" target="_blank">Zataz</a></li>
+      <li><a href="https://www.cnil.fr/fr/actualites/rss.xml" target="_blank">CNIL</a></li>
+      <li><a href="https://www.acteurspublics.fr/feed" target="_blank">Acteurs Publics</a></li>
+      <li><a href="https://www.lemonde.fr/pixels/rss_full.xml" target="_blank">Le Monde - Pixels</a></li>
+      <li><a href="https://www.cert.ssi.gouv.fr/feed/" target="_blank">CERT-FR</a></li>
+      <li><a href="https://rss.numerama.com/tag/cybersecurite" target="_blank">Numerama - Cybersécurité</a></li>
+      <li><a href="https://siecledigital.fr/tag/cybersecurite/feed/" target="_blank">Siècle Digital - Cybersécurité</a></li>
+      <li><a href="https://blog.nexthink.com/feed" target="_blank">Nexthink Blog</a></li>
+    </ul>
+  </footer>
+  
+
+  <script>
+    const fluxList = [
+      {
+        id: "cyberattaques",
+        feeds: [
+          "https://www.zdnet.fr/feeds/rss/securite/",
+          "https://www.lemagit.fr/rss/Actualites/Cybersecurite",
+          "https://cyberguerre.numerama.com/feed",
+          "https://thehackernews.com/feeds/posts/default"
+        ]
+      },
+      {
+        id: "fuites-donnees",
+        feeds: [
+          "https://www.undernews.fr/category/securite-informatique/feed",
+          "https://www.lemondeinformatique.fr/actualites/securite/rss.xml",
+          "https://www.01net.com/rss/actualites/securite/",
+          "https://www.zataz.com/feed/"
+        ]
+      },
+      {
+        id: "cnil",
+        feeds: [
+          "https://www.cnil.fr/fr/actualites/rss.xml",
+          "https://www.acteurspublics.fr/feed",
+          "https://www.lemonde.fr/pixels/rss_full.xml"
+        ]
+      },
+      {
+        id: "cybersecurite",
+        feeds: [
+          "https://www.cert.ssi.gouv.fr/feed/",
+          "https://rss.numerama.com/tag/cybersecurite",
+          "https://siecledigital.fr/tag/cybersecurite/feed/",
+          "https://blog.nexthink.com/feed"
+        ]
+      }
+    ];
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    function createShareButton(link) {
+      const span = document.createElement("span");
+      span.className = "share-btn";
+      span.innerText = "Partager";
+      span.onclick = () => {
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: link
+          });
+        } else {
+          navigator.clipboard.writeText(link).then(() => {
+            alert("Lien copié dans le presse-papiers !");
+          });
+        }
+      };
+      return span;
+    }
+
+    fluxList.forEach(section => {
+      const promises = section.feeds.map(feed =>
+        fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`)
+          .then(res => res.json().then(json => ({ ...json, source: new URL(feed).hostname })))
+          .catch(() => null)
+      );
+
+      Promise.all(promises).then(results => {
+        const articles = results
+          .filter(feed => feed && feed.items)
+          .flatMap(feed => feed.items.map(item => ({
+            title: item.title,
+            link: item.link,
+            date: new Date(item.pubDate),
+            source: feed.source
+          })))
+          .sort((a, b) => b.date - a.date)
+          .slice(0, 5);
+
+        const ul = document.querySelector(`#${section.id} ul`);
+        articles.forEach((article, index) => {
+          const li = document.createElement("li");
+          const formattedDate = formatDate(article.date);
+          const extraClass = index === 0 ? "recent" : "";
+
+          li.className = extraClass;
+          li.innerHTML = `
+            <a href="${article.link}" target="_blank">${article.title}</a>
+            <span class="date">${formattedDate}</span>
+            <span class="source">Source : ${article.source}</span>
+          `;
+
+          const shareBtn = createShareButton(article.link);
+          li.appendChild(document.createElement("br"));
+          li.appendChild(shareBtn);
+
+          ul.appendChild(li);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
