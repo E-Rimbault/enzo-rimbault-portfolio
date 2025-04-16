@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Authentification PHP - Enzo</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li::before {
+            content: "• ";
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><u>Projet Authentification Sécurisée en PHP</u></h1>
+
+        <div class="section">
+            <h2>Description Générale</h2>
+            <p>
+                Ce projet propose deux systèmes de <strong>double authentification (2FA)</strong> pour renforcer la sécurité d’un site :
+                l’un utilisant l’envoi de code par <strong>email (PHPMailer)</strong>, l’autre s’appuyant sur <strong>Google Authenticator (TOTP)</strong>.
+                Il inclut également la journalisation des connexions, une inscription sécurisée et un espace utilisateur.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><u>Technologies Utilisées</u></h2>
+            <ul>
+                <li><strong>PHP</strong> : traitement back-end, sessions, logique d’authentification.</li>
+                <li><strong>MySQL</strong> : base de données utilisateurs et logs.</li>
+                <li><strong>PHPMailer</strong> : envoi de code de validation par e-mail.</li>
+                <li><strong>Google Authenticator</strong> : génération de code TOTP.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><u>Structure du Projet</u></h2>
+            <ul>
+                <li><code>index.php</code> : connexion utilisateur.</li>
+                <li><code>register.php</code> : création de compte.</li>
+                <li><code>accueil.php</code> : page après connexion réussie.</li>
+                <li><code>log.php</code> : affichage sécurisé des journaux de connexions.</li>
+                <li><code>verify.php</code> : saisie et vérification du code 2FA.</li>
+                <li><code>database.php</code> : configuration MySQL.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><u>Fonctionnalités Clés</u></h2>
+            <ul>
+                <li>👤 Connexion et inscription sécurisée.</li>
+                <li>🔒 Hashage des mots de passe avec <code>password_hash()</code>.</li>
+                <li>📜 Enregistrement des tentatives de connexion (succès/échec).</li>
+                <li>📧 Double Authentification par e-mail avec PHPMailer.</li>
+                <li>📱 Double Authentification avec Google Authenticator (TOTP).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><u>🔐 Double Authentification par Google Authenticator (TOTP)</u></h2>
+            <p>
+                Cette méthode repose sur la génération d’un code à usage unique, qui change toutes les 30 secondes,
+                synchronisé avec l’horloge du serveur et une clé secrète partagée avec l'application Google Authenticator.
+            </p>
+            <ul>
+                <li>✅ À l’activation, un QR Code est généré et scanné dans l’application.</li>
+                <li>📲 À chaque connexion, l’utilisateur saisit le code temporaire généré par l’application.</li>
+                <li>💡 Le système vérifie la validité du code avec un algorithme TOTP côté serveur.</li>
+                <li>🛡️ Même si un mot de passe est volé, l'accès reste protégé sans ce code TOTP.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><u>📧 Double Authentification via E-mail (PHPMailer)</u></h2>
+            <p>
+                Cette solution génère un code aléatoire (6 chiffres) envoyé par e-mail à l’utilisateur après sa connexion
+                avec identifiants classiques.
+            </p>
+            <ul>
+                <li>📨 Le code est envoyé à l’adresse e-mail associée à l’utilisateur.</li>
+                <li>⏳ Il est valide pendant 5 minutes maximum.</li>
+                <li>🔍 L’utilisateur le saisit sur la page <code>verify.php</code> pour terminer la connexion.</li>
+                <li>📤 L’envoi est géré avec <strong>PHPMailer</strong> via SMTP (ex : Gmail).</li>
+                <li>🔁 Si le code est incorrect ou expiré, l’accès est refusé.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><u>📜 Logs de Connexion</u></h2>
+            <p>
+                Toutes les tentatives de connexion sont enregistrées dans une table <code>logs</code>, avec :
+            </p>
+            <ul>
+                <li>🆔 Identifiant utilisateur</li>
+                <li>📅 Date et heure</li>
+                <li>🔍 Résultat : succès ou échec</li>
+                <li>🌍 Adresse IP</li>
+            </ul>
+            <p>Une interface dédiée (protégée) permet de visualiser l’historique.</p>
+        </div>
+
+        <div class="section">
+            <h2><u>Conclusion</u></h2>
+            <p>
+                Ce projet propose deux approches de double authentification (e-mail vs TOTP),
+                apportant une excellente base pour tout système sécurisé. L'intégration des logs renforce encore plus
+                le contrôle sur les accès, avec des outils simples et efficaces à déployer dans n’importe quelle architecture PHP.
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <h2><u>📷 Illustrations et Captures d’Écran</u></h2>
+
+        <h3>📁 Tables MySQL</h3>
+        <p><strong>Table des utilisateurs (<code>users</code>)</strong> :</p>
+        <div style="text-align:center;">
+            <img src="projet-authentification/base-de-données.png" alt="table users" style="width: 70%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        </div>
+
+        <h3 style="margin-top:40px;">📜 Interface des logs</h3>
+        <p>Cette page affiche les connexions réussies ou échouées dans un tableau structuré et sécurisé :</p>
+        <div style="text-align:center;">
+            <img src="projet-authentification/logs.png" alt="affichage des logs" style="width: 80%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        </div>
+
+        <h3 style="margin-top:40px;">📧 Vérification par e-mail</h3>
+        <p>Formulaire de saisie du code reçu par e-mail (via PHPMailer) :</p>
+        <div style="text-align:center;">
+            <img src="projet-authentification/code-sécurité.png" alt="verification mail" style="width: 50%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        </div>
+
+        <h3 style="margin-top:40px;">📱 Google Authenticator</h3>
+        <p>Page de vérification avec code temporaire généré par Google Authenticator :</p>
+        <div style="text-align:center;">
+            <img src="projet-authentification/authentificator.png" alt="google authenticator" style="width: 50%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="../page/projets.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                ⬅ Retour au menu des projets
+            </button>
+        </a>
+    </div>  
+</body>
+
+</html>
