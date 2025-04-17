@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Suivi de Projet - Stage SOCOREL</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+      background-color: #f8f8f8;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eeeeee;
+    }
+
+    textarea {
+      width: 100%;
+      height: 60px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    select, input[type="checkbox"], input[type="date"] {
+      font-size: 1em;
+    }
+
+    .completed {
+      background-color: #d1ffd1;
+    }
+
+    .pending {
+      background-color: #fff6cc;
+    }
+
+    .suspended {
+      background-color: #ffd6d6;
+    }
+
+    #actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    @media print {
+      #actions, button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Suivi des Activités - Projet SOCOREL</h1>
+  <h2>Compétences : Planifier les activités & Analyser les écarts</h2>
+
+  <div id="actions">
+    <button onclick="addTask()">➕ Ajouter une tâche</button>
+    <button onclick="window.print()">📄 Enregistrer en PDF</button>
+  </div>
+
+  <table id="task-table">
+    <thead>
+      <tr>
+        <th>Activité</th>
+        <th>Date de fin</th>
+        <th>Statut</th>
+        <th>Terminé</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="completed">
+        <td>Définition du cahier des charges et des fonctionnalités</td>
+        <td><input type="date" value="2025-01-10"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Définition initiale des besoins sans cahier des charges officiel. Prise d’initiative pour cadrer le projet.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Création des premières bases de données (produits)</td>
+        <td><input type="date" value="2025-01-10"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Implémentation des champs : barcode, famille, code_type, commercialise...</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Développement des pages produit.php et vue.php</td>
+        <td><input type="date" value="2025-01-10"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Affichage dynamique des produits avec filtres, gestion de l’ajout via formulaire PHP.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Amélioration de la saisie via dictionnaire PHP</td>
+        <td><input type="date" value="2025-01-17"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Vérification automatique du nom produit et assignation du code type.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Création de la table et page bon_de_commande</td>
+        <td><input type="date" value="2025-01-17"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Ajout de la logique de commandes avec état (total / partiel) et gestion des destinataires.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Implémentation du système de génération d’étiquettes produits</td>
+        <td><input type="date" value="2025-01-24"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Fusion de deux codes-barres et ajout des marquages CE / RoHS, résolu plus tard pour qualité impression.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Création de la page code_barre.php</td>
+        <td><input type="date" value="2025-01-24"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Liste des produits enregistrés par jour avec image des codes-barres générés dynamiquement.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Création et sécurisation de la table utilisateurs</td>
+        <td><input type="date" value="2025-01-24"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Mot de passe hashé avec bcrypt. Mise en place des rôles admin/utilisateur et groupes.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Page historique des commandes</td>
+        <td><input type="date" value="2025-01-31"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Affichage synthétique des commandes avec filtres, tri par date, lien vers détails commande.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Ajout des détails de commande</td>
+        <td><input type="date" value="2025-01-31"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Modification possible du nom, destinataire, état de la commande (total/partiel).</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Accueil personnalisé selon les rôles</td>
+        <td><input type="date" value="2025-01-31"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Affichage des pages accessibles selon groupe (admin, declic, btib) à la connexion.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Gestion des versions hardware / software</td>
+        <td><input type="date" value="2025-02-07"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Ajout d’une nouvelle table et page software-hardware.php avec listing des versions par produit.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Intégration de la sélection de version dans produit.php</td>
+        <td><input type="date" value="2025-02-07"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Modification du formulaire produit pour permettre le choix d’une version logicielle/matérielle.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Correction du format d’étiquette et tests d’impression</td>
+        <td><input type="date" value="2025-02-14"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Passage au format 24x54mm, résolution du flou d'impression par ajustement de l’image.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Développement de la page produit_info_scanner</td>
+        <td><input type="date" value="2025-02-14"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Page permettant de scanner un produit et récupérer ses infos (gamme ou numéro de série).</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Page de gestion des utilisateurs</td>
+        <td><input type="date" value="2025-02-14"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Module de gestion complet des utilisateurs réservé à l’administrateur du système.</textarea></td>
+      </tr>
+    
+      <tr class="completed">
+        <td>Finalisation, tests complets et validation</td>
+        <td><input type="date" value="2025-02-14"></td>
+        <td><select onchange="updateRowStyle(this)">
+          <option value="completed" selected>Terminée</option>
+          <option value="pending">En cours</option>
+          <option value="suspended">En suspens</option>
+        </select></td>
+        <td><input type="checkbox" checked onchange="syncCheckbox(this)"></td>
+        <td><textarea>Recette finale effectuée avec le tuteur, corrections mineures et mise en production.</textarea></td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+  <script>
+    function updateRowStyle(select) {
+      const row = select.closest('tr');
+      row.classList.remove('completed', 'pending', 'suspended');
+      row.classList.add(select.value);
+    }
+
+    function syncCheckbox(checkbox) {
+      const row = checkbox.closest('tr');
+      const select = row.querySelector('select');
+      select.value = checkbox.checked ? 'completed' : 'pending';
+      updateRowStyle(select);
+    }
+
+    function addTask() {
+      const table = document.getElementById("task-table").getElementsByTagName('tbody')[0];
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td contenteditable="true">Nouvelle tâche</td>
+        <td><input type="date" /></td>
+        <td>
+          <select onchange="updateRowStyle(this)">
+            <option value="pending" selected>En cours</option>
+            <option value="completed">Terminée</option>
+            <option value="suspended">En suspens</option>
+          </select>
+        </td>
+        <td><input type="checkbox" onchange="syncCheckbox(this)" /></td>
+        <td><textarea placeholder="Ajouter un commentaire..."></textarea></td>
+      `;
+      row.classList.add("pending");
+    }
+  </script>
+
+</body>
+</html>

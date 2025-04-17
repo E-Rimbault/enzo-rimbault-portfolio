@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet SOCOREL - Gestion de Stock</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .section {
+            margin-top: 50px;
+        }
+
+        p, li {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 40px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-style: italic;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><u>Projet de développement - SOCOREL</u></h1>
+
+    <div class="section">
+        <h2>Présentation de la mission</h2>
+        <p>
+            Dans le cadre de mon stage chez <strong>SOCOREL</strong>, entreprise spécialisée dans les systèmes électroniques et la gestion technique des bâtiments, j’ai été chargé de développer un outil web de gestion des stocks.
+        </p>
+        <p>
+            L’objectif principal était de concevoir une plateforme interne permettant d’enregistrer, suivre et organiser les produits électroniques de l’entreprise à l’aide d’un système de numérotation par code-barres. L’outil devait également permettre la gestion des commandes et l’édition d’étiquettes d’identification pour chaque produit.
+        </p>
+        <p>
+            Le projet devait répondre à des besoins concrets : traçabilité, gestion des quantités, contrôle des familles de produits, mise à jour des versions hardware/software, sécurisation des accès, et personnalisation selon les différents rôles utilisateurs.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2><u>Langages et outils utilisés</u></h2>
+        <ul>
+            <li><strong>WAMP</strong> : Environnement de développement local avec Apache, MySQL et PHP.</li>
+            <li><strong>Visual Studio Code</strong> : Éditeur de code moderne avec extensions PHP, SQL et HTML.</li>
+            <li><strong>PHP</strong> : Langage backend utilisé pour gérer les interactions avec la base de données.</li>
+            <li><strong>MySQL</strong> : Système de gestion de base de données relationnelle.</li>
+            <li><strong>JavaScript</strong> : Pour l’interactivité côté client et les appels AJAX.</li>
+            <li><strong>HTML/CSS</strong> : Pour structurer et styliser l’interface utilisateur.</li>
+            <li><strong>JsBarcode</strong> : Bibliothèque JavaScript pour générer dynamiquement des codes-barres.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><u>Étapes d'avancement du projet</u></h2>
+    
+        <h3>Semaine 1 (06/01 - 10/01)</h3>
+        <p>
+            La première semaine a été consacrée à la réflexion autour des besoins fonctionnels du projet. En l'absence de cahier des charges officiel, j’ai défini un document de spécifications de base listant les fonctionnalités attendues : gestion des produits, enregistrement des commandes, génération d’étiquettes, et affichage dynamique des données.
+        </p>
+        <p>
+            J’ai ensuite créé les premières tables de la base de données (produits, familles) avec des champs comme : <code>barcode</code>, <code>nom_produit</code>, <code>code_type</code>, <code>famille</code>, <code>created_at</code>, etc. Cela a permis d’établir un socle solide pour les futures opérations.
+        </p>
+        <p>
+            Deux pages web ont été développées :
+            <ul>
+                <li><strong>produit.php</strong> : formulaire d’enregistrement d’un produit.</li>
+                <li><strong>vue.php</strong> : tableau dynamique pour afficher les produits enregistrés avec système de filtre (famille, nom, etc.).</li>
+            </ul>
+        </p>
+    
+        <h3>Semaine 2 (13/01 - 17/01)</h3>
+        <p>
+            Cette semaine, j’ai amélioré le système de saisie des produits avec l’ajout d’un dictionnaire PHP (<code>$productMapping</code>) pour associer automatiquement chaque nom de produit à son <code>code_type</code>. Cela a permis d’éviter les erreurs de saisie manuelle.
+        </p>
+        <p>
+            Ensuite, j’ai conçu un module complet pour la gestion des bons de commande avec création d’une nouvelle table <code>bon_de_commande</code> et de la page <strong>bon_commande.php</strong>. L’utilisateur peut :
+            <ul>
+                <li>Saisir un nom de commande et un destinataire.</li>
+                <li>Choisir des produits à ajouter au bon en fonction du stock restant.</li>
+                <li>Définir l’état de la commande : complète ou partielle.</li>
+            </ul>
+        </p>
+    
+        <h3>Semaine 3 (20/01 - 24/01)</h3>
+        <p>
+            J’ai commencé le développement de la génération d’étiquettes produits. Ces étiquettes devaient contenir :
+            <ul>
+                <li>Le nom du produit</li>
+                <li>Deux codes-barres : le <code>code_type</code> et le <code>barcode</code></li>
+                <li>Les logos CE, RoHS et poubelle barrée</li>
+            </ul>
+            <p>
+                Une première version a été testée mais des problèmes de format ont été rencontrés (codes illisibles à l’impression). J’ai donc temporairement mis cette partie en pause pour y revenir plus tard.
+            </p>
+            <p>
+                En parallèle, j’ai mis en place une table <code>utilisateur</code> avec sécurisation des mots de passe via BCRYPT, et gestion des rôles (admin/utilisateur) et groupes.
+            </p>
+    
+        <h3>Semaine 4 (27/01 - 31/01)</h3>
+        <p>
+            Développement de la page <strong>historique_commande.php</strong> affichant toutes les commandes passées avec leurs détails : nom, destinataire, état, nombre de produits. Possibilité de cliquer sur une commande pour voir ses détails (via <code>details_commande.php</code>).
+        </p>
+        <p>
+            Création de la page d’accueil sécurisée avec tableau de bord affichant les liens disponibles en fonction du rôle utilisateur connecté. Cela améliore la navigation et l’expérience utilisateur.
+        </p>
+        <p>
+            Des fonctions ont aussi été ajoutées pour modifier l’état de commercialisation des produits ou mettre à jour une commande existante (ex : changer le destinataire ou le nom de commande).
+        </p>
+    
+        <h3>Semaine 5 (03/02 - 07/02)</h3>
+        <p>
+            Mise en place d’un nouveau système de gestion des versions produit. J’ai créé une nouvelle table <code>soft_hard</code> avec les champs :
+            <ul>
+                <li>Hardware (ex : v1.0)</li>
+                <li>Software (ex : v1.2)</li>
+                <li>Famille, code_type, date de mise à jour</li>
+            </ul>
+            Une nouvelle page <strong>software-hardware.php</strong> permet d’afficher et d’ajouter de nouvelles versions. Le formulaire produit a été modifié pour permettre de choisir la version exacte à associer à chaque produit.
+        </p>
+    
+        <h3>Semaine 6 (10/02 - 14/02)</h3>
+        <p>
+            Retour sur le problème d’impression d’étiquettes. Grâce à l’aide d’un collègue, j’ai adapté le format d’étiquette (24 x 54 mm) et résolu les erreurs de redimensionnement. L’étiquette finale est scannée sans difficulté.
+        </p>
+        <p>
+            Pour conclure la mission, j’ai ajouté une dernière fonctionnalité très utile : <strong>produit_info_scanner.php</strong>. Cette page permet de scanner un code-barres (via lecteur ou caméra) et d’afficher immédiatement toutes les infos liées au produit (matériel, logiciel, date, etc.).
+        </p>
+    </div>
+    
+
+    <div class="section">
+        <h2><u>Fonctionnalités développées</u></h2>
+
+        <h3>📌 Enregistrement et gestion des produits</h3>
+        <p>
+            Chaque produit est enregistré avec un numéro de série unique, un nom, une famille, et un code de type. L'utilisateur peut également choisir une version hardware et software spécifique. Le produit est ensuite ajouté à la base de données avec une vérification du statut de commercialisation.
+        </p>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/enregistrer-produit.png"><br>Capture d'écran de produit.php ou du formulaire produit</div>
+
+        <h3>🗂️ Affichage dynamique des produits</h3>
+        <p>
+            Une page affiche tous les produits enregistrés sous forme de tableau. L’utilisateur peut filtrer les résultats selon la famille, le nom ou le statut de commercialisation. Les champs version, software et hardware sont également visibles.
+        </p>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/vue-produit.png"><br>Vue des produits</div>
+
+        <h3>🧾 Gestion des bons de commande</h3>
+        <p>
+            Une interface intuitive permet de créer un bon de commande, de sélectionner les produits en stock, d’indiquer le nom du client, et de choisir l’état de la commande. Les quantités sont automatiquement vérifiées pour éviter les erreurs.
+        </p>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/bon-commande.png">Capture d'écran de bon_commande.php</div>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/detail_commande.png">Affichage du détail d'une commande</div>
+        
+        <h3>🏷️ Génération et impression d’étiquettes</h3>
+        <p>
+            Chaque produit peut générer une étiquette contenant les logos officiels (CE, RoHS...), le nom du produit, et deux codes-barres (code_type et numéro de série). Les étiquettes sont imprimables dans un format défini (24x54 mm).
+        </p>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/code-barre-généré.png">Code barre produit généré</div>
+        <div class="image-placeholder"><img src="../projet/projet-socorel/étiquette.png">Étiquette produit généré</div>
+
+        <h3>🔒 Authentification et gestion des utilisateurs</h3>
+        <p>
+            Un système d’authentification sécurisée a été mis en place avec rôles ("admin", "utilisateur") et groupes ("declic", "btib"). L'accès aux pages est limité selon ces rôles.
+        </p>
+        <div class="image-placeholder"><img src="../projet/projet-socorel/bdd-user.png">Table utilisateur</div>
+
+        <h3>🔧 Suivi des versions matériel et logiciel</h3>
+        <p>
+            Chaque produit est lié à une version matérielle et logicielle. L’administrateur peut créer ou modifier ces versions, et les lier à une gamme de produit précise.
+        </p>
+        <div class="image-placeholder"><img style="height: 80%; width: 80%;" src="../projet/projet-socorel/version-produit.png">Affichage des différentes version pour un produit</div>
+
+        
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="../page/projets.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                ⬅ Retour au menu des projets
+            </button>
+        </a>
+    </div>    
+
+</body>
+</html>
