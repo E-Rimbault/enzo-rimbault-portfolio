@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet GSB - Enzo RIMBAULT</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 30px; background-color: #f9f9f9; }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h1, h2, h3 { text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li::before { content: "• "; color: #4CAF50; font-weight: bold; }
+        .section { margin-top: 40px; }
+        p { text-align: justify; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 5px; }
+        img.diagramme { display: block; margin: 20px auto; max-width: 90%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><u>Projet GSB - Application Web avec Laravel</u></h1>
+
+        <div class="section">
+            <h2>Description Générale</h2>
+            <p>
+                Ce projet a été réalisé dans le cadre du BTS SIO, pour répondre aux besoins du laboratoire Galaxy Swiss Bourdin (GSB), issu de la fusion de plusieurs laboratoires pharmaceutiques. 
+                L’objectif était de concevoir une application web permettant aux visiteurs médicaux de centraliser et consulter les rapports de leurs visites, ainsi que les informations sur les praticiens et les médicaments.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Utilité de l'application</h2>
+            <p>
+                L’application GSB a pour but de faciliter le travail des visiteurs médicaux. Elle permet de :
+            </p>
+            <ul>
+                <li>🧾 Ajouter et consulter les rapports de visite rédigés après chaque rencontre avec un praticien.</li>
+                <li>💊 Accéder à une base de données des médicaments produits par le laboratoire, avec descriptions détaillées.</li>
+                <li>🩺 Rechercher et consulter les informations sur les praticiens selon leur nom ou spécialité.</li>
+                <li>👤 Gérer son profil personnel pour maintenir ses coordonnées à jour.</li>
+            </ul>
+            <p>
+                Grâce à cette centralisation, le suivi des visites est plus clair, plus structuré, et permet au laboratoire d’avoir un retour sur les échanges entre les visiteurs et les professionnels de santé.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Technologies Utilisées</h2>
+            <ul>
+                <li><strong>Laravel</strong> : framework PHP pour la structure MVC (modèle-vue-contrôleur).</li>
+                <li><strong>Blade</strong> : moteur de templates Laravel pour la création des vues.</li>
+                <li><strong>MySQL</strong> : base de données relationnelle pour stocker les utilisateurs, rapports, médicaments, praticiens.</li>
+                <li><strong>Bootstrap</strong> : stylisation de l’interface pour un rendu responsive et moderne.</li>
+                <li><strong>PHP Artisan</strong> : génération des modèles, contrôleurs, et migrations.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Structure et Codage</h2>
+            <p>
+                L'application repose sur une architecture MVC. Voici comment elle a été structurée :
+            </p>
+            <ul>
+                <li>📂 <code>Models</code> : Chaque entité (Visiteur, Rapport, Praticien, Médicament) possède un modèle Eloquent relié à la base de données.</li>
+                <li>📂 <code>Controllers</code> : Ils gèrent les actions métiers : affichage, ajout, modification, suppression des données.</li>
+                <li>📂 <code>Views</code> : Les vues Blade affichent dynamiquement les données récupérées.</li>
+                <li>🔐 Authentification : système Laravel intégré avec middleware pour sécuriser les routes.</li>
+                <li>🛠️ <code>php artisan migrate</code> et <code>php artisan make:</code> pour la création de migrations et composants.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Diagramme UML</h2>
+            <p>Voici le diagramme de classes utilisé pour modéliser les entités et leurs relations dans le projet :</p>
+            <img src="../image/laravel-gsb-structure-uml.png" alt="Diagramme UML GSB" class="diagramme">
+            <p style="text-align:center;"><em>Diagramme UML présentant l'ensemble de la structure base de données du projet</em></p>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Définition des Tables de la Base de Données</h2>
+        <p>Chaque table représente une entité spécifique de l'application. Voici un résumé des principales :</p>
+        <ul>
+            <li><strong>users</strong> : Contient les informations d’authentification et de profil des utilisateurs (email, mot de passe, etc.).</li>
+            <li><strong>rapport_visite</strong> : Stocke les comptes-rendus de visites effectuées par les visiteurs médicaux.</li>
+            <li><strong>visiteur</strong> : Détaille les informations des visiteurs médicaux (nom, prénom, adresse, secteur).</li>
+            <li><strong>praticien</strong> : Regroupe les données sur les praticiens visités (nom, spécialité, adresse, lieu d'exercice).</li>
+            <li><strong>medicament</strong> : Référence les médicaments avec leur composition, effets, contre-indications, etc.</li>
+            <li><strong>prescrire</strong> : Associe un médicament à un type d’individu avec posologie et dosage.</li>
+            <li><strong>type_individu</strong> : Définit les catégories de patients (enfant, adulte, senior, etc.).</li>
+            <li><strong>specialite</strong> : Liste les spécialités médicales (cardiologue, dermatologue, etc.).</li>
+            <li><strong>region</strong> : Contient les régions géographiques dans lesquelles les visiteurs sont affectés.</li>
+            <li><strong>secteur</strong> : Représente les zones de travail plus spécifiques dans une région.</li>
+            <li><strong>travailler</strong> : Fait le lien entre un visiteur et une région, avec une fonction occupée (ex : délégué, responsable).</li>
+            <li><strong>offrir</strong> : Enregistre les échantillons de médicaments offerts à un praticien lors d’une visite.</li>
+            <li><strong>presentation</strong> : Détaille les présentations des médicaments (forme galénique par ex. : comprimé, gelule).</li>
+            <li><strong>famille</strong> : Catégorise les médicaments selon leur type thérapeutique (antibiotique, analgésique, etc.).</li>
+            <li><strong>composant</strong> : Répertorie les composants chimiques ou actifs des médicaments.</li>
+            <li><strong>constituer</strong> : Fait le lien entre un médicament et ses composants avec leur quantité.</li>
+            <li><strong>formuler</strong> : Associe un médicament à une présentation donnée.</li>
+            <li><strong>dosage</strong> : Liste les dosages possibles pour les prescriptions de médicaments.</li>
+            <li><strong>inviter</strong> : Représente les intervenants ou invités pour des événements médicaux.</li>
+            <li><strong>realiser</strong> : Enregistre des statistiques sur les visites ou événements.</li>
+            <li><strong>labo</strong> : Contient les données sur les laboratoires liés aux visiteurs.</li>
+            <li><strong>type_praticien</strong> : Spécifie des types de praticiens (généraliste, spécialiste, etc.).</li>
+            <li><strong>activite_compl</strong> : Permet de suivre des activités complémentaires réalisées.</li>
+            <li><strong>migrations / jobs / cache / password_reset_tokens</strong> : Tables techniques utilisées par Laravel pour la gestion des jobs, sessions, mots de passe et migrations de base de données.</li>
+        </ul>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="../page/projets.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                ⬅ Retour au menu des projets
+            </button>
+        </a>
+    </div>
+    
+</body>
+</html>

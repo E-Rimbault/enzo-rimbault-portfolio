@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Gnotes - Enzo RIMBAULT</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 30px; background-color: #f9f9f9; }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h1, h2, h3 { text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li::before { content: "• "; color: #4CAF50; font-weight: bold; }
+        .section { margin-top: 40px; }
+        p { text-align: justify; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 5px; }
+        img.illustration { display: block; margin: 20px auto; max-width: 90%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><u>Projet Gnotes - Application de gestion de notes</u></h1>
+
+        <div class="section">
+            <h2>Description Générale</h2>
+            <p>
+                Gnotes est une application de bureau développée en Java, destinée aux enseignants pour la gestion des notes d’élèves. Elle permet une utilisation en mode hors ligne et intègre une interface JavaFX ainsi qu’une API REST réalisée avec Spring Boot.
+                Elle offre une interface conviviale permettant de gérer les étudiants, les matières et les contrôles associés à des statistiques claires et détaillées.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Utilité de l'application</h2>
+            <p>
+                Gnotes a été conçue pour répondre aux besoins des enseignants souhaitant :
+            </p>
+            <ul>
+                <li>🧑‍🏫 Gérer les contrôles et notes des étudiants facilement depuis leur poste.</li>
+                <li>📉 Visualiser les statistiques par contrôle et par matière.</li>
+                <li>📁 Conserver une trace hors ligne des évaluations réalisées.</li>
+                <li>👀 Avoir une vue synthétique sur les résultats et les appréciations.</li>
+            </ul>
+            <p>
+                Chaque enseignant peut consulter tous les étudiants, gérer les contrôles de sa matière, et suivre les performances par semestre.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Fonctionnalités principales</h2>
+            <ul>
+                <li>👨‍🏫 Authentification sécurisée des enseignants.</li>
+                <li>📝 Création, modification et suppression de contrôles.</li>
+                <li>📊 Visualisation de la moyenne, note min, note max par matière.</li>
+                <li>📚 Accès rapide aux élèves et à leurs performances.</li>
+                <li>📶 Fonctionnement hors-ligne pour la saisie des notes.</li>
+                <li>🧾 Statistiques claires et précises pour chaque matière et chaque élève.</li>
+                <li>🔐 Gestion des utilisateurs et rôles (connexion sécurisée avec mot de passe chiffré).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Technologies Utilisées</h2>
+            <ul>
+                <li><strong>Java</strong> : développement de l'application côté client et serveur.</li>
+                <li><strong>Spring Boot</strong> : framework Java pour construire l’API REST.</li>
+                <li><strong>Hibernate (JPA)</strong> : gestion des entités et persistance des données.</li>
+                <li><strong>JavaFX</strong> : interface graphique moderne et interactive.</li>
+                <li><strong>MySQL</strong> : base de données relationnelle pour stocker toutes les informations.</li>
+                <li><strong>POSTMAN</strong> : pour tester les endpoints de l'API.</li>
+                <li><strong>Eclipse / SceneBuilder</strong> : IDE et outil de conception d'interface graphique.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Structure du Projet Java</h2>
+            <p>
+                Le projet est organisé en couches claires selon le modèle MVC :
+            </p>
+            <ul>
+                <li><code>com.saintsau.slam2.gnotes30.controller</code> : pour gérer les vues et la navigation.</li>
+                <li><code>com.saintsau.slam2.gnotes30.entity</code> : correspondance directe avec les tables de la base.</li>
+                <li><code>com.saintsau.slam2.gnotes30.service</code> : logique métier (ex : calcul de moyenne).</li>
+                <li><code>com.saintsau.slam2.gnotes30.jpaRepository</code> : interfaces JPA pour interroger la base.</li>
+                <li><code>com.saintsau.slam2.gnotes30.exception</code> : gestion des exceptions personnalisées.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Base de données</h2>
+            <p>
+                La base <code>gnotesdb</code> contient les tables principales suivantes :
+            </p>
+            <ul>
+                <li><code>etudiants</code> : informations des élèves (nom, prénom, numéro).</li>
+                <li><code>controles</code> : chaque note liée à un élève, une matière et un professeur.</li>
+                <li><code>matieres</code> : liste des matières enseignées.</li>
+                <li><code>users</code> : informations de connexion des professeurs (nom d'utilisateur, mot de passe).</li>
+            </ul>
+            <p>
+                Le schéma relationnel montre clairement les dépendances entre les entités. Par exemple, chaque contrôle possède une clé étrangère vers un étudiant, une matière et un utilisateur (professeur).
+            </p>
+            <img src="projet-gnotes/base-de-données.png" alt="Schéma de la base de données Gnotes" class="illustration">
+        </div>
+
+        <div class="section">
+            <h2>Classes du projet Gnotes</h2>
+            <p>
+                Le projet Gnotes est structuré autour de plusieurs classes Java réparties dans des packages bien définis. Chaque package a un rôle spécifique dans l’architecture de l’application selon le modèle MVC (Modèle-Vue-Contrôleur).
+            </p>
+            <ul>
+                <li><strong>entity</strong> : contient les classes représentant les entités de la base de données comme <code>Etudiant</code>, <code>Controle</code>, <code>Matiere</code> et <code>User</code>. Ces classes sont annotées avec JPA pour permettre la persistance en base de données.</li>
+                <li><strong>controller</strong> : regroupe les classes responsables de la gestion des événements de l'interface utilisateur. Par exemple, <code>LoginPageController</code> gère la connexion, tandis que <code>AddControleController</code> permet d’ajouter des contrôles.</li>
+                <li><strong>service</strong> : contient les classes qui implémentent la logique métier, comme le calcul de moyennes ou la gestion des filtres de recherche.</li>
+                <li><strong>jpaRepository</strong> : interfaces héritant de <code>JpaRepository</code> pour accéder aux données des entités sans écrire de requêtes SQL (ex : <code>EtudiantRepository</code>, <code>ControleRepository</code>).</li>
+                <li><strong>exception</strong> : classes de gestion des erreurs personnalisées, telles que <code>EtudiantNotFoundException</code> ou <code>ControleNotFoundException</code>, afin de rendre les messages d’erreur plus explicites.</li>
+            </ul>
+            <img src="projet-gnotes/classe-gnotes.png" alt="Aperçu des classes Java du projet Gnotes" class="illustration">
+        </div>
+        
+
+        <div class="section">
+            <h2>Page de Connexion</h2>
+            <p>
+                Lors de l'ouverture de l'application, l'utilisateur est redirigé vers une page de connexion. Il doit entrer un identifiant et mot de passe. L’authentification est validée via l’API Spring Boot.
+                En cas de succès, l'utilisateur est redirigé vers les onglets (Élèves, Professeurs, Contrôles).
+            </p>
+            <img src="projet-gnotes/page-login.png" alt="Page de connexion Gnotes" class="illustration">
+        </div>
+
+        <div class="section">
+            <h2>Page Élèves</h2>
+            <p>
+                L’interface permet de visualiser rapidement la liste des élèves enregistrés. Il est possible d’ajouter un élève via le bouton prévu à cet effet. Un double-clic permet d’accéder à ses notes et statistiques.
+            </p>
+            <img src="projet-gnotes/page-eleve.png" alt="Page liste des élèves Gnotes" class="illustration">
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="../page/projets.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                ⬅ Retour au menu des projets
+            </button>
+        </a>
+    </div>
+</body>
+</html>
