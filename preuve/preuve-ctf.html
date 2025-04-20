@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Preuve CTF - Rimbault Enzo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .ctf-report {
+      background-color: #ffffff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-left: 5px solid #3498db;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Preuve CTF - Rimbault Enzo</h1>
+
+  <div class="ctf-report">
+    <h2>1. CTF Ubuntu LTS Vulnerable</h2>
+    <p>
+      Cette épreuve consiste à exploiter une machine Ubuntu Server 16.04.3 LTS vulnérable. 
+      Les objectifs sont d'utiliser différents outils comme <strong>nmap</strong>, <strong>dirb</strong>, 
+      <strong>wpscan</strong>, <strong>Metasploit</strong> et <strong>Meterpreter</strong> pour prendre le contrôle 
+      d’un site WordPress hébergé sur la machine.
+    </p>
+    <p><a href="../preuve/ctf/Ubuntu_LTS_vulnerable-enzo-rimbault.pdf" target="_blank">📄 Consulter le rapport Ubuntu LTS</a></p>
+  </div>
+
+  <div class="ctf-report">
+    <h2>2. Exploitation de la faille Windows MS17-010 (EternalBlue)</h2>
+    <p>
+      Ce TP vise à exploiter la faille SMBv1 connue sous le nom d'<strong>EternalBlue</strong> (MS17-010) sur un système 
+      Windows 7 Pro à l’aide de Kali Linux. L’objectif est de démontrer comment un attaquant peut obtenir un shell 
+      distant et manipuler les fichiers de la victime.
+    </p>
+    <p><a href="../preuve/ctf/exploit_faille_windows_ms17-010-enzo-rimbault.pdf" target="_blank">📄 Consulter le rapport Windows MS17-010</a></p>
+  </div>
+
+  <div class="ctf-report">
+    <h2>3. CTF WordPress avec Samba</h2>
+    <p>
+      Cette épreuve montre l’exploitation des ports <strong>139 et 445</strong> pour accéder à un partage Samba sur 
+      une machine Unix. L’objectif est de trouver des identifiants WordPress à partir de fichiers de configuration 
+      accessibles anonymement, puis de se connecter à l’interface d’administration.
+    </p>
+    <p><a href="../preuve/ctf/CTF-Wordpress-Samba-Rimbault-Enzo.pdf" target="_blank">📄 Consulter le rapport WordPress & Samba</a></p>
+  </div>
+
+</body>
+</html>
