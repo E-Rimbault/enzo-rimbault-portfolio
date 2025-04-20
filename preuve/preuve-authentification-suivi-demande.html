@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Compétence - Traiter des demandes concernant les applications</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 40px 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📌 Compétence : Traiter des demandes concernant les applications</h1>
+
+        <p>
+            Dans le cadre d’un projet encadré par Mr CHOIRAL, plusieurs étapes techniques ont été réalisées en réponse à des demandes précises liées à la sécurisation d’une application web. Ce projet a été conçu pour répondre à des besoins progressifs autour de la gestion des utilisateurs et de l’authentification sécurisée.
+        </p>
+
+        <h2>✅ Étape 1 : Reproduction de l’authentification de base</h2>
+        <ul>
+            <li>🔧 <strong>Objectif :</strong> Reproduire une page de connexion fonctionnelle avec base de données.</li>
+            <li>🧩 Utilisation de PHP & MySQL pour gérer l’inscription et la connexion des utilisateurs.</li>
+            <li>🔐 Hashage sécurisé des mots de passe avec <code>password_hash()</code>.</li>
+            <li>🧪 Vérification à la connexion avec <code>password_verify()</code>.</li>
+        </ul>
+
+        <h2>✅ Étape 2 : Journal d'événements - Page <code>log.php</code></h2>
+        <ul>
+            <li>🗂️ Création d'une table <code>logs</code> contenant : identifiant, résultat, IP, date et heure.</li>
+            <li>🔒 L'accès à cette page est restreint aux utilisateurs authentifiés (via session).</li>
+            <li>📊 Visualisation sous forme de tableau des connexions réussies ou échouées.</li>
+        </ul>
+
+        <h2>✅ Étape 3 : Double authentification par e-mail (2FA Email)</h2>
+        <ul>
+            <li>📧 Envoi d’un code à usage unique par mail après la saisie correcte du mot de passe.</li>
+            <li>⏳ Code valide uniquement pendant 5 minutes (géré via sessions PHP).</li>
+            <li>🔁 Redirection vers la page d’accueil si le code est correct, sinon retour à l’écran de connexion.</li>
+        </ul>
+
+        <h2>✅ Étape 4 : Double authentification avec Google Authenticator (TOTP)</h2>
+        <ul>
+            <li>📱 QR code généré à l’inscription avec une clé secrète personnelle (TOTP).</li>
+            <li>🔐 Vérification du code temporaire via l’algorithme TOTP côté serveur.</li>
+            <li>📲 Application compatible : Google Authenticator, Microsoft Authenticator, etc.</li>
+        </ul>
+
+        <h2>🔗 Projet complet</h2>
+        <p>
+            L’ensemble de ces fonctionnalités a été intégré dans un projet PHP complet disponible en ligne. Il présente visuellement toutes les étapes du projet :
+        </p>
+        <div class="center">
+            <a class="btn-link" href="https://e-rimbault.github.io/enzo-rimbault-portfolio/projet/projet-authentification.html" target="_blank">
+                🔗 Accéder au projet d’authentification
+            </a>
+        </div>
+
+        <h2>🧩 Compétence démontrée</h2>
+        <p>
+            Ce projet illustre parfaitement la compétence <strong>“Traiter des demandes concernant les applications”</strong>, en répondant à un cahier des charges précis :
+        </p>
+        <ul>
+            <li>✔️ Mise en place de fonctionnalités techniques à la demande du formateur.</li>
+            <li>✔️ Adaptation de l'application en fonction de l'évolution des besoins.</li>
+            <li>✔️ Respect des bonnes pratiques de développement web et de sécurité.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
