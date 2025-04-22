@@ -95,8 +95,35 @@
         <h2>Définition des Tables de la Base de Données</h2>
         <p>Chaque table représente une entité spécifique de l'application. Voici un résumé des principales :</p>
         <ul>
-            <!-- Liste des tables, inchangée -->
+            <li><strong>type_individu</strong> : Définit les types d’individus (ex : praticien, visiteur).</li>
+            <li><strong>prescrire</strong> : Lien entre un médicament, une posologie et un type d’individu.</li>
+            <li><strong>medicament</strong> : Informations sur les médicaments (nom, composition, effets, etc.).</li>
+            <li><strong>formuler</strong> : Associe un médicament à une présentation donnée.</li>
+            <li><strong>presentation</strong> : Définit les types de présentation de médicaments (ex : comprimé, gélule).</li>
+            <li><strong>constituer</strong> : Fait le lien entre un médicament et ses composants.</li>
+            <li><strong>composant</strong> : Répertorie les composants utilisés dans les médicaments.</li>
+            <li><strong>famille</strong> : Familles thérapeutiques des médicaments.</li>
+            <li><strong>specialite</strong> : Spécialités médicales des praticiens.</li>
+            <li><strong>praticien</strong> : Informations personnelles et professionnelles des praticiens.</li>
+            <li><strong>inviter</strong> : Praticiens invités à des événements ou activités.</li>
+            <li><strong>type_praticien</strong> : Classification des praticiens selon leur type.</li>
+            <li><strong>realiser</strong> : Suivi des affaires réalisées par les acteurs médicaux.</li>
+            <li><strong>activite_compl</strong> : Activités complémentaires (conférences, réunions...).</li>
+            <li><strong>rapport_visite</strong> : Comptes rendus des visites effectuées chez les praticiens.</li>
+            <li><strong>offrir</strong> : Médicaments offerts lors des visites.</li>
+            <li><strong>dosage</strong> : Quantité et unité de posologie des médicaments.</li>
+            <li><strong>visiteur</strong> : Données des visiteurs médicaux (nom, affectation, secteur...).</li>
+            <li><strong>labo</strong> : Noms et codes des laboratoires d’affectation.</li>
+            <li><strong>secteur</strong> : Répartition géographique des secteurs couverts.</li>
+            <li><strong>region</strong> : Informations sur les régions visitées.</li>
+            <li><strong>travailler</strong> : Historique d’affectation des visiteurs dans les régions.</li>
+            <li><strong>users</strong> : Comptes utilisateurs Laravel avec authentification.</li>
+            <li><strong>cache_locks</strong> : Gestion interne des verrous Laravel.</li>
+            <li><strong>password_reset_tokens</strong> : Jetons de réinitialisation des mots de passe.</li>
+            <li><strong>migrations</strong> : Suivi des migrations effectuées dans la base.</li>
+            <li><strong>jobs</strong> : Gestion des tâches asynchrones via file d’attente.</li>
         </ul>
+        
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 20px;">
