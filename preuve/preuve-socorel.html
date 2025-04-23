@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preuves des Compétences - Projet Socorel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        .competence {
+            margin-bottom: 40px;
+        }
+
+        img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #0066cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Preuves des Compétences - Projet Socorel</h1>
+
+        <div class="competence">
+
+            <h2>🔧 Gérer le patrimoine informatique</h2>
+            <p>Dans le cadre de cette compétence, j’ai conçu et documenté une base de données pour gérer les produits de
+                l’entreprise. Voici les principales tables de la BDD :</p>
+
+            <ul>
+                <li><strong>products</strong> : Gère les produits matériels. Utilisation de triggers pour générer un
+                    code-barres unique et enregistrer les mouvements de stock.</li>
+                <li><strong>bon_de_commande</strong> : Archive les commandes envoyées avec les références produits, état
+                    et destinataires.</li>
+                <li><strong>soft_hard</strong> : Historique des versions hardware/software pour chaque famille de
+                    produits.</li>
+                <li><strong>utilisateurs</strong> : Gestion des rôles et accès sécurisés à la plateforme de suivi.</li>
+                <li><strong>destinataire</strong> : Liste des destinataires des produits envoyés.</li>
+            </ul>
+
+            <p>Voici une capture de la structure de la base :</p>
+            <img src="../projet/projet-socorel/bdd.png" alt="Structure de la base de données">
+        </div>
+
+        <div class="competence">
+            <h2>🌐 Développer la présence en ligne de l’organisation</h2>
+            <p>Un outil web intuitif a été développé pour que les employés de Socorel puissent imprimer les étiquettes
+                en quelques clics. Cet outil :</p>
+            <ul>
+                <li>Est accessible en ligne via un navigateur web.</li>
+                <li>Permet la sélection de produits et la génération instantanée de l’étiquette.</li>
+                <li>Est sécurisé avec un système d’authentification simple.</li>
+            </ul>
+            <p>Voici des captures écran de l’interface utilisateur :</p>
+            <img src="../projet/projet-socorel/connexion.png" alt="Interface utilisateur">Page de connexion
+            <img src="../projet/projet-socorel/enregistrer-produit.png" alt="Interface utilisateur">Page pour enregistrer un nouveau produit
+            <img src="../projet/projet-socorel/version-produit.png" alt="Interface utilisateur">Page pour gérer les versions software et Hardware d'un produit
+        </div>
+
+        <div class="competence">
+            <h2>📁 Travailler en mode projet</h2>
+            <p>Le développement s’est fait en suivant une méthode de gestion de projet agile. Un site de suivi a été mis
+                en place afin de :</p>
+            <ul>
+                <li>Lister les tâches à réaliser par étape (planification).</li>
+                <li>Suivre l’état d’avancement de chaque fonctionnalité.</li>
+                <li>Permettre un retour rapide en cas de blocage technique.</li>
+            </ul>
+            <p>Site de gestion de projet : <a href="http://suivi-socorel.infinityfreeapp.com/?i=1"
+                    target="_blank">suivi-socorel.infinityfreeapp.com</a></p>
+        </div>
+
+        <div class="competence">
+            <h2>🧪 Réaliser les tests d’intégration et d’acceptation d’un service</h2>
+            <p>Des tests ont été réalisés afin de valider le bon fonctionnement du service d’impression des étiquettes, en vérifiant que les données issues de la base de données étaient correctement affichées sur l’interface web. Cela a inclus :</p>
+            <ul>
+                <li>La prise de captures d’écran d’éléments de la base de données pour servir de référence.</li>
+                <li>La vérification de la cohérence des données affichées sur le site web avec celles de la base.</li>
+                <li>La validation du parcours utilisateur pour s’assurer de la bonne intégration du service d’impression.</li>
+            </ul>
+            <p>Ces tests ont permis de garantir la fiabilité du système et d’assurer que les utilisateurs disposent d’un outil fonctionnel et conforme à leurs besoins.</p>
+        
+            <div class="illustrations">
+                <h3>📸 Vérification des données : base de données vs interface web</h3>
+                <div class="images">
+                    <img style="height: 100%; width: 100%;" src="../projet/projet-socorel/capture-produit-bdd.png" alt="Capture de la base de données" width="45%">
+                    <img style="height: 100%; width: 100%;" src="../projet/projet-socorel/capture-produit-outil.png" alt="Affichage web des données" width="45%">
+                </div>
+                <p>Captures d'écran montrant la correspondance d'un produit enregistré dans la base de données et son affichage dans l'outil WEB</p>
+            </div>
+        
+            <div class="illustrations">
+                <h3>📸 Vérification des données : base de données vs interface web</h3>
+                <div class="images">
+                    <img style="height: 100%; width: 100%;" src="../projet/projet-socorel/commande-test.png" alt="Capture de la base de données" width="45%">
+                    <img style="height: 100%; width: 100%;" src="../projet/projet-socorel/commande-test-bdd.png" alt="Affichage web des données" width="45%">
+                </div>
+                <p>Captures d'écran montrant la correspondance d'un bon de commande enregistré dans la base de données et son affichage dans l'outil WEB</p>
+            </div>        
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="../page/compétences.html" style="text-decoration: none; background-color: #1a73e8; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">
+          ← Retour à la page Compétences
+        </a>
+      </div>
+</body>
+
+</html>
