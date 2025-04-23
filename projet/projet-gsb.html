@@ -88,6 +88,8 @@
             <p>Voici le diagramme de classes utilisé pour modéliser les entités et leurs relations dans le projet :</p>
             <img src="../image/laravel-gsb-structure-uml.png" alt="Diagramme UML GSB" class="diagramme">
             <p style="text-align:center;"><em>Diagramme UML présentant l'ensemble de la structure base de données du projet</em></p>
+            <p>Capture d'écran présentant l'ensemble de mes tables dans mon projet GSB :</p>
+            <img src="../projet/projet-gsb/bdd.png" alt="Diagramme UML GSB" class="diagramme">
         </div>
     </div> <!-- fin de .container -->
 
@@ -123,8 +125,55 @@
             <li><strong>migrations</strong> : Suivi des migrations effectuées dans la base.</li>
             <li><strong>jobs</strong> : Gestion des tâches asynchrones via file d’attente.</li>
         </ul>
-        
     </div>
+
+    <div class="section">
+        <h2>Captures d'écran de l'application</h2>
+        <p>Voici quelques captures d'écran illustrant différentes pages de l'application GSB :</p>
+        
+        <h3>🔐 Page de connexion</h3>
+        <img src="../projet/projet-gsb/connexion.png" alt="Page de connexion" class="diagramme">
+        
+        <h3>🏠 Page d'accueil</h3>
+        <img src="../projet/projet-gsb/accueil.png" alt="Page d'accueil" class="diagramme">
+
+        <h3>🩺 Liste des praticiens</h3>
+        <img src="../projet/projet-gsb/praticien.png" alt="Liste des praticiens" class="diagramme">
+
+        <h3>📂 Le menu de navigation</h3>
+        <img src="../projet/projet-gsb/menu.png" alt="Menu de l'application" class="diagramme">
+
+        <p style="text-align:center;"><em>Ces interfaces ont été conçues pour être simples, intuitives et accessibles aux utilisateurs du laboratoire GSB.</em></p>
+    </div>
+
+    <div class="section">
+        <h2>Déployer un service - Configuration du fichier <code>.env</code></h2>
+        <p>
+            Le déploiement d’un service web repose sur une configuration adaptée à son environnement. Laravel utilise un fichier <code>.env</code> (abréviation de "environment") pour stocker toutes les variables d’environnement nécessaires au bon fonctionnement de l’application. Cela permet de séparer les paramètres sensibles et spécifiques à l’environnement (local, développement, production) du code source.
+        </p>
+    
+        <p>Voici la capture d'écran de mon fichier <code>.env</code> utilisé pour déployer l'application GSB :</p>
+        <img src="../projet/projet-gsb/env.png" alt="Fichier .env de l'application Laravel GSB" class="diagramme">
+    
+        <p><strong>Explication des éléments clés :</strong></p>
+        <ul>
+            <li><code>APP_NAME</code>, <code>APP_ENV</code>, <code>APP_DEBUG</code> : Paramètres de base de l'application (nom, environnement, mode debug).</li>
+            <li><code>APP_URL</code> : L'URL de base de l’application, utilisée notamment pour générer des liens ou des redirections.</li>
+            <li><code>DB_CONNECTION</code>, <code>DB_HOST</code>, <code>DB_DATABASE</code>, <code>DB_USERNAME</code>, <code>DB_PASSWORD</code> : Informations de connexion à la base de données MySQL.</li>
+            <li><code>LOG_LEVEL</code> et <code>LOG_CHANNEL</code> : Configuration du système de journalisation pour le suivi des erreurs et événements.</li>
+            <li><code>SESSION_DRIVER</code>, <code>SESSION_LIFETIME</code> : Gestion des sessions utilisateur, ici stockées dans la base de données pour plus de sécurité et de persistance.</li>
+        </ul>
+    
+        <p>
+            Ce fichier est essentiel au déploiement car il permet de configurer facilement et rapidement l'application selon l’environnement ciblé, sans modifier le code. Il facilite aussi le passage d’un environnement local à une production sécurisée. Lors du déploiement sur un serveur web (comme Apache ou Nginx), on veille à ce que ce fichier soit correctement paramétré et sécurisé (non accessible publiquement).
+        </p>
+    
+        <p>
+            Cette configuration a été utilisée pour déployer avec succès l'application Laravel GSB, rendant accessible les services aux visiteurs médicaux tout en assurant sécurité, modularité et maintenabilité.
+        </p>
+    </div>
+    
+
 
     <div style="display: flex; justify-content: center; margin-top: 20px;">
         <a href="../page/projets.html" style="text-decoration: none;">
