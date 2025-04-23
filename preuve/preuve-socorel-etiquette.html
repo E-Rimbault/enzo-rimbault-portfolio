@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Projet Stage – Génération d'Étiquettes</title>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background: #f4f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a5275;
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: #ffffff;
+      border-left: 5px solid #0a5275;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .etiquette {
+      background-color: #fefefe;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 380px;
+    }
+    .logos {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .logos img {
+      height: 35px;
+    }
+    .codebar-container svg {
+      margin: 10px 0;
+    }
+    .legal {
+      font-size: 0.85em;
+      color: #666;
+    }
+    ul {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Projet de Génération d'Étiquettes - Stage chez SOCOREL</h1>
+
+  <div class="section">
+    <h2>📌 Contexte et Objectif</h2>
+    <p>
+      Durant mon stage chez <strong>SOCOREL</strong>, j'ai développé un module de génération
+      d’étiquettes destinées à l’identification et à la traçabilité des produits électroniques.
+      Chaque étiquette inclut des éléments graphiques réglementaires, le nom du produit,
+      ainsi que deux codes-barres permettant un suivi efficace dans la chaîne logistique.
+    </p>
+    <p>
+      Ces étiquettes sont destinées à être imprimées sur un format standard (24x54mm), conforme aux
+      contraintes d’impression du matériel industriel utilisé par l’entreprise.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>💡 Compétences Démontrées</h2>
+    <ul>
+      <li><strong>📘 Exploitation de référentiels et normes</strong> :
+        Marquage CE, conformité RoHS, pictogramme WEEE, usage de bibliothèques reconnues (JsBarcode),
+        structuration des données produits (code_type, barcode).</li>
+      <li><strong>🔧 Traitement des demandes applicatives</strong> :
+        Création dynamique des étiquettes à partir des données stockées dans MySQL, avec génération côté serveur et affichage web via PHP + JavaScript.</li>
+      <li><strong>📣 Valorisation de l'image sur les médias numériques</strong> :
+        Interface claire et professionnelle, respect des normes de design, conformité légale visible sur chaque étiquette.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🎯 Exemple d'Étiquette Générée</h2>
+    <div class="etiquette">
+      <div class="logos">
+        <img src="../image/ce.jpg" alt="CE">
+        <img src="../image/rohs.jpg" alt="RoHS">
+        <img src="../image/poubelle-barree-noire-rvb.png" alt="Déchets électroniques">
+      </div>
+      <p><strong>Produit :</strong> FP8-RS/24V</p>
+      <div class="codebar-container">
+        <svg id="code_type"></svg>
+        <svg id="barcode"></svg>
+      </div>
+      <p class="legal">
+        Produit conforme aux exigences européennes en matière de sécurité (CE), de substances dangereuses (RoHS),
+        et de recyclage des déchets électroniques (DEEE).
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🛠️ Technologies Utilisées</h2>
+    <ul>
+      <li><strong>Frontend :</strong> HTML, CSS, JavaScript</li>
+      <li><strong>Backend :</strong> PHP pour la récupération et génération dynamique (voir <code>generate_label.php</code>)</li>
+      <li><strong>Base de données :</strong> MySQL (structure : <code>products</code>, <code>soft_hard</code>)</li>
+      <li><strong>Librairie Code-Barres :</strong> <a href="https://github.com/lindell/JsBarcode" target="_blank">JsBarcode</a></li>
+    </ul>
+  </div>
+
+  <script>
+    JsBarcode("#code_type", "1015", {
+      format: "CODE128",
+      lineColor: "#000",
+      width: 2,
+      height: 40,
+      displayValue: true,
+      text: "Code Type"
+    });
+
+    JsBarcode("#barcode", "SN-20250423-0001", {
+      format: "CODE128",
+      lineColor: "#000",
+      width: 2,
+      height: 40,
+      displayValue: true,
+      text: "Numéro de série"
+    });
+  </script>
+
+</body>
+</html>
