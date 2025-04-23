@@ -81,6 +81,24 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
+<script>
+    // Réinitialiser le formulaire après envoi
+    document.querySelector("form").addEventListener("submit", function () {
+      setTimeout(() => {
+        this.reset();
+      }, 100); // délai léger pour laisser le temps à la soumission de partir
+    });
+  
+    // Rafraîchir si l'utilisateur revient sur la page via "Back"
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    });
+  </script>
+  
+<a href="../index.html" style="display: inline-block; margin-top: 1rem; text-align: center; color: #007bff; text-decoration: none;">← Retour à l'accueil</a>
+
 
 </body>
 </html>
