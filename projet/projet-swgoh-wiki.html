@@ -21,7 +21,7 @@
 
         h1,
         h2 {
-            text-align: center;
+            text-align: left;
         }
 
         .section {
@@ -29,7 +29,7 @@
         }
 
         .image-section {
-            text-align: center;
+            text-align: left;
             margin: 20px 0;
         }
 
@@ -59,16 +59,52 @@
         }
 
         p {
-            text-align: justify;
+            text-align: left;
         }
     </style>
+
+<style>
+    body {
+        font-family: 'Inter', Arial, sans-serif;
+        background: linear-gradient(180deg, #071428, #0b2540);
+        color: #e6f0ff;
+        line-height: 1.6;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        color: #ffcc33;
+    }
+    p, li {
+        text-align: left;
+    }
+    .explication, .description, .texte-explicatif {
+        text-align: left !important;
+    }
+    .section {
+        margin: 20px 0;
+        padding: 16px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+    .image-center {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+    }
+    .image-center img {
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.05);
+        max-width: 85%;
+    }
+</style>
+
 </head>
 
 <body>
     <div class="container">
         <h1><u>Projet SWGOH Wiki</u></h1>
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <a target="_blank" href="https://e-rimbault.github.io/swgoh-kit/" style="text-align: center;">
+            <a target="_blank" href="https://e-rimbault.github.io/swgoh-kit/" style="text-align: left;">
                 <video style="height: 40vh; width: 40vw; background-position: center;" autoplay muted loop>
                     <source src="image-projet/swgoh.mp4" type="video/mp4">
                 </video>
@@ -118,13 +154,13 @@
         <div class="section">
             <h2><u>Fonctionnalités</u></h2>
             <p>
-                Le site propose plusieurs fonctionnalités pensées pour les joueurs souhaitant optimiser leur stratégie :
+                Le site met à disposition plusieurs fonctionnalités conçues pour aider les joueurs à optimiser leurs équipes et leur stratégie :
             </p>
             <ul>
                 <li>🔍 Recherche rapide d'une unité par nom, tag ou faction</li>
                 <li>📋 Affichage détaillé du kit de chaque personnage (capacités, effets, cooldowns, etc.)</li>
-                <li>📂 Classement dynamique par tags (Tank, Healer, Attaquant, etc.)</li>
-                <li>🧩 Filtres combinés pour affiner la sélection (ex : Jedi + Soutien)</li>
+                < <li>📂 Classement dynamique par tags (Tank, Healer, Attaquant, etc.)</li>
+                    <li>🧩 Filtres combinés pour affiner la sélection (ex : Jedi + Soutien)</li>
             </ul>
         </div>
 
@@ -133,11 +169,13 @@
             <div style="display: flex; justify-content: center;">
                 <img style="height: 50%; width: 50%;" src="image-projet/page-accueil.png" alt="page accueil">
             </div>
-            <p>Cette page d'accueil permet à l'utilisateur de se rendre sur les principales pages du site que voici :</p>
+            <p>La page d’accueil constitue le point de départ vers les principales sections du site, à savoir :
+            </p>
             <ul>
-                <li>🧍Character, page qui définit l'ensemble des tags et factions pouvant s'appliquer à chaque personnage du jeu et qui permet de naviguer entre les différents personnage</li>
-                <li>🚀 Ship, page qui définit l'ensemble des tags et factions pouvant s'appliquer à chaque vaisseau du jeu et qui permet de naviguer entre les différents vaisseau</li>
-                <li>🔍 Info player, lien vers mon deuxième projet, toujours liés à Star Wars les Héros de la Galaxie et qui permet d'obtenir les infos d'un joueur en fonction de son code allié</li>
+                <li><strong>🧍Character :</strong>, page qui définit l'ensemble des tags et factions pouvant s'appliquer
+                    à chaque personnage du jeu et qui permet de naviguer entre les différents personnage</li>
+                <li><strong>🚀 Ship : </strong> page qui définit l'ensemble des tags et factions pouvant s'appliquer à
+                    chaque vaisseau du jeu et qui permet de naviguer entre les différents vaisseau</li>
             </ul>
         </div>
 
@@ -146,7 +184,7 @@
             <p>
                 Les personnages sont classés automatiquement selon leurs <strong>factions</strong> (Empire, République,
                 etc.) et leurs <strong>tags</strong> (Tank, Soutien, Leader, etc.).<br>
-                Cela permet aux joueurs de :
+                Ce système de classement permet aux joueurs de :
             </p>
             <ul>
                 <li>- Voir rapidement quelles unités partagent des synergies spécifiques</li>
@@ -154,13 +192,91 @@
                 <li>- Préparer les événements ou raids nécessitant certaines factions précises</li>
             </ul>
             <div class="image-section">
-                <p style="font-style: italic;"><u>Tableau présentant les différentes factions et rôles présents :</u></p>
+                <p style="font-style: italic;">
+                    <u>page de filtre des unités en fonction de leur <strong>faction</strong> (jedi, sith, rebelle...),
+                        <strong>roles</strong> (attaquant, soigneur...) et <strong>alignement</strong> (coté lumineux,
+                        coté obscur , neutre):</u>
+                </p>
+
+                <!-- Image d’illustration -->
                 <img src="image-projet/projet-swgoh-filtre-personnage.png" alt="Classement par tag et faction">
+
+                <!-- 💡 Explication intégrée ici -->
+                <div class="explication" style="margin-top:20px; padding:15px; background:#fff; color:#111; border-radius:8px; line-height:1.6;">
+                    <h3 style="margin-top:0; color:#000;">Explication du fonctionnement</h3>
+                    <p>
+                        Cette page charge un fichier <code>units.json</code> contenant tous les personnages (nom, rôle,
+                        alignement, factions…).
+                        Les <strong>filtres</strong> sur la gauche sont générés automatiquement :
+                    </p>
+                    <ul>
+                        <li><strong>Factions :</strong> cases à cocher dynamiques selon le JSON.</li>
+                        <li><strong>Rôles :</strong> menu déroulant (attaquant, soigneur, tank, support).</li>
+                        <li><strong>Alignement :</strong> menu déroulant (côté lumineux, obscur, neutre).</li>
+                        <li><strong>Recherche + Tags :</strong> pour filtrer plus finement.</li>
+                    </ul>
+                    <p>
+                        Quand un critère change, une fonction JavaScript (<code>applyFilters()</code>) filtre les
+                        personnages en vérifiant toutes les conditions.  
+                        Les résultats sont affichés sous forme de <strong>cartes</strong> avec image, rôle, factions, alignement et lien vers la fiche complète.
+                    </p>
+                    <p>
+                        En haut, des <em>badges cliquables</em> montrent les filtres actifs et permettent de les
+                        supprimer rapidement.  
+                        Le bouton « Reset » réinitialise tous les critères de filtre.
+                    </p>
+                </div>
+
             </div>
+
             <div class="image-section">
-                <p style="font-style: italic;"><u>Page présentant les personnages appartenant à la faction 501E :</u></p>
-                <img src="image-projet/exemple-classement-perso.png" alt="Perso 501E">
+                <p style="font-style: italic;">
+                    <u>Exemple d’une entrée JSON représentant un personnage SWGOH et son rendu sur la page :</u>
+                </p>
+
+                <!-- 📝 Image du code JSON -->
+                <img src="image-projet/code-padawan-sabine.png" alt="Code JSON de Padawan Sabine Wren" style="max-width:100%; border:1px solid #ccc; border-radius:6px; margin-bottom:15px;">
+
+                <!-- 📝 Image du rendu sur la page -->
+                <img src="image-projet/image-padawan-sabine.png" alt="Rendu web de Padawan Sabine Wren" style="max-width:100%; border:1px solid #ccc; border-radius:6px; margin-bottom:15px;">
+
+                <!-- 💡 Explication intégrée -->
+                <div class="explication" style="margin-top:20px; padding:15px; background:#fff; color:#111; border-radius:8px; line-height:1.6;">
+                    <h3 style="margin-top:0; color: #111;">Explication du code JSON</h3>
+                    <p>Ce bloc JSON décrit un personnage du jeu SWGOH. Chaque propriété correspond à une information affichée sur la page :</p>
+                    <ul>
+                    <li><code>id</code> et <code>name</code> : identifiant et nom du personnage (ici <strong>Padawan Sabine Wren</strong>).</li>
+                    <li><code>role</code> : rôle dans le jeu (ici <strong>attacker</strong>).</li>
+                    <li><code>factions</code> : tableau des factions auxquelles le personnage appartient (ici <em>mandalorian</em>, <em>spectre</em>, <em>unaligned force user</em>).</li>
+                    <li><code>alignment</code> : alignement du personnage (ici <strong>lightside</strong>).</li>
+                    <li><code>page</code> : URL de la page de détails du personnage.</li>
+                    <li><code>image</code> : URL de l’image du personnage affichée dans la carte.</li>
+                    </ul>
+                    <p>Dans la page web, ces informations sont utilisées par le script JavaScript pour générer automatiquement une <strong>carte</strong> du personnage avec l’image, le nom, le rôle, les factions et un lien vers la page de détails.</p>
+                </div>
             </div>
+
+            <div class="image-section">
+                <p style="font-style: italic;"><u>Page présentant les personnages appartenant à la faction 501E :</u>
+                </p>
+                <img src="image-projet/exemple-classement-perso.png" alt="Perso 501E">
+                <!-- 💡 Explication intégrée -->
+                    <div class="explication" style="margin-top:20px; padding:15px; background:#f5f5f5; color:#222; border-radius:8px;">
+                        <h3 style="margin-top:0; color: #111;">Explication du fonctionnement de la page</h3>
+                        <p>Cette page affiche tous les personnages possédant le <strong>tag 501E</strong> sous forme de cartes. Elle utilise <strong>Bootstrap 5</strong> pour le responsive et quelques scripts maison pour la traduction et l’interactivité :</p>
+                        <ul>
+                        <li><strong>Structure générale :</strong> un titre <code>&lt;h2&gt;</code> indiquant le tag, suivi d’un <code>.row</code> Bootstrap contenant plusieurs <code>.col</code> pour chaque personnage.</li>
+                        <li><strong>Cartes personnages :</strong> chaque <code>.unit-card</code> contient un lien vers la page détaillée, l’image du personnage et son nom.</li>
+                        <li><strong>Traduction dynamique :</strong> en haut, deux drapeaux permettent de basculer l’affichage entre français et anglais.  
+                            Un objet <code>translations</code> contient toutes les traductions et la fonction <strong>switchLanguage()</strong> remplace le texte des éléments dont l’<code>id</code> correspond.</li>
+                        <li><strong>Design :</strong> fond bleu sombre (<code>#031952</code>), texte blanc global, mais cartes en fond blanc avec ombre et hover.</li>
+                        <li><strong>Bouton Top :</strong> en bas, le bouton « Top » remonte en haut de la page via <code>scrollToTop()</code>.</li>
+                        </ul>
+                        <p>Cette mise en page permet d’afficher rapidement tous les personnages d’une faction en version mobile et desktop avec une traduction instantanée.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="image-section">
                 <p style="font-style: italic;"><u>Page de présentation d'un personnage :</u></p>
                 <img src="image-projet/perso-1.png" alt="Ahsoka page personnage">
@@ -181,8 +297,8 @@
                     texte en anglais et en français.
                     <br>
                 </p>
-                <h2><u>Fonctionnement et exemple de la fonction traduction</u></h2>
-                <a target="_blank" href="https://e-rimbault.github.io/swgoh-kit/html/ahsoka_tano.html"><img
+                <h2 style="color: black; background-color: white;"><u>Fonctionnement et exemple de la fonction traduction</u></h2>
+                <a style="background-color: white;" target="_blank" href="https://e-rimbault.github.io/swgoh-kit/html/ahsoka_tano.html"><img
                         src="image-projet/traduction.png" alt="Exemple traduction">Exemple de code de la fonction
                     traduction pour la page Ahsoka-tano.html</a>
                 <p>
@@ -240,12 +356,13 @@
         </div>
         <div style="display: flex; justify-content: center; margin-top: 20px;">
             <a href="../page/projets.html" style="text-decoration: none;">
-                <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                <button
+                    style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
                     ⬅ Retour au menu des projets
                 </button>
             </a>
         </div>
-        
+
 
     </div>
 </body>
