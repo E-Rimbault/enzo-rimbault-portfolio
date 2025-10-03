@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fonctionnement - Page d’accueil SWGOH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    background-color: #0b0f1a; /* fond uniforme très sombre */
+    color: #f5f5f5; /* texte principal */
+    font-family: 'Inter', Arial, sans-serif;
+  }
+
+  h1,
+  h2 {
+    color: #ffcc33;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .section {
+    background: #1c2331; /* fond légèrement plus clair pour les sections */
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+  }
+
+  .code-block {
+    background: #1e1e1e; /* fond très sombre pour le code */
+    color: #39ff14; /* texte vert fluo lisible */
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-x: auto;
+    word-break: break-word;
+  }
+
+  .code-block span {
+    color: #00ffff; /* optionnel pour certaines parties du code si besoin */
+  }
+
+
+  .btn-back {
+    background-color: #ffcc33;
+    color: #0b0f1a;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .btn-back:hover {
+    background-color: #e6b800;
+    color: #fff;
+  }
+
+  code {
+    background-color: #1e1e1e; /* fond sombre */
+    color: #00ffcc;            /* texte cyan clair, très lisible */
+    padding: 2px 6px;          /* petit padding pour détacher le texte du fond */
+    border-radius: 4px;        /* coins arrondis */
+    font-family: monospace;    /* police fixe pour le code */
+    font-size: 0.95em;         /* taille légèrement réduite pour s’intégrer au texte */
+    word-break: break-word;     /* permet au texte long de ne pas dépasser */
+}
+
+</style>
+
+</head>
+
+<body>
+  <div class="container py-5">
+
+    <!-- Titre -->
+    <h1><u>Fonctionnement de la page d’accueil</u></h1>
+
+    <!-- Présentation générale -->
+    <div class="section">
+      <h2>Présentation</h2>
+      <p>
+        La page d’accueil du site <strong>SWGOH Wiki</strong> a été conçue pour être immersive et intuitive.  
+        Elle combine un <strong>fond vidéo</strong>, un <strong>sélecteur de langue</strong> (français/anglais) et deux
+        sections principales : <strong>Personnages</strong> et <strong>Vaisseaux</strong>.  
+        C’est le point de départ vers le reste du contenu.
+      </p>
+    </div>
+
+    <!-- Vidéo de fond -->
+    <div class="section">
+      <h2>Vidéo de fond</h2>
+      <p>
+        La vidéo en arrière-plan est jouée en <em>autoplay</em>, sans son et en boucle pour créer une immersion visuelle
+        dans l’univers Star Wars.
+      </p>
+      <div class="code-block">
+        &lt;video autoplay muted loop&gt;<br>
+        &nbsp;&nbsp;&lt;source src="image/swgoh.mp4" type="video/mp4"&gt;<br>
+        &lt;/video&gt;
+      </div>
+    </div>
+
+    <!-- Sélecteur de langue -->
+    <div class="section">
+      <h2>Sélecteur de langue</h2>
+      <p>
+        Deux drapeaux permettent de basculer entre le <strong>français</strong> et l’<strong>anglais</strong>.  
+        Le contenu est traduit dynamiquement grâce à un <code>objet JavaScript</code> contenant toutes les traductions.
+      </p>
+      <div class="code-block">
+        const translations = {<br>
+        &nbsp;&nbsp;en: { title: "Star Wars galaxy of heroes website" },<br>
+        &nbsp;&nbsp;fr: { title: "Site Web Star Wars : Les Héros de la Galaxie" }<br>
+        };
+      </div>
+      <p>La fonction <code>switchLanguage()</code> met à jour le texte des éléments HTML via leur attribut <code>id</code>.
+      </p>
+    </div>
+
+    <!-- Sections principales -->
+    <div class="section">
+      <h2>Sections principales</h2>
+      <p>
+        Deux entrées sont proposées : <strong>Personnages</strong> et <strong>Vaisseaux</strong>.  
+        Elles redirigent respectivement vers les pages <code>filtre-personnage.html</code> et
+        <code>filtre-vaisseaux.html</code> pour explorer les unités.
+      </p>
+      <div class="code-block">
+        &lt;div class="main-sections"&gt;<br>
+        &nbsp;&nbsp;&lt;div class="section"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 id="Character"&gt;Character&lt;/h3&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="filtre-recherche/filtre-personnage.html" id="voir-perso"&gt;Character&lt;/a&gt;<br>
+        &nbsp;&nbsp;&lt;/div&gt;<br>
+        &nbsp;&nbsp;&lt;div class="section"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 id="ship"&gt;Ship&lt;/h3&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="filtre-recherche/filtre-vaisseaux.html" id="voir-vaisseau"&gt;Ship&lt;/a&gt;<br>
+        &nbsp;&nbsp;&lt;/div&gt;<br>
+        &lt;/div&gt;
+      </div>
+    </div>
+
+    <!-- Retour -->
+    <div class="text-center">
+      <a href="projet-swgoh-wiki.html" class="btn btn-back">⬅ Retour au projet</a>
+    </div>
+
+  </div>
+</body>
+</html>
