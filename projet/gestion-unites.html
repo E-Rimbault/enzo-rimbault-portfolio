@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de données - Personnages SWGOH</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #071428, #0b2540);
+            color: #e6f0ff;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: #ffcc33;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .code-block {
+            background: #111;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .img-placeholder {
+            display: block;
+            width: 80%;
+            margin: 15px auto;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        .btn-back {
+            background-color: #ffcc33;
+            color: #071428;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #e6b800;
+            color: #fff;
+        }
+
+        code {
+            background-color: #1e1e1e;
+            color: #00ffcc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1><u>Base de données - Personnages</u></h1>
+
+        <!-- Présentation de la base -->
+        <div class="section">
+            <h2>Présentation</h2>
+            <p>
+                La base de données centralise toutes les informations sur les personnages du jeu <em>Star Wars: Galaxy
+                    of Heroes</em>.
+                Elle permet de générer dynamiquement le fichier <code>units.json</code>, utilisé par la page de filtre
+                des unités.
+            </p>
+            <img src="image-projet/swgoh-bdd-accueil.jpg" alt="Base de données SWGOH" class="img-placeholder">
+            <br><br>
+            <p>page d'accueil permettant de choisir sur quelle base de données on va travailler entre la base de données
+                qui gère les unités ou les vaisseaux</p>
+        </div>
+
+        <!-- Section UML et tables SQL -->
+        <div class="section mt-4">
+            <h2>Diagramme UML et structure des tables</h2>
+
+            <!-- Diagramme UML -->
+            <p>
+                Le diagramme ci-dessous illustre les relations entre les tables de la base de données des unités
+                (personnages).
+                Chaque personnage peut appartenir à plusieurs factions, ce qui justifie la table d'association
+                <code>unit_factions</code>.
+            </p>
+            <div class="text-center">
+                <img src="image-projet/uml-swgoh-database.png" alt="Diagramme UML base units" class="img-placeholder">
+            </div>
+
+            <!-- Explication des tables -->
+            <p class="mt-3">
+                La base de données contient trois tables principales :
+            </p>
+            <ul>
+                <li>
+                    <strong>units</strong> : contient les informations de chaque personnage :
+                    <ul>
+                        <li><strong>id</strong> : identifiant unique</li>
+                        <li><strong>name-en / nom-fr</strong> : nom en anglais et en français</li>
+                        <li><strong>role / role-fr</strong> : rôle du personnage (attaquant, tank, soutien, soigneur)
+                        </li>
+                        <li><strong>alignment / alignment-fr</strong> : alignement (côté lumineux, obscur ou neutre)
+                        </li>
+                        <li><strong>page</strong> : lien vers la page détaillée</li>
+                        <li><strong>image</strong> : URL de l’image du personnage</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>factions</strong> : contient toutes les factions possibles :
+                    <ul>
+                        <li><strong>id</strong> : identifiant unique</li>
+                        <li><strong>name / nom-fr</strong> : nom de la faction en anglais et en français</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>unit_factions</strong> : table d’association entre unités et factions :
+                    <ul>
+                        <li><strong>unit_id</strong> : identifiant du personnage</li>
+                        <li><strong>faction_id</strong> : identifiant de la faction</li>
+                        <li>Permet de gérer les personnages appartenant à plusieurs factions</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Explication simple du fonctionnement -->
+            <p class="mt-3">
+                Lorsqu’une nouvelle unité est ajoutée à la base, elle est insérée dans la table <strong>units</strong>,
+                ses factions sont ajoutées dans <strong>factions</strong> si elles n’existent pas déjà, et les relations
+                sont créées dans <strong>unit_factions</strong>.
+                Cette structure permet de générer facilement le fichier <code>units.json</code> utilisé par la page de
+                filtrage des personnages.
+            </p>
+        </div>
+
+        <!-- Section Ajout de Factions -->
+        <div class="section mt-4">
+            <h2>Gestion des factions</h2>
+
+            <p>
+                Cette page permet de créer de nouvelles factions pour le jeu (par exemple : Jedi, Empire, Rebelles,
+                etc.) et de les ajouter à la base de données.
+                Elle utilise un formulaire PHP pour saisir le nom anglais et le nom français de la faction.
+            </p>
+
+            <!-- Capture d'écran -->
+            <div class="text-center">
+                <img src="image-projet/faction-bdd.jpg" alt="Page Ajout de faction" class="img-placeholder">
+            </div>
+
+            <!-- Explications -->
+            <h5 class="mt-3">Fonctionnement</h5>
+            <ul>
+                <li>Le formulaire à gauche permet d’entrer le <strong>nom anglais</strong> (obligatoire) et le
+                    <strong>nom français</strong> (optionnel) de la faction.</li>
+                <li>Le bouton <strong>Ajouter la faction</strong> envoie les données au serveur via PHP.</li>
+                <li>Si le nom anglais est vide, une erreur est affichée pour prévenir l’utilisateur.</li>
+                <li>Le côté droit de la page affiche toutes les factions existantes dans un tableau avec leurs noms
+                    anglais et français.</li>
+                <li>Chaque ajout est stocké dans la table <code>factions</code> de la base de données.</li>
+                <li>Après ajout réussi, l’utilisateur est redirigé sur la même page avec un message de succès.</li>
+            </ul>
+
+            <p class="mt-2">
+                Cette interface permet de maintenir facilement la liste des factions, qui sera ensuite utilisée par le
+                filtre des unités et vaisseaux pour générer dynamiquement les options de sélection.
+            </p>
+        </div>
+
+        <!-- Section Ajout d'unités -->
+        <div class="section mt-4">
+            <h2>Ajout / Modification d'une unité</h2>
+
+            <p>
+                Cette page permet de <strong>créer ou modifier une unité (personnage)</strong> dans la base de données.
+                Chaque unité contient plusieurs informations essentielles : ID unique, nom en anglais et français, rôle,
+                alignement, image, URL de page descriptive et factions associées.
+            </p>
+
+            <!-- Capture d'écran -->
+            <div class="text-center">
+                <img src="image-projet/swgoh-creation-unité.jpg" alt="Page Ajout d'unité" class="img-placeholder">
+            </div>
+
+            <!-- Explications -->
+            <h5 class="mt-3"><u>Fonctionnement du formulaire</u></h5>
+            <ul>
+                <li><strong>ID :</strong> identifiant unique de l'unité. Il est obligatoire et non modifiable lors de
+                    l'édition d'une unité existante.</li>
+                <br><br>
+                <li><strong>Nom anglais et Nom français :</strong> le nom anglais est la valeur principale utilisée pour
+                    les recherches et filtres. Le nom français est associé pour permettre l’affichage dans la langue
+                    locale du site.</li>
+                <br><br>
+                <li><strong>Rôle et Alignement :</strong>
+                    <ul>
+                        <li>Le rôle et l’alignement sont sélectionnés dans des listes déroulantes en anglais.</li>
+                        <li>Une traduction automatique est appliquée dans les champs français correspondants grâce à des
+                            dictionnaires pré-définis en JavaScript.</li>
+                        <li>Exemple : si l’utilisateur choisit le rôle <em>attacker</em>, le champ français est
+                            automatiquement rempli avec <em>attaquant</em>. Même principe pour les alignements :
+                            <em>lightside → côté lumineux</em>, <em>darkside → côté obscur</em>.</li>
+                        <li>Cette méthode garantit que toutes les unités ont leurs valeurs en anglais et en français
+                            cohérentes, ce qui est nécessaire pour le filtrage multilingue et l’affichage dynamique sur
+                            le site.</li>
+                    </ul>
+                </li>
+                <br><br>
+                <li><strong>Factions :</strong>
+                    <ul>
+                        <li>Chaque unité peut appartenir à plusieurs factions (Jedi, Sith, Empire, etc.).</li>
+                        <li>Les factions disponibles sont affichées sous forme de boutons cliquables. Cliquer dessus
+                            sélectionne ou désélectionne la faction.</li>
+                        <li>Les factions sélectionnées apparaissent sous forme de tags avec un bouton de suppression
+                            rapide.</li>
+                        <li>Le formulaire envoie ensuite les IDs de factions sélectionnées pour l’association dans la
+                            table <code>unit_factions</code>, qui permet de relier dynamiquement chaque unité à ses
+                            factions.</li>
+                        <li>Les noms anglais et français des factions sont stockés dans la base et utilisés pour
+                            l’affichage et les filtres multilingues.</li>
+                    </ul>
+                </li>
+                <br><br>
+                <li><strong>Page et Image :</strong> champs pour indiquer l’URL de la page descriptive et de l’image du
+                    personnage.</li>
+                <br><br>
+                <li><strong>Enregistrement :</strong>
+                    <ul>
+                        <li>Le formulaire vérifie que l’ID et le nom anglais sont remplis.</li>
+                        <li>Les données sont insérées ou mises à jour dans les tables <code>units</code> et
+                            <code>unit_factions</code> via PDO et des transactions SQL.</li>
+                        <li>Si une erreur survient lors de l’enregistrement, toutes les modifications sont annulées pour
+                            éviter des incohérences.</li>
+                        <li>Après un ajout ou une modification réussie, le formulaire est réinitialisé pour permettre un
+                            nouvel enregistrement.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="mt-2">
+                Grâce à cette interface, toutes les unités sont correctement stockées avec leurs traductions et
+                associations, ce qui permet ensuite d’alimenter les filtres dynamiques, l’affichage multilingue et la
+                génération du fichier JSON utilisé par le site.
+            </p>
+        </div>
+
+        <!-- Section Liste des unités -->
+        <div class="section mt-4">
+            <h2>Liste des unités enregistrées</h2>
+
+            <p>
+                Cette page affiche toutes les unités présentes dans la base de données avec leurs informations complètes
+                :
+                <strong>nom français et anglais, rôle, alignement, factions, image et lien vers la page
+                    descriptive</strong>.
+                Elle permet également de rechercher dynamiquement une unité et d’effectuer des actions rapides comme
+                modifier ou supprimer.
+            </p>
+
+            <!-- Capture d'écran -->
+            <div class="text-center">
+                <img src="image-projet/afficher-unité.jpg" alt="Exemple de liste d'unités" class="img-placeholder">
+                <p class="small mt-2">
+                    Exemple : affichage de <strong>Padawan Sabine Wren</strong> et <strong>Sabine Wren</strong> avec
+                    leurs factions et alignements.
+                </p>
+            </div>
+
+            <!-- Explications -->
+            <h5 class="mt-3">Fonctionnalités principales</h5>
+            <ul>
+                <li><strong>Recherche instantanée :</strong> le champ en haut de la page filtre toutes les cartes
+                    dynamiquement selon les noms, rôles, alignements et factions (FR et EN).</li>
+
+                <li><strong>Affichage en cartes :</strong> chaque unité est présentée dans une carte contenant :
+                    <ul>
+                        <li>Image et noms (FR en titre, EN en sous-titre)</li>
+                        <li>Rôle et alignement, avec traduction automatique affichée à côté du terme anglais</li>
+                        <li>Factions, affichées séparément en FR et EN sous forme de tags colorés</li>
+                        <li>Lien vers la page descriptive de l’unité si disponible</li>
+                        <li>Menu d’actions pour modifier ou supprimer l’unité</li>
+                    </ul>
+                </li>
+                <br><br>
+                <li><strong>Gestion des factions :</strong>
+                    <ul>
+                        <li>Les relations entre unités et factions sont gérées via la table <code>unit_factions</code>.
+                        </li>
+                        <li>Chaque carte récupère les factions associées à partir de cette table et affiche à la fois le
+                            nom français et anglais.</li>
+                    </ul>
+                </li>
+                <br><br>
+                <li><strong>Modification et suppression :</strong>
+                    <ul>
+                        <li>Le menu déroulant permet de modifier l’unité (ouvre le formulaire de modification) ou de la
+                            supprimer (avec confirmation).</li>
+                        <li>La suppression supprime d’abord les associations dans <code>unit_factions</code>, puis
+                            l’unité elle-même pour éviter les incohérences.</li>
+                    </ul>
+                </li>
+                <br><br>
+                <li><strong>Export JSON :</strong> un lien permet de télécharger le fichier JSON de toutes les unités,
+                    utilisé par le site pour l’affichage dynamique et les filtres multilingues.</li>
+            </ul>
+            <br>
+            <h5 class="mt-3">Exemple concret avec deux unités</h5><br><br>
+            <p>
+                <strong>Padawan Sabine Wren :</strong> rôle <em>attacker / attaquant</em>, alignement <em>lightside /
+                    côté lumineux</em>, factions : Mandalorien, Spectre, Utilisateur de la Force non aligné.
+                <br><br>
+                <strong>Sabine Wren :</strong> rôle <em>attacker / attaquant</em>, alignement <em>lightside / côté
+                    lumineux</em>, factions : Mandalorien, Phoenix, Rebelle.
+            </p>
+
+            <p>
+                Ces données sont automatiquement affichées dans les cartes avec leur image et lien vers la page
+                spécifique.
+                Le système garantit que les valeurs françaises et anglaises sont correctement associées pour chaque
+                rôle, alignement et faction, ce qui permet le filtrage multilingue et un affichage cohérent.
+            </p>
+        </div>
+
+        <!-- Section Génération du JSON -->
+        <div class="section mt-4">
+            <h2>Génération du fichier JSON</h2>
+
+            <p>
+                Ce script PHP permet de générer un fichier JSON contenant toutes les unités enregistrées dans la base de
+                données.
+                Chaque unité inclut les informations en <strong>anglais et français</strong> pour les champs nom, rôle,
+                alignement et factions.
+            </p>
+
+            <h5>Fonctionnement :</h5>
+            <ul>
+                <li><strong>Récupération des unités :</strong> les colonnes EN et FR sont sélectionnées depuis la table
+                    <code>units</code>.</li>
+                <li><strong>Récupération des factions :</strong> les relations sont extraites de la table
+                    <code>unit_factions</code> et jointes à la table <code>factions</code> pour obtenir les noms en EN
+                    et FR.</li>
+                <li><strong>Association des factions :</strong> chaque unité reçoit un tableau de factions associées
+                    avec leurs noms français et anglais.</li>
+                <li><strong>Tri des factions :</strong> certaines factions prioritaires (comme <em>Galactic Legend</em>,
+                    <em>Leader</em>, <em>Fleet Commander</em>) sont triées en tête. Les autres sont triées par ordre
+                    alphabétique en anglais.</li>
+                <li><strong>Format final :</strong> chaque unité est représentée sous la forme :
+                    <pre>
+{
+  "id": "unit_id",
+  "name": { "en": "...", "fr": "..." },
+  "role": { "en": "...", "fr": "..." },
+  "alignment": { "en": "...", "fr": "..." },
+  "factions": [ { "en": "...", "fr": "..." }, ... ],
+  "page": "...",
+  "image": "..."
+}
+      </pre>
+                </li>
+                <li><strong>Export :</strong> si le paramètre <code>?download=1</code> est présent dans l’URL, le
+                    fichier JSON est proposé en téléchargement. Sinon, le JSON est affiché directement dans le
+                    navigateur.</li>
+            </ul>
+
+            <h5>Exemple de sortie JSON :</h5>
+            <pre>
+[
+  {
+        "id": "padawan sabine wren",
+        "name": {
+            "en": "padawan sabine wren",
+            "fr": "padawan sabine wren"
+        },
+        "role": {
+            "en": "attacker",
+            "fr": "attaquant"
+        },
+        "alignment": {
+            "en": "lightside",
+            "fr": "côté lumineux"
+        },
+        "factions": [
+            {
+                "en": "mandalorian",
+                "fr": "mandalorien"
+            },
+            {
+                "en": "spectre",
+                "fr": "spectre"
+            },
+            {
+                "en": "unaligned force user",
+                "fr": "utilisateur de la force non aligné"
+            }
+        ],
+        "page": "https://e-rimbault.github.io/swgoh-kit/html/padawan-sabine.html",
+        "image": "https://e-rimbault.github.io/swgoh-kit/image-perso/padawin/sabine-image.png"
+    },
+  {
+        "id": "sabine wren",
+        "name": {
+            "en": "sabine wren",
+            "fr": "sabine wren"
+        },
+        "role": {
+            "en": "attacker",
+            "fr": "attaquant"
+        },
+        "alignment": {
+            "en": "lightside",
+            "fr": "côté lumineux"
+        },
+        "factions": [
+            {
+                "en": "mandalorian",
+                "fr": "mandalorien"
+            },
+            {
+                "en": "phoenix",
+                "fr": "phoenix"
+            },
+            {
+                "en": "rebel",
+                "fr": "rebelle"
+            }
+        ],
+        "page": "https://e-rimbault.github.io/swgoh-kit/html/sabine_wren.html",
+        "image": "https://e-rimbault.github.io/swgoh-kit/image-perso/sabine-wren/sabine-image.png"
+    },
+]
+  </pre>
+
+            <p>
+                Ce JSON constitue la base pour toutes les pages interactives du site, permettant d’afficher
+                dynamiquement les unités avec leurs traductions et factions.
+                Grâce à ce mécanisme, toutes les modifications effectuées dans l’interface d’administration se reflètent
+                automatiquement dans le fichier JSON.
+            </p>
+        </div>
+
+        <!-- Retour -->
+        <div class="text-center">
+            <a href="projet-swgoh-wiki.html" class="btn btn-back">⬅ Retour au projet</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

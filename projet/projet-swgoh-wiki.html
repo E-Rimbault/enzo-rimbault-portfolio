@@ -110,58 +110,74 @@
       </ul>
     </div>
 
-    <!-- Fonctionnalités -->
-    <div class="section">
-      <h2>Fonctionnalités</h2>
-      <p>Le site propose plusieurs outils pratiques pour les joueurs :</p>
-      <ul>
-        <li>🔍 <strong>Recherche instantanée</strong> d’une unité par nom, faction ou rôle.</li>
-        <li>📋 <strong>Affichage détaillé</strong> du kit de chaque personnage (capacités, effets, cooldowns, etc.).</li>
-        <li>📂 <strong>Classement dynamique</strong> par rôles et tags (Tank, Soigneur, Attaquant, etc.).</li>
-        <li>🧩 <strong>Filtres combinés</strong> pour trouver facilement des synergies (ex : Jedi + Soutien).</li>
-      </ul>
-    </div>
-  </div>
+    <!-- Grande section Explications -->
+    <div class="section mt-4">
+      <h2>Explications du projet</h2>
+      <div class="row g-4">
 
-  <!-- Nouvelle section - Présentation de la page d'accueil -->
-<div class="section mt-4">
-  <h2>Présentation de la page d’accueil</h2>
-  <div class="text-center">
-    <div class="card bg-dark text-light shadow-lg" style="border-radius: 12px; max-width: 600px; margin: 0 auto;">
-      <img src="image-projet/page-accueil.png" class="card-img-top" alt="Page d’accueil SWGOH" style="border-radius: 12px 12px 0 0;">
-      <div class="card-body">
-        <h5 class="card-title text-warning">Page d’accueil du site SWGOH</h5>
-        <p class="card-text">
-          Cette page est le point de départ du site.  
-          Elle propose un fond vidéo immersif, un sélecteur de langue dynamique (FR/EN)  
-          et deux entrées principales : <strong>Personnages</strong> et <strong>Vaisseaux</strong>.
-        </p>
-        <a href="accueil-swgoh.html" class="btn btn-site">📖 Voir le fonctionnement</a>
+        <!-- Carte - Page d'accueil -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/page-accueil.png" class="card-img-top" alt="Page d’accueil SWGOH" style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Page d’accueil</h5>
+              <p class="card-text">
+                Fond vidéo immersif, sélecteur de langue (FR/EN) et deux entrées principales :  
+                <strong>Personnages</strong> et <strong>Vaisseaux</strong>.
+              </p>
+              <a href="accueil-swgoh.html" class="btn btn-site">📖 Voir le fonctionnement</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte - Gestion unités & base -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/swgoh-bdd-accueil.jpg" class="card-img-top" alt="Gestion des unités" style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Gestion unités & Base de données</h5>
+              <p class="card-text">
+                Organisation centralisée des <strong>personnages</strong> et <strong>vaisseaux</strong> dans une base JSON/SQL.  
+                Une simple mise à jour des fichiers suffit pour actualiser le wiki.
+              </p>
+              <a href="gestion-unites.html" class="btn btn-site">📖 Voir l’organisation</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte - Lecture JSON -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/exemple-json.jpg" class="card-img-top" alt="Lecture JSON" style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Lecture des données JSON</h5>
+              <p class="card-text">
+                Les unités sont chargées via <code>units.json</code> ou <code>ship.json</code> (vaisseaux).  
+                Chaque entrée contient toutes les infos : ID, rôle, factions, image et lien détaillé.
+              </p>
+              <a href="filtre-unites.html" class="btn btn-site">📖 Voir les détails</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte - affichage des unités par faction -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/exemple-classement-perso.png" class="card-img-top" alt="Lecture JSON" style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Affichage des unités par faction</h5>
+              <p class="card-text">
+        Chaque page (comme <code>501E.html</code>) affiche automatiquement les unités appartenant à une faction donnée,
+        en utilisant le fichier <code>units.json</code>.  
+        Le contenu s’adapte dynamiquement à la langue choisie (anglais ou français).
+      </p>
+              <a href="explication-faction.html" class="btn btn-site">📖 Voir les détails</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
-<!-- Nouvelle section - Filtre des unités -->
-<div class="section mt-4">
-  <h2>Filtre des unités</h2>
-  <div class="text-center">
-    <div class="card bg-dark text-light shadow-lg" style="border-radius: 12px; max-width: 600px; margin: 0 auto;">
-      <img src="image-projet/projet-swgoh-filtre-personnage.png" class="card-img-top" alt="Filtre des unités SWGOH" style="border-radius: 12px 12px 0 0;">
-      <div class="card-body">
-        <h5 class="card-title text-warning">Page de filtre des personnages</h5>
-        <p class="card-text">
-          Cette page permet de filtrer tous les personnages selon :  
-          <strong>Factions, Rôle, Alignement</strong> ou via une <strong>recherche et tags personnalisés</strong>.  
-          La liste des personnages est générée dynamiquement à partir d’un fichier JSON.
-        </p>
-        <a href="filtre-unites.html" class="btn btn-site">📖 Voir le fonctionnement</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

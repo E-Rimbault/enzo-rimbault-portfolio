@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Documentation — Page de faction (501E)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rimbault Enzo">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #071428, #0b2540);
+            color: #e6f0ff;
+            font-family: 'Inter', Arial, sans-serif;
+            padding: 40px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffcc33;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        p,
+        li {
+            line-height: 1.6;
+            color: #dfe9ff;
+            font-size: 1.05em;
+        }
+
+        .code-block {
+            background-color: #0f1620;
+            color: #dfffe6;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.95em;
+            margin-top: 10px;
+            overflow-x: auto;
+            border-left: 4px solid #00ffcc;
+        }
+
+        code {
+            background-color: #1e1e1e;
+            color: #00ffcc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+        }
+
+        .screenshot {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 2px dashed #557aa3;
+            border-radius: 8px;
+            color: #a5bcd4;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .screenshot span {
+            opacity: 0.7;
+        }
+
+        ul {
+            margin-top: 1rem;
+        }
+
+        .highlight {
+            color: #00ffcc;
+            font-weight: bold;
+        }
+
+        .btn-back {
+      background-color: #ffcc33;
+      color: #071428;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #e6b800;
+      color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <h1 class="mb-4">Fonctionnement d’une page de faction — <span class="highlight">501E.html</span></h1>
+
+    <!-- SECTION 1 : Objectif de la page -->
+    <div class="section">
+        <h2>1. Objectif de la page</h2>
+
+        <p>
+            Chaque page de faction, comme <code>501E.html</code>, a pour but d’afficher la liste des personnages (ou
+            unités) appartenant à une faction spécifique du jeu
+            <strong>Star Wars Galaxy of Heroes</strong>.
+        </p>
+
+        <p>
+            Par exemple, la page <code>501E.html</code> affiche uniquement les unités liées à la faction
+            <strong>501E</strong> (ou <strong>501st</strong> en anglais).
+            Ces données ne sont pas écrites manuellement : elles sont automatiquement extraites depuis le fichier
+            <code>units.json</code>.
+        </p>
+
+        <div class="screenshot">
+            <img src="image-projet/exemple-classement-perso.png" class="card-img-top" alt="Lecture JSON"
+                style="border-radius: 12px 12px 0 0;">
+            <p>
+                Page
+                <a href="https://e-rimbault.github.io/swgoh-kit/classement-perso/501E.html" target="_blank"
+                    style="color:#00ffcc; text-decoration:none; font-weight:bold;">
+                    501E.html
+                </a>
+                qui permet d'y afficher toutes les unités ayant le tag
+                <code>501E</code> (ou <code>501st</code>).
+            </p>
+        </div>
+
+        <p>
+            Grâce à cette approche dynamique, la même structure HTML peut être réutilisée pour toutes les factions du
+            jeu
+            (Empire, Sith, Jedi, Rebelles, etc.), simplement en changeant le nom de la faction.
+        </p>
+    </div>
+
+    <!-- SECTION 2 : Chargement du JSON -->
+    <div class="section">
+        <h2>2. Récupération des unités depuis <code>units.json</code></h2>
+
+        <p>
+            Lors du chargement de la page, un script JavaScript utilise la fonction <code>fetch()</code> pour charger le
+            fichier
+            <code>units.json</code> qui contient la liste complète de toutes les unités disponibles dans le jeu.
+        </p>
+
+        <div class="code-block">
+            fetch("../filtre-recherche/units.json")
+            .then(response => response.json())
+            .then(data => {
+            allUnits = data; // Stocke toutes les unités du JSON
+            renderUnits(); // Lance l'affichage des unités filtrées
+            })
+            .catch(error => console.error("Erreur lors du chargement des unités :", error));
+        </div>
+
+        <div class="screenshot">
+            <img src="image-projet/501e-exemple-skywalker.png" class="card-img-top" alt="Lecture JSON"
+                style="border-radius: 12px 12px 0 0; width: 50%; height: 50%;">
+        </div>
+
+        <p>
+            Le fichier JSON contient pour chaque unité des informations multilingues :
+            <code>name</code>, <code>role</code>, <code>alignment</code>, <code>factions</code>, <code>image</code> et
+            <code>page</code>.
+        </p>
+
+        <p>
+            Cette entrée JSON représente l’unité <strong>General Skywalker</strong>.
+            Chaque champ a un rôle précis : <br>
+            - <code>id</code> : identifiant unique de l’unité. <br>
+            - <code>name</code> : noms en anglais (<em>en</em>) et français (<em>fr</em>). <br>
+            - <code>role</code> : rôle en combat, traduit en anglais et en français. <br>
+            - <code>alignment</code> : alignement de l’unité (côté lumineux, obscur ou neutre) avec traduction. <br>
+            - <code>factions</code> : liste des factions auxquelles l’unité appartient, chaque faction avec son nom
+            anglais et français. <br>
+            - <code>page</code> : lien vers la page détaillée de l’unité. <br>
+            - <code>image</code> : URL de l’image représentant l’unité. <br>
+            Ce format permet aux pages comme <a href="https://e-rimbault.github.io/swgoh-kit/classement-perso/501E.html"
+                target="_blank">501E.html</a>
+            d’afficher dynamiquement les unités et de gérer la langue selon la préférence de l’utilisateur.
+        </p>
+
+    </div>
+
+    <!-- SECTION 3 : Filtrage des unités -->
+    <div class="section">
+        <h2>3. Sélection des unités appartenant à la faction</h2>
+
+        <p>
+            Une fois toutes les unités chargées, le script filtre uniquement celles appartenant à la faction voulue.
+            Cela se fait grâce à la variable <code>factionKey</code> qui dépend de la langue active sur la page.
+        </p>
+
+        <div class="code-block">
+            const factionKey = currentLang === "fr" ? "501E" : "501st";
+        </div>
+
+        <p>
+            Cette clé est ensuite utilisée pour rechercher les unités qui contiennent cette faction dans leur liste :
+        </p>
+
+        <div class="code-block">
+            const factionUnits = allUnits.filter(unit =>
+            unit.factions &&
+            unit.factions.some(f => (f[currentLang] || f.en).toLowerCase() === factionKey.toLowerCase())
+            );
+        </div>
+
+        <ul>
+            <li><code>f[currentLang]</code> : récupère le nom de la faction dans la langue sélectionnée.</li>
+            <li><code>|| f.en</code> : utilise la version anglaise si la version française n’existe pas.</li>
+            <li><code>toLowerCase()</code> : rend la comparaison insensible à la casse.</li>
+            <li><code>some()</code> : vérifie si l’unité appartient à la faction recherchée.</li>
+        </ul>
+
+        <p>
+            Le résultat est une liste filtrée contenant uniquement les unités de la faction
+            <strong>501E / 501st</strong>, prêtes à être affichées sous forme de cartes.
+        </p>
+    </div>
+
+    <div class="section">
+  <h2>Comment les cartes d'unités sont créées ?</h2>
+  <p>
+    Chaque carte d'unité sur la page est générée dynamiquement en JavaScript à partir du fichier <code>units.json</code>. 
+    Le script parcourt la liste complète des unités et filtre celles appartenant à la faction sélectionnée (par exemple "501E" ou "501st").
+  </p>
+
+  <p>
+    Pour chaque unité filtrée, le script crée un élément HTML avec la structure suivante :
+  </p>
+
+  <ul>
+    <li><strong>Image de l'unité :</strong> <code>unit.image</code> est utilisé comme source de l'image. Si l'image est manquante, une image par défaut est affichée. Cette valeur ne change pas selon la langue.</li>
+    <li><strong>Nom de l'unité :</strong> le nom affiché dépend de la langue sélectionnée :
+      <ul>
+        <li><code>unit.name.en</code> si la page est en anglais</li>
+        <li><code>unit.name.fr</code> si la page est en français</li>
+      </ul>
+    </li>
+    <li><strong>Rôle et alignement :</strong> ces informations sont également traduites en fonction de la langue :
+      <ul>
+        <li>Rôle : <code>unit.role.en</code> ou <code>unit.role.fr</code></li>
+        <li>Alignement : <code>unit.alignment.en</code> ou <code>unit.alignment.fr</code></li>
+      </ul>
+    </li>
+    <li><strong>Factions :</strong> le nom de chaque faction est affiché selon la langue sélectionnée :
+      <ul>
+        <li><code>faction.en</code> si la page est en anglais</li>
+        <li><code>faction.fr</code> si la page est en français</li>
+      </ul>
+    </li>
+    <li><strong>Lien vers la page détaillée :</strong> <code>unit.page</code> — cette valeur reste identique quelle que soit la langue.</li>
+  </ul>
+
+  <p>
+    Le rendu visuel inclut des styles CSS pour arrondir les coins, ajouter des ombres et un effet au survol afin de rendre les cartes interactives et esthétiques.
+  </p>
+
+  <p>
+    Le code JavaScript principal pour la création des cartes se trouve dans la fonction <code>renderUnits()</code>, qui utilise <code>document.createElement</code> pour générer chaque carte dans le conteneur <code>#characters</code>.
+  </p>
+
+  <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <figure style="text-align: center;">
+    <img src="image-projet/fives-en.jpg" alt="CT-5555 Fives EN" style="max-width: 300px; border-radius: 8px;">
+    <figcaption>CT-5555 "Fives" — version anglaise dans <code>unit.json</code></figcaption>
+  </figure>
+
+  <figure style="text-align: center;">
+    <img src="image-projet/fives-fr.jpg" alt="CT-5555 Cinqs FR" style="max-width: 300px; border-radius: 8px;">
+    <figcaption>CT-5555 "Cinqs" — version française dans <code>unit.json</code></figcaption>
+  </figure>
+</div>
+
+<!-- SECTION 5 : Évolution et comparaison -->
+<div class="section">
+    <h2>5. Évolution de l'affichage des unités</h2>
+
+    <p>
+        L'affichage des unités d'une faction a évolué d'une ancienne version statique vers la nouvelle version dynamique
+        utilisant <code>units.json</code>. Voici une comparaison détaillée des deux approches :
+    </p>
+
+    <div style="overflow-x:auto; margin-top: 20px;">
+        <table class="table table-bordered table-striped text-light" style="width:100%; border-color: #ffcc33;">
+            <thead>
+                <tr style="background-color: rgba(255,204,51,0.2); color:#ffcc33;">
+                    <th>Critère</th>
+                    <th>Ancienne version</th>
+                    <th>Nouvelle version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Structure HTML</td>
+                    <td>
+                        Table statique avec balises <code>&lt;table&gt;</code> et <code>&lt;td&gt;</code> pour chaque unité.
+                    </td>
+                    <td>
+                        Conteneur <code>&lt;div&gt;</code et cartes générées dynamiquement via JavaScript.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dynamisme</td>
+                    <td>Unités codées directement dans le HTML. Toute modification nécessite une édition manuelle.</td>
+                    <td>Unités générées automatiquement depuis <code>units.json</code>. Modification centralisée et facile.</td>
+                </tr>
+                <tr>
+                    <td>Multilingue</td>
+                    <td>Nom des unités fixe (souvent seulement anglais ou français).</td>
+                    <td>Nom, rôle, alignement et factions changent selon la langue sélectionnée.</td>
+                </tr>
+                <tr>
+                    <td>Style et design</td>
+                    <td>Style minimal, table simple, texte sous les images.</td>
+                    <td>Cartes stylisées avec ombres, coins arrondis, effet hover, responsive et centrage automatique.</td>
+                </tr>
+                <tr>
+                    <td>Interactivité</td>
+                    <td>Pas d’interactivité. La page est purement statique.</td>
+                    <td>Cartes cliquables vers la page détaillée de l’unité, changement de langue dynamique.</td>
+                </tr>
+                <tr>
+                    <td>Filtrage</td>
+                    <td>Aucune possibilité de filtrage par faction ou rôle.</td>
+                    <td>Filtrage automatique par faction selon le JSON et la langue sélectionnée.</td>
+                </tr>
+                <tr>
+                    <td>Recherche</td>
+                    <td>Impossible de rechercher une unité sur la page.</td>
+                    <td>Recherche dynamique intégrée via JavaScript (ex: filtre par nom ou rôle).</td>
+                </tr>
+                <tr>
+                    <td>Accessibilité</td>
+                    <td>Images sans attributs alt cohérents, texte fixe uniquement.</td>
+                    <td>Images avec <code>alt</code> dynamiques selon l’unité, meilleure lisibilité et adaptation aux lecteurs d’écran.</td>
+                </tr>
+                <tr>
+                    <td>Gestion des images manquantes</td>
+                    <td>Si image manquante, la cellule reste vide ou l’affichage est cassé.</td>
+                    <td>Affichage d’une image par défaut si aucune image n’est fournie.</td>
+                </tr>
+                <tr>
+                    <td>Responsive design</td>
+                    <td>Table fixe, peu adaptée aux petits écrans.</td>
+                    <td>Cartes responsives avec <code>flexbox</code> et grille, adaptées à toutes les tailles d’écran.</td>
+                </tr>
+                <tr>
+                    <td>Maintenance et réutilisation</td>
+                    <td>Difficile à maintenir et à adapter pour d’autres factions.</td>
+                    <td>Facilement réutilisable pour n’importe quelle faction, juste en changeant le nom de la faction dans le script.</td>
+                </tr>
+                <tr>
+    <td>Exemple visuel</td>
+    <td>
+        <figure style="text-align:center;">
+            <img src="image-projet/old-501E-exemple.jpg" alt="Ancienne version" style="max-width:450px; border-radius:6px;">
+            <figcaption>Ancienne version statique (table)</figcaption>
+        </figure>
+    </td>
+    <td>
+        <figure style="text-align:center;">
+            <img src="image-projet/exemple-classement-perso.png" alt="Nouvelle version" style="max-width:450px; border-radius:6px;">
+            <figcaption>Nouvelle version dynamique (cartes)</figcaption>
+        </figure>
+    </td>
+</tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        Cette comparaison détaillée montre clairement les améliorations apportées avec la version actuelle : flexibilité, support multilingue complet, interactivité et design moderne.
+    </p>
+</div>
+
+<!-- Retour -->
+    <div class="text-center">
+      <a href="projet-swgoh-wiki.html" class="btn btn-back">⬅ Retour au projet</a>
+    </div>
+
+</div>
+</body>
+</html>
