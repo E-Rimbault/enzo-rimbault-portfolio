@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtre de Personnages - SWGOH</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #071428, #0b2540);
+            color: #e6f0ff;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: #ffcc33;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .img-placeholder {
+            display: block;
+            width: 80%;
+            margin: 15px auto;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        .btn-back {
+            background-color: #ffcc33;
+            color: #071428;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #e6b800;
+            color: #fff;
+        }
+
+        code {
+            background-color: #1e1e1e;
+            color: #00ffcc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+            word-break: break-word;
+        }
+
+        pre {
+            background: #111;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1><u>Page de filtrage des personnages - SWGOH</u></h1>
+
+        <!-- Présentation générale -->
+        <div class="section">
+            <h2>Présentation</h2>
+            <p>
+                Cette page interactive permet de <strong>filtrer, rechercher et afficher dynamiquement</strong> les
+                personnages du jeu
+                <em>Star Wars: Galaxy of Heroes</em> à partir du fichier <code>units.json</code> généré par la base de
+                données.
+            </p>
+            <p>
+                Elle offre un système de tri complet basé sur les <strong>factions</strong>, <strong>rôles</strong>,
+                <strong>alignements</strong>,
+                ainsi qu’une recherche en texte libre et par <strong>tags personnalisés</strong>.
+            </p>
+            <img src="image-projet/filtre-personnage-swgoh.png" alt="Page de filtrage SWGOH" class="img-placeholder">
+            <p class="mt-3 text-center">
+                Interface principale du filtre : à gauche les filtres, à droite les résultats.
+            </p>
+        </div>
+
+        <!-- Structure de la page -->
+        <div class="section">
+            <h2>Structure générale</h2>
+            <p>
+                La page est divisée en deux grandes zones :
+            </p>
+            <ul>
+                <li><strong>La barre latérale (gauche)</strong> : contient les différents filtres et outils de
+                    recherche.</li>
+                <li><strong>Le contenu principal (droite)</strong> : affiche dynamiquement les cartes des personnages
+                    correspondant aux critères.</li>
+            </ul>
+
+            <p>
+                L’ensemble est géré en JavaScript pur et met à jour l’affichage sans recharger la page, grâce à la
+                manipulation du DOM.
+            </p>
+        </div>
+
+        <!-- Filtres et interface -->
+        <div class="section">
+            <h2>Interface des filtres</h2>
+
+            <p>
+                Les filtres sont regroupés dans des boîtes distinctes (<code>.filter-box</code>) et permettent de
+                combiner plusieurs critères :
+            </p>
+
+            <ul>
+                <li><strong>Factions :</strong> générées automatiquement à partir des données du JSON.</li>
+                <li><strong>Rôle et Alignement :</strong> sélectionnables via des listes déroulantes (en anglais et
+                    français).</li>
+                <li><strong>Recherche :</strong> champ texte pour filtrer par nom de personnage.</li>
+                <li><strong>Tags personnalisés :</strong> possibilité d’ajouter plusieurs tags pour combiner plusieurs
+                    filtres rapidement.</li>
+                <li><strong>Bouton de réinitialisation :</strong> permet d’effacer tous les filtres actifs.</li>
+            </ul>
+
+            <p class="mt-3">
+                Chaque changement de filtre déclenche une fonction JavaScript (<code>applyFilters()</code>) qui
+                reconstruit dynamiquement
+                la liste des cartes affichées à droite.
+            </p>
+        </div>
+
+        <!-- Gestion du JSON -->
+        <div class="section">
+            <h2>Chargement des données JSON</h2>
+            <p>
+                Les informations affichées sont chargées depuis le fichier <code>units.json</code>, généré par la base
+                de données d’administration.
+            </p>
+            <p>
+                Le chargement s’effectue via la fonction suivante :
+            </p>
+
+            <pre>
+fetch("units.json")
+  .then(res => res.json())
+  .then(data => {
+    characters = data;
+    applyLanguageOnLoad(); // Application automatique de la langue
+  })
+  .catch(err => console.error("Erreur de chargement du JSON :", err));
+      </pre>
+
+            <p>
+                Chaque personnage est ensuite traité pour extraire son <strong>nom</strong>, <strong>rôle</strong>,
+                <strong>alignement</strong> et <strong>liste de factions</strong>.
+            </p>
+
+            <img src="image-projet/exemple-json.jpg" alt="Exemple de chargement JSON" class="img-placeholder">
+        </div>
+
+        <!-- Gestion multilingue -->
+        <div class="section">
+            <h2>Gestion multilingue (Français / Anglais)</h2>
+            <p>
+                Le système propose un <strong>basculement instantané entre le français et l’anglais</strong> grâce à
+                deux drapeaux situés en haut de la barre latérale.
+            </p>
+
+            <ul>
+                <li>Le choix de langue est enregistré dans <code>sessionStorage</code> pour persister entre les pages.
+                </li>
+                <li>Le texte statique (titres, boutons, placeholders) est mis à jour par la fonction
+                    <code>updateStaticText()</code>.</li>
+                <li>Les noms des personnages, rôles, alignements et factions sont affichés dans la langue sélectionnée.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Recherche et tags -->
+        <div class="section">
+            <h2>Recherche et système de tags</h2>
+
+            <p>
+                L’utilisateur peut rechercher un personnage en tapant son nom ou en ajoutant des <strong>tags
+                    personnalisés</strong>
+                (ex. : “rebelle”, “tank”, “lightside”…).
+            </p>
+            <p>
+                Les tags peuvent correspondre à :
+            </p>
+            <ul>
+                <li>Une <strong>faction</strong></li>
+                <li>Un <strong>rôle</strong></li>
+                <li>Un <strong>alignement</strong></li>
+                <li>Une partie du nom du personnage</li>
+            </ul>
+
+            <p>
+                Chaque tag ajouté est affiché en haut de la zone de résultats sous forme de <code>badge</code>
+                cliquable.
+                Cliquer dessus permet de le supprimer instantanément et de rafraîchir les résultats.
+            </p>
+
+        </div>
+
+        <!-- Affichage des résultats -->
+        <div class="section">
+            <h2>Affichage des résultats</h2>
+
+            <p>
+                Les personnages correspondant aux critères sont affichés sous forme de <strong>cartes
+                    dynamiques</strong>.
+            </p>
+
+            <ul>
+                <li>Chaque carte affiche :
+                    <ul>
+                        <li>l’image du personnage</li>
+                        <li>son nom (langue sélectionnée)</li>
+                        <li>son identifiant interne (<code>id</code>)</li>
+                        <li>son rôle, alignement et factions</li>
+                        <li>un bouton <strong>Détails</strong> menant vers la page descriptive</li>
+                    </ul>
+                </li>
+                <li>Le tri des factions est effectué en fonction de leur priorité :
+                    <code>Galactic Legend → Leader → Fleet Commander → autres</code>.
+                </li>
+            </ul>
+
+            <img src="image-projet/tri-bad-batch.jpg" alt="Exemple de chargement JSON" class="img-placeholder">
+            <p>Ici, on peut voir qu'avec le filtrage <strong>Factions : bad batd</strong> avec le <strong> Rôle :
+                    attacker</strong> et l'<strong>Alignement : Light Side</strong> On obtient 4 unité qui correspondent
+                à ce filtrage : Batcher / Crosshair (Scarred) / Hunter et Omega</p>
+
+            <p>
+                Si aucun personnage ne correspond, un message <em>“Aucun personnage trouvé”</em> (ou “No characters
+                found”) s’affiche selon la langue active.
+            </p>
+        </div>
+
+        <!-- Fonctionnement global -->
+        <div class="section">
+            <h2>Fonctionnement global</h2>
+
+            <p>
+                Le processus global de filtrage fonctionne selon les étapes suivantes :
+            </p>
+            <ol>
+                <li>Chargement du fichier <code>units.json</code></li>
+                <li>Application automatique de la langue en cours</li>
+                <li>Génération dynamique des filtres de factions</li>
+                <li>Application des filtres actifs via <code>applyFilters()</code></li>
+                <li>Affichage ou mise à jour des cartes dans la zone principale</li>
+            </ol>
+
+            <p>
+                Tout se fait côté client (front-end) sans rechargement de page ni interaction directe avec la base SQL.
+                Les performances sont assurées par la structure optimisée du fichier JSON.
+            </p>
+        </div>
+
+        
+        <!-- Comparaison et évolution -->
+<div class="section">
+    <h2>Comparaison et évolution du système de filtrage</h2>
+
+    <p>
+        Le système actuel de filtrage des personnages représente la <strong>version finale et la plus aboutie</strong> du projet <em>SWGOH Kit</em>.
+        Il a été conçu après plusieurs itérations et réflexions sur la manière d’afficher, trier et rechercher efficacement les unités du jeu.
+        Avant cette version dynamique, une <strong>ancienne version statique</strong> avait été réalisée : elle reposait sur une simple table HTML contenant manuellement les liens vers les pages de chaque faction.
+    </p>
+
+    <p>
+        Cette version initiale, bien que fonctionnelle, posait des limites évidentes en matière d’évolutivité et d’automatisation.
+        Le passage à la version actuelle marque une <strong>transition majeure entre une approche manuelle et une approche orientée données</strong>, où les informations sont chargées automatiquement depuis un fichier JSON.
+    </p>
+
+    <p class="mt-3 text-center fst-italic">
+        Le tableau suivant illustre les principales <strong>différences, évolutions, avantages et inconvénients</strong> entre ces deux approches.
+    </p>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-dark table-striped align-middle text-center">
+            <thead>
+                <tr style="background-color:#ffcc33; color:#071428;">
+                    <th>Critère</th>
+                    <th>Ancienne version (statique)</th>
+                    <th>Nouvelle version (dynamique)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Structure générale</strong></td>
+                    <td>
+                        La page reposait sur un grand tableau HTML dans lequel <strong>chaque lien vers une faction était écrit manuellement</strong>.
+                        La structure était simple mais figée : toute modification (nouvelle faction, changement de nom, ajout d’un rôle)
+                        nécessitait d’éditer directement le code source.
+                        <br><br>
+                        🔗 <a href="../projet/swgoh-ancienne-version/filtre-personnage.html" target="_blank">Voir l’ancienne version</a>
+                    </td>
+                    <td>
+                        L’interface est désormais <strong>générée automatiquement via JavaScript</strong> à partir d’un fichier JSON
+                        (<code>units.json</code>) contenant la liste complète des personnages et de leurs attributs.
+                        Cela permet d’ajouter ou de modifier des données sans toucher au code HTML.
+                        <br><br>
+                        🔗 <a href="https://e-rimbault.github.io/swgoh-kit/filtre-recherche/filtre-personnage.html" target="_blank">Voir la version actuelle</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Gestion des données</strong></td>
+                    <td>
+                        Les catégories et factions étaient <strong>écrites en dur dans le code</strong>.  
+                        Le fichier n’était qu’un assemblage de liens HTML, sans logique de traitement ou de filtrage.
+                        L’ajout d’une faction impliquait de copier une ligne entière de code.
+                    </td>
+                    <td>
+                        Les données sont <strong>chargées dynamiquement</strong> depuis un fichier JSON centralisé.
+                        Le JavaScript lit les propriétés des personnages et crée automatiquement les filtres correspondants.
+                        Ainsi, le système est <strong>entièrement automatisé et réactif aux nouvelles données</strong>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Interactivité</strong></td>
+                    <td>
+                        Le tableau offrait uniquement des <strong>liens statiques</strong> : cliquer sur une faction redirigeait vers une autre page.
+                        Aucun filtrage en temps réel, aucune recherche instantanée, et aucune interaction dynamique avec le contenu.
+                    </td>
+                    <td>
+                        L’interface actuelle est hautement <strong>interactive et intuitive</strong> :
+                        elle permet un filtrage instantané selon plusieurs critères (faction, rôle, alignement, etc.),
+                        une recherche textuelle, et l’affichage simultané de plusieurs filtres combinés.
+                        Tout cela s’effectue <strong>sans rechargement de la page</strong>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Langues disponibles</strong></td>
+                    <td>
+                        L’ancienne version était uniquement <strong>disponible en français</strong>.
+                        Aucun système multilingue n’était prévu, ce qui limitait l’accessibilité du projet.
+                    </td>
+                    <td>
+                        La version actuelle introduit un <strong>système bilingue complet (FR / EN)</strong> avec détection automatique
+                        de la langue de l’utilisateur et mémorisation du choix via <code>sessionStorage</code>.
+                        Cela rend l’application plus accessible et plus professionnelle.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Maintenance et évolutivité</strong></td>
+                    <td>
+                        Toute mise à jour demandait de <strong>modifier manuellement le code HTML</strong>.
+                        Cela entraînait un fort risque d’erreur humaine et un travail répétitif.
+                    </td>
+                    <td>
+                        Grâce à la structure modulaire du code et à la séparation des données dans le JSON,
+                        les mises à jour se font automatiquement.
+                        Le développeur peut <strong>ajouter une unité dans le JSON</strong> et la voir apparaître instantanément dans le filtre.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Design et accessibilité</strong></td>
+                    <td>
+                        L’interface était fonctionnelle mais basique : fond noir, tableau centré, peu d’adaptabilité mobile.
+                        Le design n’était pas homogène avec le reste du site.
+                    </td>
+                    <td>
+                        Le design actuel reprend la <strong>charte graphique principale du projet</strong> :
+                        fond bleu nuit, titres dorés et interface responsive.
+                        Le tout est géré avec <strong>Bootstrap</strong> et <strong>Flexbox</strong> pour une compatibilité sur tous les écrans.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Performance et chargement</strong></td>
+                    <td>
+                        Le chargement était immédiat mais le fichier HTML était très lourd (plus de 200 lignes).
+                        Aucun traitement ou optimisation côté client.
+                    </td>
+                    <td>
+                        Le chargement initial lit le fichier JSON, ce qui prend un peu plus de temps,
+                        mais une fois chargé, le <strong>filtrage et l’affichage sont instantanés</strong>.
+                        Le code HTML est allégé et déporté vers du JavaScript plus efficace.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Avantages principaux</strong></td>
+                    <td>
+                        - Facile à comprendre pour un débutant.<br>
+                        - Fonctionne sans dépendance externe (ni JS, ni JSON).<br>
+                        - Bon point de départ pour une maquette statique.
+                    </td>
+                    <td>
+                        - Complètement automatisée et évolutive.<br>
+                        - Expérience utilisateur fluide et moderne.<br>
+                        - Maintenance centralisée via le JSON.<br>
+                        - Parfaite démonstration de développement front-end dynamique.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Inconvénients principaux</strong></td>
+                    <td>
+                        - Très peu flexible et chronophage à mettre à jour.<br>
+                        - Risque élevé d’erreurs lors des modifications.<br>
+                        - Aucune interactivité ni adaptation mobile.
+                    </td>
+                    <td>
+                        - Dépendance à la structure JSON (toute erreur bloque le chargement).<br>
+                        - Requiert de bonnes notions de JavaScript et DOM.<br>
+                        - Légèrement plus long à charger lors de la première ouverture.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="mt-4">
+        En résumé, cette évolution illustre parfaitement le <strong>progrès technique et méthodologique</strong> du projet :
+        le passage d’une simple page statique à une <strong>application web dynamique</strong>,
+        capable d’adapter son contenu automatiquement à partir de données structurées.
+        Cela démontre une <strong>maîtrise des outils modernes du développement web front-end</strong> :
+        JavaScript, JSON, Bootstrap et DOM dynamique.
+    </p>
+</div>
+
+
+        <!-- Retour -->
+        <div class="text-center">
+            <a href="projet-swgoh-wiki.html" class="btn btn-back">⬅ Retour au projet</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

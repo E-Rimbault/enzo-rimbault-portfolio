@@ -78,8 +78,9 @@
     <div class="section">
       <h2>Description</h2>
       <p>
-        Ce projet est un <strong>wiki interactif</strong> dédié au jeu <em>Star Wars: Galaxy of Heroes</em>.  
-        Il regroupe toutes les informations sur les <strong>personnages</strong> et les <strong>vaisseaux</strong> : compétences, rôles, factions et alignements.  
+        Ce projet est un <strong>wiki interactif</strong> dédié au jeu <em>Star Wars: Galaxy of Heroes</em>.
+        Il regroupe toutes les informations sur les <strong>personnages</strong> et les <strong>vaisseaux</strong> :
+        compétences, rôles, factions et alignements.
         <br><br>
         L’objectif principal est de fournir une ressource claire et facilement navigable grâce à un système de
         <strong>catégorisation</strong> (par factions comme Jedi, Empire, Rebelles, etc. ou par rôles comme Tank,
@@ -100,7 +101,8 @@
           <strong>CSS :</strong> mise en forme et personnalisation visuelle (couleurs, polices, responsive).
         </li>
         <li class="d-flex align-items-center mb-2">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            alt="JavaScript">
           <strong>JavaScript :</strong> interactivité (filtres, navigation dynamique, événements).
         </li>
         <li class="d-flex align-items-center">
@@ -118,11 +120,12 @@
         <!-- Carte - Page d'accueil -->
         <div class="col-md-4">
           <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
-            <img src="image-projet/page-accueil.png" class="card-img-top" alt="Page d’accueil SWGOH" style="border-radius: 12px 12px 0 0;">
+            <img src="image-projet/page-accueil.png" class="card-img-top" alt="Page d’accueil SWGOH"
+              style="border-radius: 12px 12px 0 0;">
             <div class="card-body">
               <h5 class="card-title text-warning">Page d’accueil</h5>
               <p class="card-text">
-                Fond vidéo immersif, sélecteur de langue (FR/EN) et deux entrées principales :  
+                Fond vidéo immersif, sélecteur de langue (FR/EN) et deux entrées principales :
                 <strong>Personnages</strong> et <strong>Vaisseaux</strong>.
               </p>
               <a href="accueil-swgoh.html" class="btn btn-site">📖 Voir le fonctionnement</a>
@@ -133,11 +136,13 @@
         <!-- Carte - Gestion unités & base -->
         <div class="col-md-4">
           <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
-            <img src="image-projet/swgoh-bdd-accueil.jpg" class="card-img-top" alt="Gestion des unités" style="border-radius: 12px 12px 0 0;">
+            <img src="image-projet/swgoh-bdd-accueil.jpg" class="card-img-top" alt="Gestion des unités"
+              style="border-radius: 12px 12px 0 0;">
             <div class="card-body">
               <h5 class="card-title text-warning">Gestion unités & Base de données</h5>
               <p class="card-text">
-                Organisation centralisée des <strong>personnages</strong> et <strong>vaisseaux</strong> dans une base JSON/SQL.  
+                Organisation centralisée des <strong>personnages</strong> et <strong>vaisseaux</strong> dans une base
+                JSON/SQL.
                 Une simple mise à jour des fichiers suffit pour actualiser le wiki.
               </p>
               <a href="gestion-unites.html" class="btn btn-site">📖 Voir l’organisation</a>
@@ -148,11 +153,12 @@
         <!-- Carte - Lecture JSON -->
         <div class="col-md-4">
           <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
-            <img src="image-projet/exemple-json.jpg" class="card-img-top" alt="Lecture JSON" style="border-radius: 12px 12px 0 0;">
+            <img src="image-projet/exemple-json.jpg" class="card-img-top" alt="Lecture JSON"
+              style="border-radius: 12px 12px 0 0;">
             <div class="card-body">
               <h5 class="card-title text-warning">Lecture des données JSON</h5>
               <p class="card-text">
-                Les unités sont chargées via <code>units.json</code> ou <code>ship.json</code> (vaisseaux).  
+                Les unités sont chargées via <code>units.json</code> ou <code>ship.json</code> (vaisseaux).
                 Chaque entrée contient toutes les infos : ID, rôle, factions, image et lien détaillé.
               </p>
               <a href="filtre-unites.html" class="btn btn-site">📖 Voir les détails</a>
@@ -160,21 +166,59 @@
           </div>
         </div>
 
+        <!-- Carte - Filtrage des personnages -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/filtre-personnage-swgoh.png" class="card-img-top" alt="Filtrage des personnages"
+              style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Filtrage des personnages</h5>
+              <p class="card-text">
+                Système de recherche avancé permettant de filtrer les unités selon plusieurs critères :
+                <strong>faction</strong>, <strong>rôle</strong>, <strong>alignement</strong> ou <strong>nom</strong>.
+                L’interface s’adapte automatiquement aux données du fichier <code>units.json</code> et à la langue de
+                l’utilisateur.
+              </p>
+              <a href="filtre-personnage-explicatif.html" class="btn btn-site">📖 Voir les explications</a>
+            </div>
+          </div>
+        </div>
+
         <!-- Carte - affichage des unités par faction -->
         <div class="col-md-4">
           <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
-            <img src="image-projet/exemple-classement-perso.png" class="card-img-top" alt="Lecture JSON" style="border-radius: 12px 12px 0 0;">
+            <img src="image-projet/exemple-classement-perso.png" class="card-img-top" alt="Lecture JSON"
+              style="border-radius: 12px 12px 0 0;">
             <div class="card-body">
               <h5 class="card-title text-warning">Affichage des unités par faction</h5>
               <p class="card-text">
-        Chaque page (comme <code>501E.html</code>) affiche automatiquement les unités appartenant à une faction donnée,
-        en utilisant le fichier <code>units.json</code>.  
-        Le contenu s’adapte dynamiquement à la langue choisie (anglais ou français).
-      </p>
+                Chaque page (comme <code>501E.html</code>) affiche automatiquement les unités appartenant à une faction
+                donnée,
+                en utilisant le fichier <code>units.json</code>.
+                Le contenu s’adapte dynamiquement à la langue choisie (anglais ou français).
+              </p>
               <a href="explication-faction.html" class="btn btn-site">📖 Voir les détails</a>
             </div>
           </div>
         </div>
+
+        <!-- Carte - Page unité -->
+        <div class="col-md-4">
+          <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+            <img src="image-projet/perso-2.png" class="card-img-top" alt="Page unité SWGOH"
+              style="border-radius: 12px 12px 0 0;">
+            <div class="card-body">
+              <h5 class="card-title text-warning">Page unité</h5>
+              <p class="card-text">
+                Chaque unité (comme <strong>Dark Vador</strong> ou <strong>Rey</strong>) possède sa propre page dédiée
+                affichant ses statistiques, compétences et synergies.  
+                Les données sont extraites directement du fichier JSON pour rester toujours à jour.
+              </p>
+              <a href="unite-explicatif.html" class="btn btn-site">📖 Voir une unité</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

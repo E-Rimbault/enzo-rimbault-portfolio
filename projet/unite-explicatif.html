@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explication complète – Page d’unité | Projet SWGOH Wiki</title>
+    <link rel="icon" type="image/png" href="../image/star-wars-projet-swgoh.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #071428, #0b2540);
+            color: #e6f0ff;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: #ffcc33;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: #ffd966;
+            margin-top: 1.5rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .btn-site {
+            background-color: #ffcc33;
+            color: #071428;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .btn-site:hover {
+            background-color: #e6b800;
+            color: #fff;
+        }
+
+        img {
+            border-radius: 12px;
+            margin-top: 1rem;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        pre {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 10px;
+            color: #cce7ff;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #ffd966;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1><u>Explication complète d’une page d’unité</u></h1>
+
+        <!-- SECTION 1 : Introduction -->
+        <div class="section">
+            <h2>1. Présentation générale</h2>
+            <p>
+                Chaque page d’unité du projet <strong>SWGOH Wiki</strong> est une fiche détaillée présentant un
+                <strong>personnage</strong> ou un <strong>vaisseau</strong> du jeu <em>Star Wars: Galaxy of Heroes</em>.
+                Ces pages sont entièrement construites en <strong>HTML, CSS et JavaScript</strong>, et peuvent être
+                traduites
+                dynamiquement en français ou en anglais.
+            </p>
+
+            <p>
+                L’objectif principal est d’offrir une expérience utilisateur claire et immersive : visuel de l’unité,
+                affichage
+                des capacités, description détaillée, et liens vers les factions et catégories correspondantes.
+            </p>
+                <a href="https://e-rimbault.github.io/swgoh-kit/html/ahsoka_tano.html" target="_blank">
+                <button style="
+                    background-color: #4B0082;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 1rem;
+                ">
+                    Voir la page Ahsoka
+                </button>
+                </a>
+
+        </div>
+
+        <!-- SECTION 2 : Structure HTML -->
+        <div class="section">
+            <h2>2. Structure HTML détaillée</h2>
+            <p>
+                Chaque page suit une structure fixe et réutilisable, divisée en plusieurs blocs fonctionnels :
+            </p>
+
+            <ul>
+                <li><strong>En-tête :</strong> nom du personnage, image principale, rôle et factions.</li>
+                <li><strong>Bloc de présentation :</strong> résumé des caractéristiques de base.</li>
+                <li><strong>Bloc des capacités :</strong> liste complète des attaques et aptitudes.</li>
+                <li><strong>Footer :</strong> scripts JavaScript et boutons de navigation.</li>
+            </ul>
+
+            <h3>Exemple de structure simplifiée :</h3>
+            <pre><code>&lt;div class="container"&gt;
+  &lt;header&gt;
+    &lt;h1 id="title"&gt;Ahsoka Tano (Snips)&lt;/h1&gt;
+    &lt;img src="image/ahsoka.png" alt="Ahsoka Tano"&gt;
+  &lt;/header&gt;
+
+  &lt;section id="description"&gt;
+    Versatile Attacker who constantly assists allies...
+  &lt;/section&gt;
+
+  &lt;section class="abilities"&gt;
+    &lt;h2&gt;Capacités&lt;/h2&gt;
+    &lt;div class="ability" id="basic"&gt;...&lt;/div&gt;
+    &lt;div class="ability" id="special"&gt;...&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+
+            <img src="image-projet/perso-1.png" alt="Structure de l’en-tête d’une unité">
+            <p>En-tête de l'unité Ahsoka Tano (Snips) avec éléments textes comme son <strong>Nom</strong> et une
+                <strong>description de l'unité</strong> suivi d'un système de navigation contenue dans une balise
+                <strong>&lt;nav&gt;&lt;/nav&gt;</strong> qui contient l'ensemble des factions de l'unité et qui permet
+                de rédiriger l'utilisateur vers les pages de factions associés</p>
+            <p>
+                Voici en exemple le code de l'ensemble de la balise <strong>Nav</strong> pour l'unité <strong>Ahsoka
+                    Tano (Snips)</strong> :
+            </p>
+
+            <pre><code>
+&lt;nav class="perso" style="font-size: 20px;"&gt;
+    &lt;a class="capacite" style="color:blue !important" href="../classement-perso/coté-lumineux.html" id="lightSide"&gt;Light Side&lt;/a&gt;
+    &lt;a class="class" href="../classement-perso/attaquant.html" id="attacker"&gt;Attacker&lt;/a&gt;
+    &lt;a class="capacite" href="../classement-perso/chef.html" id="leader"&gt;Leader&lt;/a&gt;
+    &lt;a class="capacite" href="../classement-perso/501E.html" id="501e"&gt;501ST&lt;/a&gt;
+    &lt;a class="capacite" href="../classement-perso/république-galactique.html" id="Galactic-Republic"&gt;Galactic Republic&lt;/a&gt;
+    &lt;a class="capacite" href="../classement-perso/jedi.html" id="jedi"&gt;Jedi&lt;/a&gt;
+    &lt;a class="pilote" href="../classement-perso/membres-équipages.html" id="crew-members"&gt;Crew Members&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+
+            <p>
+                <strong>Explication du fonctionnement :</strong><br>
+                La balise <code>&lt;nav&gt;</code> sert à créer un bloc de navigation spécifique pour l’unité.
+                Chaque lien <code>&lt;a&gt;</code> représente une catégorie ou un attribut de l’unité, permettant à
+                l’utilisateur de naviguer vers les pages correspondantes :
+            </p>
+            <ul>
+                <li><strong>Light Side</strong> : indique l’alignement de l’unité et redirige vers la page du côté
+                    lumineux. <a href="https://e-rimbault.github.io/swgoh-kit/classement-perso/cot%C3%A9-lumineux.html" target="_blank">Page coté lumineux</a></li>
+                <li><strong>Attacker</strong> : indique le rôle de l’unité (ici attaquant) et redirige vers la page des
+                    attaquants.</li>
+                <li><strong>Leader</strong> : si l’unité peut être chef d’équipe, le lien mène vers la page des chefs.
+                </li>
+                <li><strong>501ST</strong> : indique une affiliation spéciale (faction), redirige vers la page
+                    correspondante.</li>
+                <li><strong>Galactic Republic</strong> : faction principale de l’unité, lien vers la page de la
+                    République Galactique.</li>
+                <li><strong>Jedi</strong> : classe ou catégorie de l’unité, ici Jedi.</li>
+                <li><strong>Crew Members</strong> : si l’unité peut piloter ou faire partie d’un équipage, lien vers la
+                    page des membres d’équipage.</li>
+            </ul>
+
+            <p>
+                Chaque lien utilise un <code>id</code> unique, ce qui permet au JavaScript de changer le texte ou la
+                langue dynamiquement.
+                Les classes (<code>capacite</code>, <code>class</code>, <code>pilote</code>) servent à appliquer des
+                styles CSS différents selon le type de lien.
+            </p>
+
+
+        </div>
+
+        <!-- SECTION 3 : Les capacités -->
+        <div class="section">
+            <h2>3. Présentation des capacités</h2>
+            <p>
+                Chaque capacité est affichée dans une carte visuelle composée de :
+            </p>
+            <ul>
+                <li>Un <strong>titre</strong> avec le type de compétence (Basique, Spéciale, Chef, Unique).</li>
+                <li>Une <strong>icône</strong> d’attaque (souvent issue du jeu original).</li>
+                <li>Une <strong>description bilingue</strong> détaillant les effets et synergies.</li>
+            </ul>
+
+            <h3>Exemple d’un bloc de capacité :</h3>
+            <pre><code>
+                &lt;div class="ability"&gt;
+                &lt;h4&gt;Basic Attack: Focused Slash&lt;/h4&gt;
+                &lt;img src="image/ahsoka_basic.png" alt="Attaque de base"&gt;
+                &lt;p&gt;En anglais : Deal Physical damage to target enemy and dispel all buffs on them. On a critical hit, dispel all debuffs on Ahsoka and another random Galactic Republic ally. This attack can't be evaded if the target has Foresight. If another 501st ally is present, Ahsoka also recovers 15% Health.&lt;/p&gt;
+                &lt;/div&gt;
+            </code></pre>
+
+            <p>
+                En français : Inflige des dégâts physiques à une cible ennemie et dissipe toutes ses améliorations. En cas de coup critique, dissipe tous les affaiblissements sur Ahsoka et un autre allié aléatoire de la République Galactique. Cette attaque ne peut pas être esquivée si la cible dispose de prévoyance. Si un autre allié de la 501E est présent, Ahsoka récupère 15% de santé.
+            </p>
+
+
+            <img src="image-projet/perso-3.png" alt="Exemple de présentation des capacités">
+        </div>
+
+        <!-- SECTION 4 : Lecture des données JSON -->
+        <div class="section">
+            <h2>4. Lecture et intégration des données JSON</h2>
+            <p>
+                Les pages d’unités sont générées à partir des fichiers <code>units.json</code> (pour les personnages) et
+                <code>ships.json</code> (pour les vaisseaux).
+                Chaque entrée du fichier contient toutes les informations nécessaires :
+            </p>
+
+            <pre><code>{
+  "id": "ahsoka_tano",
+  "name_fr": "Ahsoka Tano",
+  "name_en": "Ahsoka Tano",
+  "faction": ["Jedi", "République"],
+  "role": "Attaquant",
+  "alignment": "Lumière",
+  "image": "ahsoka.png",
+  "abilities": {
+    "basic": "Inflige des dégâts physiques...",
+    "special": "Augmente la vitesse des alliés Jedi..."
+  }
+}
+</code></pre>
+
+            <p>
+                Ce système permet d’ajouter de nouvelles unités simplement en modifiant le fichier JSON — aucune mise à
+                jour du
+                code HTML n’est nécessaire.
+            </p>
+        </div>
+
+        <!-- SECTION 5 : Système de traduction -->
+        <div class="section">
+            <h2>5. Système de traduction FR / EN</h2>
+            <p>
+                La traduction des pages est gérée par un script JavaScript commun à toutes les unités.
+                Il stocke la langue choisie dans le <code>sessionStorage</code> et remplace dynamiquement le texte des
+                balises
+                identifiées par un <code>id</code>.
+            </p>
+
+            <h3>Exemple de code :</h3>
+            <pre><code>const translationsFr = {
+  "title": "Ahsoka Tano (Snips)",
+  "description": "Attaquante Jedi agile et rapide...",
+  "basic": "Inflige des dégâts physiques à la cible..."
+};
+
+function setLanguage(lang) {
+  sessionStorage.setItem('lang', lang);
+  const t = lang === 'fr' ? translationsFr : translationsEn;
+  for (const id in t) {
+    document.getElementById(id).textContent = t[id];
+  }
+}
+</code></pre>
+        </div>
+
+        <!-- SECTION 6 : JavaScript et interactivité -->
+        <div class="section">
+            <h2>6. Scripts JavaScript et interactivité</h2>
+            <p>
+                En plus de la traduction, le JavaScript gère :
+            </p>
+            <ul>
+                <li>Le <strong>changement de thème</strong> (clair/sombre) si activé sur d’autres pages.</li>
+                <li>Les <strong>animations d’apparition</strong> (fade-in des blocs au défilement).</li>
+                <li>Le <strong>retour automatique en haut</strong> avec un bouton animé.</li>
+            </ul>
+
+            <pre><code>// Exemple : animation à l'apparition
+const elements = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  elements.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('visible');
+    }
+  });
+});
+</code></pre>
+        </div>
+
+        <!-- SECTION 7 : Design et responsive -->
+        <div class="section">
+            <h2>7. Design, mise en page et responsive</h2>
+            <p>
+                L’ensemble du design repose sur un style visuel inspiré de Star Wars :
+            </p>
+            <ul>
+                <li>Dégradé de fond galactique (bleu nuit à bleu profond).</li>
+                <li>Texte clair et doré pour rappeler les interfaces Jedi/Sith.</li>
+                <li>Ombres portées pour donner du relief aux images et cartes.</li>
+            </ul>
+
+            <p>
+                Grâce à <strong>Bootstrap 5</strong> et au <strong>responsive design</strong>, toutes les pages sont
+                adaptatives :
+                les blocs se réorganisent automatiquement selon la taille de l’écran (colonne sur mobile, grille sur
+                PC).
+            </p>
+        </div>
+
+        <!-- SECTION 8 : Accessibilité -->
+        <div class="section">
+            <h2>8. Accessibilité et optimisation</h2>
+            <p>
+                Chaque image contient un <code>alt</code> descriptif pour les lecteurs d’écran.
+                Les contrastes de couleurs respectent les normes WCAG pour garantir une lecture agréable sur fond
+                sombre.
+            </p>
+
+            <p>
+                Les performances sont optimisées grâce à :
+            </p>
+            <ul>
+                <li>Un <strong>chargement différé</strong> des images via l’attribut <code>loading="lazy"</code>.</li>
+                <li>Une <strong>minimisation du JavaScript</strong> utilisé.</li>
+                <li>Un <strong>caching local</strong> du fichier JSON pour accélérer les rechargements.</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 9 : Conclusion -->
+        <div class="section">
+            <h2>9. Conclusion</h2>
+            <p>
+                La page d’unité du projet <strong>SWGOH Wiki</strong> combine un design immersif, un affichage dynamique
+                et une
+                architecture de données flexible.
+                Chaque fiche est conçue pour être :
+            </p>
+            <ul>
+                <li><strong>Évolutive</strong> (nouvelles unités faciles à ajouter),</li>
+                <li><strong>Multilingue</strong> (FR / EN en un clic),</li>
+                <li><strong>Responsive</strong> (adaptée à tous les écrans),</li>
+                <li><strong>Thématiquement cohérente</strong> avec l’univers Star Wars.</li>
+            </ul>
+
+            <p>
+                Ce modèle peut servir de base à d’autres projets interactifs de type base de données, wiki ou
+                encyclopédie
+                dynamique.
+            </p>
+        </div>
+
+        <!-- Lien retour -->
+        <div class="text-center mt-5">
+            <a href="../projet/projet-swgoh-wiki.html" class="btn btn-site">🌐 Retour au site principal</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
