@@ -1,135 +1,168 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Compétence Cryptologie - Bcrypt & Base de Données - Traiter des demandes concernant les applications</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compétence Cryptologie - Bcrypt & Base de Données</title>
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-        h1, h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 2rem 1rem;
+      color: #222;
+      line-height: 1.7;
+    }
 
-        p {
-            text-align: justify;
-        }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
 
-        img {
-            display: block;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #143a63;
+      margin-bottom: 1.5rem;
+    }
 
-        code {
-            background: #f0f0f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #143a63;
+    }
 
-        .link-project {
-            text-align: center;
-            margin: 30px 0;
-        }
+    p {
+      text-align: justify;
+      margin: 0.6rem 0;
+    }
 
-        .link-project a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #e67e22;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
+    ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
 
-        .back-button {
-            text-align: center;
-            margin-top: 30px;
-        }
+    li {
+      margin-bottom: 0.4rem;
+    }
 
-        .back-button a {
-            padding: 10px 18px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-    </style>
+    code {
+      background: #eef1f5;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.95rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 650px;
+      display: block;
+      margin: 1.5rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .link-project {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .link-project a {
+      background: #e67e22;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .link-project a:hover {
+      background: #cf6d18;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .back-button a {
+      background: #1a73e8;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .back-button a:hover {
+      background: #155bb5;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>🔐 Compétence : Cryptologie & Bcrypt - Traiter des demandes concernant les applications</h1>
 
-    <div class="container">
-        <h1>🔐 Compétence : Cryptologie & Bcrypt - Traiter des demandes concernant les applications</h1>
+    <h2>🎯 Objectif</h2>
+    <p>
+      Cette compétence est illustrée à travers un <strong>projet d’authentification sécurisé en PHP</strong>, utilisant une base de données MySQL et le chiffrement robuste <strong>Bcrypt</strong> pour protéger les mots de passe utilisateurs.
+    </p>
 
-        <h2>🎯 Objectif</h2>
-        <p>
-            Cette preuve de compétence est directement liée au <strong>projet d’authentification sécurisé en PHP</strong>,
-            dans lequel la gestion des utilisateurs et des mots de passe repose sur une base de données MySQL
-            et un chiffrement robuste via l’algorithme Bcrypt.
-        </p>
-
-        <div class="link-project">
-            <a target="_blank" href="../projet/projet-authentification.html">🔗 Voir le projet d'authentification complet</a>
-        </div>
-
-        <h2>🧩 Fonctionnement de Bcrypt</h2>
-        <p>
-            Bcrypt est un algorithme de hachage conçu spécifiquement pour les mots de passe. Il est basé sur le chiffrement
-            <strong>Blowfish</strong> et introduit une notion de "coût" (ou facteur de complexité) qui rend l’algorithme volontairement lent,
-            augmentant ainsi la sécurité contre les attaques par force brute.
-        </p>
-        <p>En PHP, Bcrypt est utilisé avec la fonction native suivante :</p>
-        <p style="text-align: center;"><code>password_hash($motdepasse, PASSWORD_DEFAULT)</code></p>
-
-        <ul>
-            <li>🔑 Un <strong>sel (salt)</strong> aléatoire est généré automatiquement pour chaque mot de passe.</li>
-            <li>🛡️ Le résultat est un <strong>hash unique</strong>, même pour deux mots de passe identiques.</li>
-            <li>🔁 À la connexion, la fonction <code>password_verify()</code> compare le mot de passe en clair avec le hash.</li>
-        </ul>
-
-        <h2>📁 Structure de la base de données</h2>
-        <p>
-            La table <code>users</code> contient les données suivantes :
-        </p>
-        <ul>
-            <li>🆔 <code>id</code> : identifiant unique</li>
-            <li>👤 <code>email</code> : adresse mail de l'utilisateur</li>
-            <li>🔐 <code>password</code> : mot de passe chiffré avec Bcrypt</li>
-        </ul>
-
-        <img src="../projet/projet-authentification/base-de-données.png" alt="base de données utilisateurs - mots de passe hashés">
-
-        <h2>✅ Résultat</h2>
-        <p>
-            Grâce à Bcrypt, les mots de passe sont stockés de manière sécurisée. Même en cas de fuite de base de données,
-            il est <strong>impossible de récupérer les mots de passe en clair</strong> sans y consacrer énormément de ressources.
-        </p>
-        <p>
-            Cette méthode respecte les bonnes pratiques de la <strong>cryptographie moderne</strong> et démontre la
-            maîtrise de la protection des données sensibles dans une architecture PHP/MySQL.
-        </p>
-
-        <div class="back-button">
-            <a href="../page/compétences.html">⬅ Retour aux compétences</a>
-        </div>
+    <div class="link-project">
+      <a target="_blank" href="../projet/projet-authentification.html">🔗 Voir le projet d'authentification complet</a>
     </div>
 
+    <h2>🧩 Fonctionnement de Bcrypt</h2>
+    <p>
+      Bcrypt est un algorithme de hachage spécialement conçu pour protéger les mots de passe. Basé sur <strong>Blowfish</strong>, il utilise un facteur de "coût" permettant de ralentir volontairement le calcul, rendant plus difficile toute attaque par force brute.
+    </p>
+
+    <p>Exemple d'utilisation en PHP :</p>
+    <p style="text-align: center"><code>password_hash($motdepasse, PASSWORD_DEFAULT)</code></p>
+
+    <ul>
+      <li>🔑 Génération automatique d’un <strong>sel unique</strong> pour chaque hachage.</li>
+      <li>🛡️ Production d’un <strong>hash différent</strong> même pour deux mots de passe identiques.</li>
+      <li>🔁 Vérification via <code>password_verify()</code> lors de la connexion.</li>
+    </ul>
+
+    <h2>📁 Structure de la base de données</h2>
+    <p>La table <code>users</code> contient les informations suivantes :</p>
+    <ul>
+      <li>🆔 <code>id</code> — identifiant unique</li>
+      <li>👤 <code>email</code> — adresse mail de l’utilisateur</li>
+      <li>🔐 <code>password</code> — mot de passe haché avec Bcrypt</li>
+    </ul>
+
+    <img src="../projet/projet-authentification/base-de-données.png" alt="Base de données utilisateurs protégée par Bcrypt" />
+
+    <h2>✅ Résultat</h2>
+    <p>
+      Grâce à Bcrypt, les mots de passe sont stockés de manière extrêmement sécurisée. Même en cas de fuite de la base de données, il est <strong>quasiment impossible de retrouver les mots de passe en clair</strong>.
+    </p>
+    <p>
+      Cette mise en œuvre respecte les bonnes pratiques de la <strong>cryptographie moderne</strong> et démontre une gestion sérieuse des données sensibles dans une architecture PHP / MySQL.
+    </p>
+
+    <div class="back-button">
+      <a href="../page/compétences.html">⬅ Retour aux compétences</a>
+    </div>
+  </div>
 </body>
 </html>

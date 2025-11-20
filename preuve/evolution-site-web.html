@@ -2,57 +2,146 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Évolution d’un site exploitant des données via API SWGOH.gg"/>
-  <meta name="keywords" content="Évolution site web, API, swgoh.gg, projet BTS SIO, amélioration continue"/>
-  <meta name="author" content="Enzo Rimbault"/>
-  <meta property="og:title" content="Évolution d’un site web avec API"/>
-  <meta property="og:description" content="Participation à l’évolution d’un site exploitant une API pour afficher des données dynamiques."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Évolution d’un site exploitant des données via API SWGOH.gg" />
+  <meta name="keywords" content="Évolution site web, API, swgoh.gg, projet BTS SIO, amélioration continue" />
+  <meta name="author" content="Enzo Rimbault" />
+  <meta property="og:title" content="Évolution d’un site web avec API" />
+  <meta property="og:description" content="Participation à l’évolution d’un site exploitant une API pour afficher des données dynamiques." />
   <title>Évolution d’un site Web - SWGOH API</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a1a2f, #143a63);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3rem;
+      font-weight: 700;
+    }
+
+    section {
+      width: 90%;
+      max-width: 900px;
+      margin: 2.5rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #143a63;
+    }
+
+    a {
+      color: #1a73e8;
+      font-weight: 600;
+    }
+
+    ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: #0a1a2f;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .back-button a {
+      text-decoration: none;
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .back-button a:hover {
+      background-color: #155bb5;
+    }
+  </style>
 </head>
+
 <body>
   <header>
-    <h1><u>Participation à l’évolution d’un site Web exploitant des données API</u></h1>
+    <h1>Participation à l’évolution d’un site Web exploitant des données API</h1>
   </header>
 
   <section>
     <h2>Description du projet</h2>
     <p>
-      Le projet vise à construire une interface dynamique en consommant des données de <strong>l’API publique de swgoh.gg</strong>. Cette évolution permet une mise à jour automatique des informations sans modifier le code manuellement.
+      Ce projet consiste à améliorer et faire évoluer une interface dynamique exploitant les données de la <strong>API publique de swgoh.gg</strong>. Grâce à cette évolution, les informations sont automatiquement mises à jour sans aucune modification manuelle du code.
     </p>
-    <p>🔗 Site en ligne : <a href="https://swgoh-projet-api.infinityfreeapp.com/?i=1" target="_blank">SWGOH API Info</a></p>
+
+    <p>🔗 Site en ligne : <a href="https://swgoh-info-stat.byethost12.com/" target="_blank">SWGOH API Info</a></p>
     <p>🔗 Page projet : <a href="https://e-rimbault.github.io/enzo-rimbault-portfolio/projet/projet-swgoh-api-info.html" target="_blank">Voir la fiche détaillée</a></p>
-    <p>🔗 Page projet : <a href="../fichier_pdf/data-swgoh.txt" target="_blank">Code json généré via api</a></p>
+    <p>🔗 Code JSON généré via API : <a href="https://swgoh.gg/api/player/329615792/" target="_blank">Données JSON du joueur</a></p>
   </section>
 
   <section>
     <h2>Exploitation de l’API publique</h2>
     <p>
-      Grâce à l’API, le site affiche des données toujours à jour : nouveaux personnages, mises à jour de statistiques, etc. Cela permet au site de rester utile pour les utilisateurs sans intervention manuelle.
+      Grâce à l’API, le site récupère des données toujours à jour : statistiques, nouveaux personnages, mises à jour du jeu… Le site reste ainsi pertinent et actualisé automatiquement.
     </p>
     <ul>
       <li>🔁 Intégration continue de données actualisées</li>
       <li>📈 Affichage de données précises issues du jeu</li>
-      <li>🧩 Requête dynamique via JavaScript et gestion JSON</li>
+      <li>🧩 Requêtes dynamiques via JavaScript + traitement JSON</li>
     </ul>
   </section>
 
   <section>
     <h2>Améliorations futures</h2>
-    <p>Des fonctionnalités peuvent encore être ajoutées :</p>
+    <p>Plusieurs améliorations sont prévues :</p>
     <ul>
-      <li>🔎 Filtres et recherches plus avancées</li>
-      <li>🌐 Multilingue (FR/EN)</li>
+      <li>🔎 Filtres et options de recherche avancés</li>
+      <li>🌐 Version multilingue (FR / EN)</li>
     </ul>
   </section>
 
   <footer>
     <p>&copy; 2025 Enzo Rimbault</p>
   </footer>
-  <div style="text-align: center; margin-top: 2rem;">
-    <a href="../page/compétences.html" style="text-decoration: none; background-color: #1a73e8; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">
-      ← Retour à la page Compétences
-    </a>
-</div>
+
+  <div class="back-button">
+    <a href="../page/compétences.html">← Retour à la page Compétences</a>
+  </div>
 </body>
 </html>

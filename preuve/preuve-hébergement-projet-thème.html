@@ -8,68 +8,159 @@
     <meta name="author" content="Enzo Rimbault">
     <meta property="og:title" content="Déploiement de SWGOH Wiki sur GitHub Pages">
     <meta property="og:description" content="Découvrez comment j'ai déployé le site SWGOH Wiki sur GitHub Pages.">
-    <meta property="og:image" content="path/to/your-image.jpg">
     <title>Déploiement du site SWGOH Wiki sur GitHub Pages</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1a73e8;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+        }
+
+        img {
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #0d1b2a;
+            color: white;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        .return-btn {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .return-btn a {
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .return-btn a:hover {
+            background-color: #135cbc;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1><u>Déploiement du site SWGOH Wiki sur GitHub Pages</u></h1>
+        <h1>Déploiement du site SWGOH Wiki sur GitHub Pages</h1>
     </header>
-    
+
     <section>
         <h2>Présentation du projet</h2>
-        <p>Le projet <strong>SWGOH Wiki</strong> est un site web statique qui présente des informations détaillées sur les personnages du jeu mobile <a href="https://www.starwarsgalaxyofheroes.com" target="_blank">Star Wars: Galaxy of Heroes (SWGOH)</a>. Le site permet aux joueurs de consulter les kits des personnages du jeu pour mieux comprendre leurs compétences et pouvoirs.</p>
-        <p>Le projet a été développé en utilisant les technologies suivantes :</p>
+        <p>Le projet <strong>SWGOH Wiki</strong> est un site web statique qui présente des informations détaillées sur les personnages du jeu mobile <a href="https://www.starwarsgalaxyofheroes.com" target="_blank">Star Wars: Galaxy of Heroes (SWGOH)</a>. Il permet aux joueurs de consulter les kits des personnages pour mieux comprendre leurs compétences et pouvoirs.</p>
+        <p>Ce projet m’a permis de renforcer mes compétences en structuration de contenu, en organisation d’un site documentaire et en mise en place d’une architecture claire permettant une navigation fluide. L’objectif était d’offrir une interface simple et intuitive, adaptée à un public cherchant avant tout une information rapide et fiable.</p>
+        <p>Le projet repose sur :</p>
         <ul>
-            <li><strong>HTML</strong> pour la structure du contenu.</li>
-            <li><strong>CSS</strong> pour le design et la mise en page.</li>
-            <li><strong>JavaScript</strong> pour rendre le site interactif.</li>
+            <li><strong>HTML</strong> pour la structure.</li>
+            <li><strong>CSS</strong> pour la mise en forme.</li>
+            <li><strong>JavaScript</strong> pour l'interactivité.</li>
         </ul>
     </section>
 
     <section>
         <h2>Outils utilisés</h2>
         <ul>
-            <li><strong>Jeux mobiles</strong> - Le site présente des informations sur les personnages de SWGOH, un jeu mobile populaire.</li>
-            <li><strong>Site officiel du jeu</strong> - <a href="https://www.starwarsgalaxyofheroes.com" target="_blank">Star Wars: Galaxy of Heroes</a>, utilisé pour la collecte d’informations et la validation des données.</li>
-            <li><strong>Visual Studio Code</strong> - Un éditeur de code que j'ai utilisé pour développer le site. Il m'a permis de travailler efficacement sur le HTML, le CSS et le JavaScript.</li>
-            <li><strong>Google Search Console</strong> - Pour le référencement et l'indexation de mon site sur Google Search. J'ai utilisé Google Search Console pour m'assurer que mon site soit visible et bien référencé sur les moteurs de recherche.</li>
+            <li><strong>Jeux mobiles</strong> — Informations provenant du jeu SWGOH.</li>
+            <li><strong>Site officiel</strong> — <a href="https://www.starwarsgalaxyofheroes.com" target="_blank">Star Wars: Galaxy of Heroes</a>.</li>
+            <li><strong>Visual Studio Code</strong> — Éditeur de code utilisé pour le développement.</li>
+            <li><strong>Google Search Console</strong> — Référencement et indexation du site.</li>
         </ul>
     </section>
 
     <section>
         <h2>Le déploiement sur GitHub Pages</h2>
-        <p>Pour rendre le site accessible en ligne, j'ai utilisé <strong>GitHub Pages</strong>, une fonctionnalité gratuite d'hébergement de sites web statiques. Voici les étapes que j'ai suivies :</p>
+        <p>J'ai utilisé <strong>GitHub Pages</strong> pour héberger gratuitement ce site statique. Cette solution est idéale pour les projets personnels, portfolios et documentations, car elle permet de mettre en ligne un site immédiatement sans devoir configurer un serveur.</p>
+        <p>Les étapes :</p>
         <ol>
-            <li>Création d'un dépôt Git sur GitHub et ajout du code source du projet.</li>
-            <li>Activation de la fonctionnalité GitHub Pages via la branche <strong>main</strong> ou <strong>gh-pages</strong>.</li>
-            <li>Le site est désormais accessible à l'adresse : <a href="https://e-rimbault.github.io/swgoh-kit/index.html" target="_blank">https://e-rimbault.github.io/swgoh-kit/index.html</a>.</li>
+            <li>Création d'un dépôt GitHub et importation du projet.</li>
+            <li>Activation de GitHub Pages via la branche <strong>main</strong> ou <strong>gh-pages</strong>.</li>
+            <li>Configuration du chemin d’accès afin que les fichiers HTML soient correctement interprétés.</li>
+            <li>Vérification que le site s’affiche correctement et optimisation du temps de chargement.</li>
+            <li>Le site est accessible ici : <a href="https://e-rimbault.github.io/swgoh-kit/index.html" target="_blank">https://e-rimbault.github.io/swgoh-kit/</a>.</li>
         </ol>
-        <a target="_blank" href="https://github.com/E-Rimbault/swgoh-kit"><img style="height: 10%; width: 10%;" src="../image/git-hub-logo.png" alt="GitHub Pages" width="400px">Lien du repository</a>
+        <p>Ce déploiement m’a permis de mieux comprendre le fonctionnement des pages statiques hébergées par GitHub, ainsi que la gestion du versionnement dans un contexte de projet web.</p>
+        <a target="_blank" href="https://github.com/E-Rimbault/swgoh-kit">
+            <img src="../image/git-hub-logo.png" style="width:120px; height:auto;" alt="GitHub"> Repository GitHub
+        </a>
     </section>
 
     <section>
         <h2>Référencement sur Google</h2>
-        <p>Pour m'assurer que mon site soit bien visible sur Google, j'ai intégré une description SEO et utilisé <strong>Google Search Console</strong> pour indexer mon site. Cela permet à mon projet d'être plus facilement trouvé par des utilisateurs recherchant des informations sur SWGOH.</p>
-        <img style=" height: 45%; width: 45%;" src="../preuve-image/search-console-swgoh-1.png" alt="Google Search Console" width="400px">
-        <img style=" height: 45%; width: 45%;" src="../preuve-image/search-console-swgoh-2.png" alt="Google Search Console" width="400px">
-        <p>Voici une capture d'écran montrant l'interface de Google Search Console où j'ai suivi l'indexation de mon site.</p>
+        <p>Grâce à <strong>Google Search Console</strong>, j'ai amélioré l'indexation et la visibilité du site. Cela m’a notamment permis d’analyser la manière dont Google lit et comprend mes pages, d’identifier d’éventuelles erreurs d’exploration et d’optimiser le référencement global.</p>
+        <p>J’ai également travaillé sur les métadonnées (description, titre, meta-tags structurels) afin d’améliorer l’apparence du site dans les résultats de recherche et ainsi maximiser les chances d’être visité.</p>
+        <img src="../preuve-image/search-console-swgoh-1.png" style="width:45%;" alt="Google Search Console 1">
+        <img src="../preuve-image/search-console-swgoh-2.png" style="width:45%;" alt="Google Search Console 2">
+        <p>Ces captures d’écran montrent le tableau de bord que j’ai utilisé pour suivre l’évolution de l’indexation et la santé globale du site.</p>
     </section>
 
     <section>
-        <h2>Plus d'informations sur le projet</h2>
-        <p>Pour en savoir plus sur le projet, vous pouvez consulter la page détaillée de ce dernier en cliquant sur le lien suivant :</p>
-        <a href="https://e-rimbault.github.io/enzo-rimbault-portfolio/projet/projet-swgoh-wiki.html" target="_blank">Page de description du projet SWGOH Wiki</a>
+        <h2>Plus d'informations</h2>
+        <p>Pour consulter la page détaillée du projet :</p>
+        <a href="https://e-rimbault.github.io/enzo-rimbault-portfolio/projet/projet-swgoh-wiki.html" target="_blank">➡️ Voir la page du projet SWGOH Wiki</a>
     </section>
 
     <footer>
-        <p>&copy; 2025 Enzo Rimbault. Tous droits réservés.</p>
+        &copy; 2025 Enzo Rimbault — Tous droits réservés.
     </footer>
-    <div style="text-align: center; margin-top: 2rem;">
-        <a href="../page/compétences.html" style="text-decoration: none; background-color: #1a73e8; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">
-          ← Retour à la page Compétences
-        </a>
+
+    <div class="return-btn">
+        <a href="../page/compétences.html">← Retour à la page Compétences</a>
     </div>
 </body>
 </html>

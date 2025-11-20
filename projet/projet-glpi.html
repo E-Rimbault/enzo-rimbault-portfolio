@@ -5,73 +5,94 @@
   <title>Installation de GLPI 9.1 sur Ubuntu 16.04</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      color: #2c3e50;
       margin: 0;
-      padding: 20px;
-      line-height: 1.6;
+      padding: 40px;
+      line-height: 1.7;
     }
-    h1, h2 {
-      color: #007BFF;
+    h1, h2, h3 {
+      color: #2980b9;
+      text-align: center;
+    }
+    section, .step {
+      background: #fff;
+      padding: 25px;
+      margin: 25px auto;
+      border-radius: 12px;
+      max-width: 900px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     code {
-      background-color: #eaeaea;
-      padding: 2px 4px;
-      border-radius: 4px;
+      background-color: #ecf0f1;
+      padding: 4px 6px;
+      border-radius: 5px;
       font-family: Consolas, monospace;
+      font-size: 0.95rem;
     }
     pre {
-      background-color: #f1f1f1;
-      padding: 10px;
-      border-left: 4px solid #007BFF;
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-left: 4px solid #3498db;
       overflow-x: auto;
-    }
-    .step {
-      margin-bottom: 40px;
+      border-radius: 8px;
+      font-size: 0.95rem;
     }
     ul {
-      margin-top: 0;
+      margin-top: 10px;
+    }
+    a.button {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+
   <h1>Installation complète de GLPI 9.1 sur Ubuntu Server 16.04</h1>
 
-    <section>
-        <h1>Introduction</h1>
-        <p>
-          Ce projet a pour objectif de guider pas à pas l'installation complète de <strong>GLPI 9.1</strong> 
-          sur une machine <strong>Ubuntu Server 16.04</strong>. GLPI (Gestionnaire Libre de Parc Informatique) 
-          est une solution libre de gestion des services informatiques (ITSM), largement utilisée pour le suivi 
-          de parc, la gestion des tickets et la centralisation des ressources informatiques d'une organisation.
-        </p>
-        <p>
-          L’installation comprend la configuration du serveur Linux, l’installation du serveur web Apache, 
-          de la base de données MySQL, du langage PHP, de l’interface phpMyAdmin, et enfin de GLPI lui-même 
-          ainsi que du plugin <strong>FusionInventory</strong> pour automatiser l'inventaire matériel et logiciel.
-        </p>
-        <p>
-          Ce guide est destiné aux étudiants en BTS SIO (option SISR) ou à toute personne souhaitant mettre en place 
-          un environnement professionnel de gestion de parc informatique open-source.
-        </p>
-    </section>
-    
-    <h2>Étapes d'installations et de configurations</h2>
+  <section>
+      <h2>Introduction</h2>
+      <p>
+        Ce guide détaillé vous accompagne à travers l’installation complète de <strong>GLPI 9.1</strong> sur un serveur
+        <strong>Ubuntu 16.04</strong>. GLPI est une solution open-source permettant la gestion de parc informatique,
+        la gestion des tickets, des équipements et des utilisateurs.
+      </p>
+      <p>
+        L’objectif de ce tutoriel est d’expliquer chaque étape avec clarté afin que même un débutant puisse déployer
+        un environnement professionnel et fonctionnel.
+      </p>
+      <p>
+        Vous installerez successivement : Apache, MySQL, PHP, phpMyAdmin, GLPI ainsi que le plugin
+        <strong>FusionInventory</strong> utilisé pour automatiser l'inventaire matériel et logiciel du réseau.
+      </p>
+  </section>
+
+  <h2>Étapes d'installation et configuration</h2>
 
   <div class="step">
     <h2>1. Connexion et Configuration du Compte ROOT</h2>
+    <p>Avant toute manipulation système, vous avez besoin des droits administrateur.</p>
     <ul>
-      <li>Connectez-vous avec l’utilisateur créé à l’installation (ex : <strong>administrateur</strong>, mot de passe <strong>admin</strong>).</li>
-      <li>Devenez superutilisateur avec : <code>sudo su</code></li>
-      <li>Attribuez un mot de passe au compte root : <code>sudo passwd root</code></li>
-      <li>Redémarrez le serveur : <code>reboot</code></li>
+      <li>Connectez-vous avec l’utilisateur créé pendant l’installation d’Ubuntu.</li>
+      <li>Passez en mode superutilisateur : <code>sudo su</code></li>
+      <li>Définissez un mot de passe pour root : <code>sudo passwd root</code></li>
+      <li>Redémarrez le serveur pour appliquer les changements : <code>reboot</code></li>
     </ul>
   </div>
 
   <div class="step">
     <h2>2. Configuration d'une Adresse IP Statique</h2>
-    <p>Éditez le fichier réseau pour fixer une IP qui ne changera pas au redémarrage.</p>
+    <p>Pour éviter que l’adresse du serveur ne change, il est essentiel de définir une IP fixe.</p>
     <pre>
 sudo vim /etc/network/interfaces
 # Exemple :
@@ -82,21 +103,23 @@ iface ens32 inet static
  gateway 192.168.0.254
  dns-nameservers 192.168.0.1
     </pre>
-    <p>Redémarrez ensuite avec : <code>reboot</code></p>
+    <p>Redémarrez ensuite : <code>reboot</code></p>
   </div>
 
   <div class="step">
     <h2>3. Installation et Configuration de SSH</h2>
+    <p>SSH permet l’accès distant sécurisé au serveur, pratique pour administrer la machine sans écran.</p>
     <ul>
       <li>Installer OpenSSH : <code>sudo apt-get install openssh-server</code></li>
-      <li>Activer l’accès root via SSH : éditez <code>/etc/ssh/sshd_config</code> et changez :</li>
+      <li>Dans <code>/etc/ssh/sshd_config</code>, activez la connexion root :</li>
     </ul>
     <pre>PermitRootLogin yes</pre>
-    <p>Puis redémarrez le serveur.</p>
+    <p>Puis redémarrez le service SSH.</p>
   </div>
 
   <div class="step">
     <h2>4. Installation d'Apache (Serveur Web)</h2>
+    <p>Apache affichera l’interface web de GLPI.</p>
     <pre>
 sudo apt-get update
 sudo apt-get install apache2
@@ -109,45 +132,47 @@ sudo systemctl restart apache2
 
   <div class="step">
     <h2>5. Configuration du Pare-feu (UFW)</h2>
+    <p>On autorise uniquement les services nécessaires : HTTP, HTTPS et SSH.</p>
     <pre>
 sudo ufw enable
 sudo ufw allow in "Apache Full"
 sudo ufw allow 22/tcp
 sudo ufw status verbose
     </pre>
-    <p>Ces commandes permettent de sécuriser le serveur tout en gardant l'accès au web et SSH.</p>
   </div>
 
   <div class="step">
-    <h2>6. Installation de MySQL (Base de données)</h2>
+    <h2>6. Installation de MySQL</h2>
+    <p>MySQL stockera toutes les données de GLPI (tickets, utilisateurs, inventaire…).</p>
     <pre>
 sudo apt-get install mysql-server
     </pre>
-    <p>Lors de l’installation, un mot de passe root MySQL vous sera demandé.</p>
   </div>
 
   <div class="step">
     <h2>7. Installation de PHP</h2>
+    <p>PHP est nécessaire pour faire fonctionner GLPI côté serveur.</p>
     <pre>
 sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql php-curl
     </pre>
-    <p>Ces extensions sont nécessaires pour que GLPI fonctionne correctement avec Apache.</p>
   </div>
 
   <div class="step">
     <h2>8. Installation de phpMyAdmin</h2>
+    <p>phpMyAdmin permet de gérer la base MySQL via une interface graphique.</p>
     <pre>
 sudo apt-get install phpmyadmin apache2-utils
     </pre>
     <ul>
-      <li>Choisissez <strong>Apache2</strong> (avec la barre espace).</li>
-      <li>Répondez <strong>NON</strong> à la configuration automatique.</li>
-      <li>Accès via : <code>http://IP_DU_SERVEUR/phpmyadmin</code></li>
+      <li>Sélectionnez Apache2.</li>
+      <li>Répondez « NON » à la configuration automatique.</li>
+      <li>Accédez via : <code>http://IP_DU_SERVEUR/phpmyadmin</code></li>
     </ul>
   </div>
 
   <div class="step">
     <h2>9. Installation de GLPI 9.1</h2>
+    <p>GLPI est maintenant prêt à être installé sur la machine.</p>
     <pre>
 cd /tmp
 wget https://github.com/glpi-project/glpi/releases/download/9.1/glpi-9.1.tar.gz
@@ -155,89 +180,47 @@ cd /opt
 sudo tar -xvzf /tmp/glpi-9.1.tar.gz
     </pre>
 
-    <h3>Configuration Apache pour GLPI</h3>
+    <h3>Configuration Apache</h3>
     <pre>
 sudo vim /etc/apache2/conf-available/glpi.conf
-# Contenu :
 Alias /glpi /opt/glpi
-&lt;Directory /opt/glpi&gt;
+<Directory /opt/glpi>
   DirectoryIndex index.php
   Options FollowSymLinks
   AllowOverride Limit Options FileInfo
   Require all granted
-&lt;/Directory&gt;
+</Directory>
     </pre>
 
-    <p>Activez la config et redémarrez Apache :</p>
+    <h3>Activation</h3>
     <pre>
 sudo ln -s ../conf-available/glpi.conf /etc/apache2/conf-enabled/glpi.conf
 sudo service apache2 restart
     </pre>
 
-    <h3>Permissions GLPI</h3>
+    <h3>Permissions</h3>
     <pre>
 chmod -R 777 /opt/glpi/files
 chmod -R 777 /opt/glpi/config
     </pre>
 
     <h3>Installation via navigateur</h3>
-    <p>Allez sur <code>http://IP_DU_SERVEUR/glpi</code> et suivez les étapes :</p>
-    <ul>
-      <li>Choisir la langue (Français)</li>
-      <li>Accepter la licence</li>
-      <li>Connexion SQL : <strong>localhost</strong>, utilisateur <strong>root</strong>, mot de passe MySQL</li>
-      <li>Nom de la base : <code>glpi</code></li>
-    </ul>
-
-    <p>Comptes par défaut :</p>
-    <ul>
-      <li>Admin : glpi / glpi</li>
-      <li>Technicien : tech / tech</li>
-      <li>Utilisateur : normal / normal</li>
-      <li>Lecture seule : post-only / postonly</li>
-    </ul>
+    <p>Rendez-vous sur <code>http://IP_DU_SERVEUR/glpi</code> puis suivez les étapes classiques.</p>
   </div>
 
   <div class="step">
-    <h2>10. Installation du Plugin FusionInventory</h2>
-    <ul>
-      <li>Téléchargez le plugin depuis le site officiel.</li>
-      <li>Décompressez-le dans : <code>/opt/glpi/plugins/fusioninventory</code></li>
-      <li>Modifiez <code>setup.php</code> pour indiquer la version :</li>
-    </ul>
-    <pre>
-define("GLPI_VERSION", "0.85");
-    </pre>
-    <p>Depuis GLPI, allez dans le menu <strong>Plugins</strong> :</p>
-    <ul>
-      <li>Cliquez sur <strong>Installer</strong>, puis <strong>Activer</strong>.</li>
-      <li>Vérifiez les paramètres dans l’onglet <strong>Administration > Entités</strong>.</li>
-    </ul>
+    <h2>10. Plugin FusionInventory</h2>
+    <p>FusionInventory automatise l’inventaire du parc informatique.</p>
+    <pre>define("GLPI_VERSION", "0.85");</pre>
   </div>
-
-  <p><strong>Installation terminée !</strong> Vous avez maintenant un serveur GLPI 9.1 fonctionnel avec support d’inventaire automatisé grâce à FusionInventory.</p>
 
   <div class="step">
     <h2>11. Fiche de Suivi PDF</h2>
-    <p>
-      Afin de garder une trace claire de l’avancement de l’installation, une fiche de suivi est mise à disposition.
-      Ce document permet de résumer les différentes étapes accomplies, accompagnées des dates de réalisation, afin
-      de faciliter la vérification et le suivi du projet.
-    </p>
-    <p>
-      Vous pouvez consulter ou télécharger la fiche de suivi au format PDF en cliquant sur le lien ci-dessous :
-    </p>
-    <p>
-      👉 <a target="_blank" href="glpi/RIMBAULT_Enzo.pdf" target="_blank">Télécharger la Fiche de Suivi (PDF)</a>
-    </p>
+    <p>Vous pouvez télécharger la fiche de suivi :</p>
+    <p><a class="button" href="glpi/RIMBAULT_Enzo.pdf" target="_blank">Télécharger la fiche PDF</a></p>
   </div>
-  <div style="display: flex; justify-content: center; margin-top: 20px;">
-    <a href="../page/projets.html" style="text-decoration: none;">
-        <button style="padding: 10px 20px; font-size: 16px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
-            ⬅ Retour au menu des projets
-        </button>
-    </a>
-</div>
+
+  <a class="button" href="../page/projets.html">⬅ Retour au menu des projets</a>
 
 </body>
 </html>
