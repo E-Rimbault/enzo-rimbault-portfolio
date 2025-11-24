@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projets - Enzo Rimbault</title>
+
   <link rel="stylesheet" href="../style/style.css">
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="script/sroll.js"></script>
@@ -16,33 +17,42 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* ===== Sidebar ===== */
+    /* Sidebar */
     .sidebar {
-      width: 15%;
-      background-color: #f9f9f9;
-      height: 100vh;
-      padding-top: 20px;
       position: fixed;
+      top: 0;
+      left: 0;
+      width: 15%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
     }
 
     .sidebar ul {
-      list-style: none;
+      list-style-type: none;
       padding: 0;
-      margin: 0;
     }
 
-    .sidebar ul li {
-      padding: 10px;
+    .sidebar li {
       text-align: center;
+      margin: 20px 0;
     }
 
-    .sidebar ul li a {
+    .sidebar a {
       text-decoration: none;
-      color: #000;
+      color: white;
       display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
     }
 
-    /* ===== Main Content ===== */
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    /* Main content */
     .main-content {
       margin-left: 15%;
       padding: 20px;
@@ -50,45 +60,94 @@
     }
 
     .section-titre {
-      background-color: #f0f0f0;
-      padding: 10px;
       text-align: center;
-      font-size: 1.5em;
+      background: #f7f7f7;
+      padding: 12px;
+      font-size: 1.8em;
       margin: 40px 0 20px;
+      border-radius: 8px;
+      border-left: 6px solid #333;
+      border-right: 6px solid #333;
     }
 
-    .projet-container {
+    /* GRID DE PROJETS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    /* Carte projet */
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 20px;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .projet-description {
-      flex: 1;
-      padding-right: 20px;
-      text-align: justify;
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    .projet-description h3 {
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .project-card h3 {
       text-align: center;
       margin-bottom: 10px;
     }
 
-    .projet-image {
+    .project-card p {
       flex: 1;
-      text-align: center;
+      text-align: justify;
     }
 
-    .projet-image img {
-      max-width: 200px;
-      height: auto;
+    .project-card a {
+      margin-top: 15px;
+      display: inline-block;
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .project-card a:hover {
+      background: #555;
+    }
+
+    /* Responsive sidebar */
+    @media screen and (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+      }
     }
   </style>
+
 </head>
 <body>
-  <!-- ===== Sidebar Navigation ===== -->
+
+  <!-- SIDEBAR -->
   <nav class="sidebar">
     <ul>
       <li><a href="../index.html"><img src="../image/bts-sio.png" alt="BTS SIO" width="40"></a></li>
@@ -102,154 +161,112 @@
       <li><a href="projets.html">Projets</a></li>
       <li><a href="veille.html">Veille Technologique</a></li>
     </ul>
-  </nav>  
+  </nav>
 
-  <!-- ===== Main Content ===== -->
+  <!-- MAIN CONTENT -->
   <div class="main-content">
-    
-    <!-- Introduction -->
+
     <h2 class="section-titre"><u>Projets Personnels / Professionnels</u></h2>
     <p>
-      Lors de ma formation en BTS SIO (Services Informatiques aux Organisations), j'ai eu l'occasion de travailler sur de nombreux projets,
-      que ce soit dans le cadre des cours, des stages en entreprise ou à titre personnel. Ces projets m'ont permis de développer des compétences
-      techniques variées allant de la conception de sites web à la programmation d'applications spécifiques.
+      Lors de ma formation en BTS SIO, j'ai travaillé sur différents projets scolaires, professionnels et personnels
+      qui m'ont permis de développer de nombreuses compétences en développement, conception, gestion de projet et sécurité.
     </p>
 
-    <!-- ===== Projets en cours de formation ===== -->
+    <!-- PROJETS EN FORMATION -->
     <h3 class="section-titre">Projets en cours de formation</h3>
+    
+    <div class="project-grid">
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Installation complète de GLPI 9.1 sur Ubuntu Server 16.04</u></h3>
-        <p>Projet menant à un TP noté sur l'installation de GLPI sur une machine Ubuntu Server 16.04.</p>
+      <div class="project-card">
+        <img src="../image/glpi.png" alt="Projet GLPI">
+        <h3>Installation complète GLPI</h3>
+        <p>Installation complète de GLPI 9.1 sur Ubuntu Server : TP noté incluant configuration Apache, MariaDB et PHP.</p>
         <a href="../projet/projet-glpi.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <img src="../image/glpi.png" alt="Projet GLPI">
-      </div>
-    </div>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Authentication - Sécurisation PHP</u></h3>
-        <p>
-          Projet PHP, servant à travailler la gestion des utilisateurs et de connexion avec mise en place d'une sécurité : 
-          double authentification (PHPMailer) et TOTP (Google Authenticator).
-        </p>
+      <div class="project-card">
+        <img src="../image/authentificator.jpg" alt="Authentification PHP">
+        <h3>Authentification PHP</h3>
+        <p>Projet PHP intégrant une connexion sécurisée, double authentification email et validation TOTP Google Authenticator.</p>
         <a href="../projet/projet-authentification.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <img src="../image/authentificator.jpg" alt="Projet Authentification">
-      </div>
-    </div>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>GSB - Application Laravel</u></h3>
-        <p>
-          Application web réalisée avec le framework Laravel pour les visiteurs médicaux du laboratoire Galaxy Swiss Bourdin.
-          Elle permet de gérer les comptes-rendus de visite, les informations sur les praticiens et les médicaments via une interface claire et sécurisée.
-        </p>
+      <div class="project-card">
+        <img src="../image/gdb.png" alt="GSB Laravel">
+        <h3>Application GSB - Laravel</h3>
+        <p>Application Laravel permettant la gestion des visiteurs, comptes-rendus, praticiens et médicaments.</p>
         <a href="../projet/projet-gsb.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <img src="../image/gdb.png" alt="Projet GSB">
-      </div>
-    </div>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Gnotes - Application Java</u></h3>
-        <p>
-          Application de bureau développée en Java (Spring Boot & JavaFX) pour permettre aux enseignants de saisir, modifier et analyser les notes des étudiants, avec une interface intuitive et un fonctionnement hors-ligne.
-        </p>
+      <div class="project-card">
+        <img src="../image/logo_java.png" alt="Java Gnotes">
+        <h3>Gnotes - Java</h3>
+        <p>Application JavaFX + Spring Boot permettant la saisie et la gestion des notes des étudiants.</p>
         <a href="../projet/projet-gnotes.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <img src="../image/logo_java.png" alt="Projet Gnotes">
-      </div>
+
     </div>
 
-    <!-- ===== Projets de stage ===== -->
-    <h3 class="section-titre">Projets réalisés lors de mes stages</h3>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Stage 2ᵉ année : Outil Web - Gestion de stock chez SOCOREL</u></h3>
-        <p>
-          Projet développé lors de mon stage de 2ᵉ année au sein de l'entreprise SOCOREL. Il s'agit d'un outil web de gestion des stocks permettant 
-          l'enregistrement de produits, le suivi via code-barres, la gestion des commandes et la génération d’étiquettes. 
-          L'application est sécurisée selon les rôles des utilisateurs.
-        </p>
+    <!-- STAGES -->
+    <h3 class="section-titre">Projets réalisés en stage</h3>
+
+    <div class="project-grid">
+      
+      <div class="project-card">
+        <img src="../image/socorel.jpg" alt="SOCOREL">
+        <h3>SOCOREL - Outil de gestion de stock</h3>
+        <p>Outil web interne permettant le suivi des stocks via codes-barres, commandes et étiquettes dynamiques.</p>
         <a href="../projet/projet-socorel.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <img src="../image/socorel.jpg" alt="Projet SOCOREL">
-      </div>
-    </div>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Stage 1ère année : Site WEB - Mairie de Fégréac</u></h3>
-        <p>
-          Projet de site Web développé pendant mon stage de 1ère année à l'Agglomération de REDON, où j'ai conçu le site internet pour la ville de Fégréac.
-        </p>
+      <div class="project-card">
+        <a href="https://fegreac.fr/" target="_blank">
+          <img src="../projet/projet-fégréac/logo-fégréac.jpg" alt="Fégréac">
+        </a>
+        <h3>Site Web - Mairie de Fégréac</h3>
+        <p>Développement complet du site de la ville de Fégréac lors de mon stage de 1ère année.</p>
         <a href="../projet/projet-fégréac.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <a href="https://fegreac.fr/" target="_blank">
-          <img src="../projet/projet-fégréac/logo-fégréac.jpg" alt="Projet Fégréac">
-        </a>
-      </div>
+
     </div>
 
-    <!-- ===== Projets personnels ===== -->
+
+    <!-- PERSONNELS -->
     <h3 class="section-titre">Projets personnels</h3>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Portfolio personnel</u></h3>
-        <p>
-          Création de ce site personnel afin de présenter mon parcours, mes compétences et mes réalisations.
-          Développé en HTML, CSS et JavaScript, ce portfolio est régulièrement mis à jour pour refléter mes progrès.
-        </p>
-      </div>
-      <div class="projet-image">
-        <a href="../index.html"><img src="../image/home-portfolio.jpg" alt="Portfolio Enzo"></a>
-      </div>
-    </div>
+    <div class="project-grid">
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3><u>Wiki - Star Wars les Héros de la galaxie</u></h3>
-        <p>
-          Site web interactif regroupant les personnages et vaisseaux du jeu <i>Star Wars: Galaxy of Heroes</i>.
-          L’interface permet une navigation fluide grâce à des filtres, une recherche rapide et des affichages en cartes.
-        </p>
+      <div class="project-card">
+        <a href="../index.html">
+          <img src="../image/home-portfolio.jpg" alt="Portfolio">
+        </a>
+        <h3>Portfolio personnel</h3>
+        <p>Site personnel en HTML/CSS/JS présentant mon parcours, mes projets et compétences.</p>
+      </div>
+
+      <div class="project-card">
+        <a href="https://e-rimbault.github.io/swgoh-kit/" target="_blank">
+          <img src="../image/logo-swgoh.png" alt="SWGOH Wiki">
+        </a>
+        <h3>Wiki SWGOH</h3>
+        <p>Site interactif regroupant personnages, vaisseaux et filtres du jeu mobile Star Wars Galaxy of Heroes.</p>
         <a href="../projet/projet-swgoh-wiki.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <a href="https://e-rimbault.github.io/swgoh-kit/" target="_blank">
-          <img src="../image/logo-swgoh.png" alt="Projet SWGOH Wiki">
-        </a>
-      </div>
-    </div>
 
-    <div class="projet-container">
-      <div class="projet-description">
-        <h3 style="color: red;"><u>SWGOH player info : site down actuellement suite problème sur l'API en attente de régler le problème de clé api</u></h3>
-        <p>
-          Outil web interactif permettant, à partir de notre code allié sur le jeu <i>Star wars: galaxie of heroes</i>, de récupérer et consulter en ligne toutes les informations détaillées des unités du joueur (statistiques, capacités, événements liés, etc.).
-        </p>
+      <div class="project-card">
+        <a href="" target="_blank">
+          <img src="../image/star-wars-projet-swgoh.png" alt="SWGOH API">
+        </a>
+        <h3 style="color: red">SWGOH Player Info (API KO)</h3>
+        <p>Outil web affichant toutes les données d’un joueur SWGOH via son code allié. En attente de résolution API.</p>
+        <p style="color: red;">Site down actuellement suite problème accès clé api, demande pour une clé api à l'hébergeur de l'api en attente de réponse</p>
         <a href="../projet/projet-swgoh-api-info.html">Voir le détail</a>
       </div>
-      <div class="projet-image">
-        <a href="https://swgoh-projet-api.infinityfreeapp.com" target="_blank">
-          <img src="../image/star-wars-projet-swgoh.png" alt="Projet SWGOH API">
-        </a>
-      </div>
+
     </div>
 
   </div>
+
 </body>
 </html>

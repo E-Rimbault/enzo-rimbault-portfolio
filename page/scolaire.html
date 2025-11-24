@@ -69,99 +69,112 @@
     }
 
     /* Frise chronologique verticale */
-    .timeline-section {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-    }
+/* Frise chronologique verticale */
+.timeline-section {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
 
-    .timeline {
-      position: relative;
-      padding: 40px 0;
-    }
+.timeline {
+  position: relative;
+  padding: 40px 0;
+}
 
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: #ccc;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
+/* Ligne centrale */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #ccc;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* CENTRE PARFAIT */
+}
 
-    .timeline-item {
-      padding: 20px 30px;
-      position: relative;
-      width: 50%;
-      box-sizing: border-box;
-    }
+/* Eléments (côté gauche ou droit) */
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
 
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -10px;
-      background-color: white;
-      border: 4px solid #333;
-      top: 20px;
-      border-radius: 50%;
-      z-index: 1;
-    }
+/* CERCLES CENTRÉS PARFAITEMENT */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid #333;
+  border-radius: 50%;
+  top: 20px;
 
-    .timeline-item.left {
-      left: 0;
-      text-align: right;
-    }
+  left: 100%;                /* se place sur la bordure droite de l'item */
+  transform: translateX(-50%); /* centre par rapport à la ligne verticale */
+  z-index: 1;
+}
 
-    .timeline-item.right {
-      left: 50%;
-      text-align: left;
-    }
+/* Côté gauche */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
 
-    .timeline-item.right::after {
-      left: -10px;
-    }
+/* Côté droit */
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
 
-    .timeline-content {
-      padding: 20px;
-      background-color: white;
-      position: relative;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+/* Pour les éléments de droite, le cercle doit être au centre aussi */
+.timeline-item.right::after {
+  left: 0%; /* démarre sur le bord gauche de l'item */
+  transform: translateX(-50%); /* même recentrage */
+}
 
-    .timeline-content h3 {
-      margin-top: 0;
-    }
+.timeline-content {
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-    .timeline-content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
+.timeline-content h3 {
+  margin-top: 0;
+}
 
-    @media screen and (max-width: 768px) {
-      .timeline-item {
-        width: 100%;
-        left: 0 !important;
-        text-align: left;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
+.timeline-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 
-      .timeline-item.right::after,
-      .timeline-item.left::after {
-        left: 30px;
-      }
+/* Version mobile */
+@media screen and (max-width: 768px) {
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
 
-      .timeline::after {
-        left: 30px;
-      }
-    }
+  .timeline-item::after {
+    left: 30px;
+    transform: translateX(0);
+  }
+
+  .timeline::after {
+    left: 30px;
+    transform: translateX(0);
+  }
+}
+
   </style>
 </head>
 <body>
