@@ -5,144 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projets - Enzo Rimbault</title>
 
-  <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="../style/style-projet.css">
   <link rel="icon" type="image/png" href="../image/home-portfolio.jpg">
   <script src="script/sroll.js"></script>
   <script src="script/portfolio.js"></script>
-
-  <style>
-    body {
-      display: flex;
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 15%;
-      height: 100%;
-      background-color: #333;
-      padding-top: 20px;
-      box-sizing: border-box;
-    }
-
-    .sidebar ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .sidebar li {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: white;
-      display: block;
-      padding: 10px;
-      transition: background-color 0.3s ease;
-    }
-
-    .sidebar a:hover {
-      background-color: #555;
-      border-radius: 5px;
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left: 15%;
-      padding: 20px;
-      width: 85%;
-    }
-
-    .section-titre {
-      text-align: center;
-      background: #f7f7f7;
-      padding: 12px;
-      font-size: 1.8em;
-      margin: 40px 0 20px;
-      border-radius: 8px;
-      border-left: 6px solid #333;
-      border-right: 6px solid #333;
-    }
-
-    /* GRID DE PROJETS */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-
-    /* Carte projet */
-    .project-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-
-    .project-card h3 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .project-card p {
-      flex: 1;
-      text-align: justify;
-    }
-
-    .project-card a {
-      margin-top: 15px;
-      display: inline-block;
-      text-align: center;
-      background: #333;
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .project-card a:hover {
-      background: #555;
-    }
-
-    /* Responsive sidebar */
-    @media screen and (max-width: 900px) {
-      body {
-        flex-direction: column;
-      }
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-      }
-      .main-content {
-        margin-left: 0;
-        width: 100%;
-      }
-    }
-  </style>
 
 </head>
 <body>
@@ -181,28 +47,28 @@
         <img src="../image/glpi.png" alt="Projet GLPI">
         <h3>Installation complète GLPI</h3>
         <p>Installation complète de GLPI 9.1 sur Ubuntu Server : TP noté incluant configuration Apache, MariaDB et PHP.</p>
-        <a href="../projet/projet-glpi.html">Voir le détail</a>
+        <a href="../projet/projet-glpi.html" class="download-btn">Voir le détail</a>
       </div>
 
       <div class="project-card">
         <img src="../image/authentificator.jpg" alt="Authentification PHP">
         <h3>Authentification PHP</h3>
         <p>Projet PHP intégrant une connexion sécurisée, double authentification email et validation TOTP Google Authenticator.</p>
-        <a href="../projet/projet-authentification.html">Voir le détail</a>
+        <a href="../projet/projet-authentification.html" class="download-btn">Voir le détail</a>
       </div>
 
       <div class="project-card">
         <img src="../image/gdb.png" alt="GSB Laravel">
         <h3>Application GSB - Laravel</h3>
         <p>Application Laravel permettant la gestion des visiteurs, comptes-rendus, praticiens et médicaments.</p>
-        <a href="../projet/projet-gsb.html">Voir le détail</a>
+        <a href="../projet/projet-gsb.html" class="download-btn">Voir le détail</a>
       </div>
 
       <div class="project-card">
         <img src="../image/logo_java.png" alt="Java Gnotes">
         <h3>Gnotes - Java</h3>
         <p>Application JavaFX + Spring Boot permettant la saisie et la gestion des notes des étudiants.</p>
-        <a href="../projet/projet-gnotes.html">Voir le détail</a>
+        <a href="../projet/projet-gnotes.html" class="download-btn">Voir le détail</a>
       </div>
 
     </div>
@@ -217,7 +83,7 @@
         <img src="../image/socorel.jpg" alt="SOCOREL">
         <h3>SOCOREL - Outil de gestion de stock</h3>
         <p>Outil web interne permettant le suivi des stocks via codes-barres, commandes et étiquettes dynamiques.</p>
-        <a href="../projet/projet-socorel.html">Voir le détail</a>
+        <a href="../projet/projet-socorel.html" class="download-btn">Voir le détail</a>
       </div>
 
       <div class="project-card">
@@ -226,7 +92,7 @@
         </a>
         <h3>Site Web - Mairie de Fégréac</h3>
         <p>Développement complet du site de la ville de Fégréac lors de mon stage de 1ère année.</p>
-        <a href="../projet/projet-fégréac.html">Voir le détail</a>
+        <a href="../projet/projet-fégréac.html" class="download-btn">Voir le détail</a>
       </div>
 
     </div>
@@ -250,8 +116,9 @@
           <img src="../image/logo-swgoh.png" alt="SWGOH Wiki">
         </a>
         <h3>Wiki SWGOH</h3>
-        <p>Site interactif regroupant personnages, vaisseaux et filtres du jeu mobile Star Wars Galaxy of Heroes.</p>
-        <a href="../projet/projet-swgoh-wiki.html">Voir le détail</a>
+        <p>Site interactif de type wiki qui contient l'ensemble des personnages, vaisseaux et filtres du jeu mobile Star Wars Galaxy of Heroes affichant leurs ensemble de capacités.<br><br> Contient un système de traduction entre le français et l'anglais enregistré dans un token de session, permettant de maintenir le langage voulu pendant la navigation sur le site.</p>
+        <a href="https://e-rimbault.github.io/swgoh-kit/index.html" target="_blank" class="download-btn"class="download-btn">Site Web</a>
+        <a href="../projet/projet-swgoh-wiki.html" class="download-btn">Voir le détail</a>
       </div>
 
       <div class="project-card">
@@ -261,7 +128,7 @@
         <h3 style="color: red">SWGOH Player Info (API KO)</h3>
         <p>Outil web affichant toutes les données d’un joueur SWGOH via son code allié. En attente de résolution API.</p>
         <p style="color: red;">Site down actuellement suite problème accès clé api, demande pour une clé api à l'hébergeur de l'api en attente de réponse</p>
-        <a href="../projet/projet-swgoh-api-info.html">Voir le détail</a>
+        <a href="../projet/projet-swgoh-api-info.html" class="download-btn" >Voir le détail</a>
       </div>
 
     </div>

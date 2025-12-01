@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+    /* Ajout de l'espace entre les sections */
+}
+
+nav ul li:first-child {
+    margin-right: 300px;
+    /* Marge spéciale pour le premier élément */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h2.présentation {
+    font-size: 1.5em;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+}

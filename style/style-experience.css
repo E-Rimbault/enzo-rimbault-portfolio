@@ -1,0 +1,175 @@
+ body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    p {
+      text-align: left;
+    }
+    /* Navigation latérale */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background-color: #333;
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .sidebar li {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+    /* Contenu principal */
+    .main-content {
+      margin-left: 20%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    h2 {
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .intro {
+      text-align: left;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+/* Frise chronologique verticale */
+.timeline-section {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.timeline {
+  position: relative;
+  padding: 40px 0;
+}
+
+/* Ligne centrale */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #ccc;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* CENTRE PARFAIT */
+}
+
+/* Eléments (côté gauche ou droit) */
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* CERCLES CENTRÉS PARFAITEMENT */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid #333;
+  border-radius: 50%;
+  top: 20px;
+
+  left: 100%;                /* se place sur la bordure droite de l'item */
+  transform: translateX(-50%); /* centre par rapport à la ligne verticale */
+  z-index: 1;
+}
+
+/* Côté gauche */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+/* Côté droit */
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Pour les éléments de droite, le cercle doit être au centre aussi */
+.timeline-item.right::after {
+  left: 0%; /* démarre sur le bord gauche de l'item */
+  transform: translateX(-50%); /* même recentrage */
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+}
+
+.timeline-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Version mobile */
+@media screen and (max-width: 768px) {
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timeline-item::after {
+    left: 30px;
+    transform: translateX(0);
+  }
+
+  .timeline::after {
+    left: 30px;
+    transform: translateX(0);
+  }
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background-color: #555;
+}

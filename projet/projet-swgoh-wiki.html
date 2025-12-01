@@ -22,6 +22,7 @@
       color: #ffcc33;
       text-align: center;
       margin-bottom: 1rem;
+      text-decoration: underline;
     }
 
     .section {
@@ -222,6 +223,71 @@
       </div>
     </div>
   </div>
+
+<div class="section">
+  <h2>Possibles évolutions futures</h2>
+
+  <div class="row g-4">
+
+    <!-- Carte - Système d’effets (buffs / debuffs) -->
+    <div class="col-md-6">
+      <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+        <div class="card-body">
+          <h5 class="card-title text-warning">Ajout d’un système d’effets</h5>
+          <p class="card-text">
+            Mise en place d’une nouvelle section dans chaque page d’unité affichant
+            l’ensemble des <strong>bonus</strong> et <strong>malus</strong> qu’elle peut appliquer.
+            Chaque effet (ex : <strong>Frénésie</strong>) pourrait ouvrir une <strong>pop-up</strong>
+            listant toutes les unités capables d’infliger cet effet.
+          </p>
+          <p class="card-text">
+            Depuis cette pop-up, l’utilisateur pourrait accéder directement à la page
+            de l’unité concernée.
+          </p>
+          <p class="card-text mb-1"><strong>Exemple d'unité qui peuvent infliger l’effet : Frénésie</strong></p>
+          <ul class="mb-0">
+            <li>Bistan</li>
+            <li>Bossk</li>
+            <li>Darth Talon</li>
+            <li>Gungan Boomadier</li>
+            <li>Maul</li>
+            <li>Paz Vizsla</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte - Filtrage des unités par effet -->
+    <div class="col-md-6">
+      <div class="card bg-dark text-light shadow-lg h-100" style="border-radius: 12px;">
+        <div class="card-body">
+          <h5 class="card-title text-warning">Nouveau filtrage par effet</h5>
+          <p class="card-text">
+            Ajout d’une page de filtrage dédiée aux <strong>effets</strong>, permettant de sélectionner :
+          </p>
+          <ul>
+            <li>un <strong>bonus</strong> via une liste déroulante</li>
+            <li>un <strong>malus</strong> via une seconde liste</li>
+            <li>Un champ se saisi pour saisir un effet sans chercher dans les listes déroulantes</li>
+          </ul>
+          <p class="card-text">
+            Le filtre afficherait automatiquement toutes les unités capables d’infliger
+            l’effet choisi, en utilisant les données du fichier <code>units.json</code>.
+          </p>
+          <p class="card-text">
+            Cela nécessiterait une mise à jour de la base actuelle afin d’intégrer
+            la liste des effets à chaque unité, puis une adaptation du script de
+            génération du fichier <code>units.json</code>.
+          </p>
+          <p><span style="color: red; font-weight: bold; text-decoration: underline;">Élément à tenir en compte :</span> actuellement les unités ont pour chaque ensemble (rôle / alignements / factions / nom) une version en anglais et une version en français, ce qui inmpliquera de créer la aussi une version anglaise et française des effets dans la base de données.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
